@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('',[Validators.required,Validators.minLength(1)]);
 
   constructor(private router: Router, private signupService:SignupService) { }
-
+//new
   ngOnInit(): void {
     /*console.log(sessionStorage.getItem('peddle_user_email'));
     console.log(sessionStorage.getItem('peddle_user_password'));
