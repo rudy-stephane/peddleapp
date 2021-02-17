@@ -1,0 +1,210 @@
+<div class="bodyglobal d-flex flex-column align-items-center justify-content-center">
+  <img src="/assets/logo.png" alt="AICEXPERTS" width="150" height="100"><br/>
+  <h3>PEDDLE SIGNUP</h3>
+    <div class="card d-flex flex-row" style="width: 30%; background-image: url('/assets/registration-form-2.jpg');">
+      <div class="card-body">
+        <div class="form-group mt-2">
+          <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)" multiple>
+          <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+          <div class="text-success"> {{filename}}</div>
+          <!--<span *ngIf="!photoChefDeCamp.valid" class="text-danger"> veuillez entrer la photo du prestataire</span>-->
+        </div>
+        <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+        <div class="form-group">
+          <label for="fullname">Full Name </label>
+          <input type="text" class="form-control" id="fullname" placeholder="Company Name or Personal Name" [formControl]="name">
+          <span *ngIf="!name.valid" class="text-danger"> veuillez entrer votre nom ou le nom de votre entreprise ou compagnie</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password </label>
+          <input type="password" class="form-control" id="password" [formControl]="password">
+          <span *ngIf="!password.valid" class="text-danger"> veuillez entrer un password valide (8 caractères minimum)</span>
+        </div>
+        <div class="form-group">
+          <label for="passwordconfirm">Confirm Password </label>
+          <input type="password" class="form-control" id="passwordconfirm" (change)="validPassword()" [formControl]="passwordconfirm">
+          <span *ngIf="confirmpassword" class="text-danger"> la valeur doit etre equivalente au mot de passe précédent</span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email </label>
+          <input type="email" class="form-control" id="email" placeholder="...@...." [formControl]="email">
+          <span *ngIf="!password.valid" class="text-danger"> veuillez entrer un email valide</span>
+        </div>
+        <!--<img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">-->
+        <div class="form-group">
+          <label for="selectplan">Select Plan</label>
+          <select class="form-control" id="selectplan" [formControl]="plan">
+            <option>Ambassador</option>
+            <option>Entrepreneur</option>
+            <option>Company</option>
+          </select>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="termsandconditions" [formControl]="termsandconditions">
+          <label class="form-check-label" for="termsandconditions">
+            <a>Terms and Conditions</a>
+          </label>
+        </div>
+        <button type="button" class="btn btn-primary w-25" (click)="signup()">Signup</button>
+      </div>
+      <!--<div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="card" >
+              <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                <h5 class="card-title text-primary">Plan : 0 USD</h5>
+                <h5 class="card-subtitle">All Features</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Manage opportunities</li>
+                <li class="list-group-item">Manage social accounts</li>
+                <li class="list-group-item">Manage streams</li>
+                <li class="list-group-item">Manage posts</li>
+                <li class="list-group-item">Analytics</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 10 USD</h5>
+                  <h5 class="card-subtitle">BRONZE</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 15 USD</h5>
+                  <h5 class="card-subtitle">SILVER</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 20 USD</h5>
+                  <h5 class="card-subtitle">GOLD</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 10 USD</h5>
+                  <h5 class="card-subtitle">BRONZE</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 15 USD</h5>
+                  <h5 class="card-subtitle">SILVER</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card" >
+                <div class="card-body" style="border-top: 3px solid blue; border-radius: 7px;">
+                  <h5 class="card-title text-primary">Plan : 20 USD</h5>
+                  <h5 class="card-subtitle">GOLD</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Manage opportunities</li>
+                  <li class="list-group-item">Manage social accounts</li>
+                  <li class="list-group-item">Manage streams</li>
+                  <li class="list-group-item">Manage posts</li>
+                  <li class="list-group-item">Analytics</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </div>
+</div>
+
+
+
+
+<!--<div class="bodyglobal w-100 min-vh-100 d-flex  flex-column  align-items-center justify-content-center">
+  <img src="/assets/logo.png" alt="AICEXPERTS" width="150" height="100"><br/>
+  <h3>PEDDLE LOGIN</h3>
+
+  <ngb-alert #selfClosingAlert *ngIf="successMessage" type="danger" (closed)="successMessage = ''">{{ successMessage }}
+  </ngb-alert>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-12">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-8 border-right">
+      <div class="mb-3">
+        <label for="Login" class="form-label">Login :</label>
+        <input type="text" class="form-control" id="Login" placeholder="phone, email ...">
+        <span class="text-danger" > veuillez  entrer un login valide</span>
+      </div>
+      <div class="mb-2">
+        <label for="passwordAdmin" class="form-label">Password :</label>
+        <input type="password" class="form-control" id="passwordAdmin" name="emailpassword" >
+        <div class="text-danger"  >veuillez entrer un password</div>
+      </div>
+    </div>
+    <div class="col-6">
+      eeeeeeeeeeeeeeeeeeee
+    </div>
+  </div>
+</div>
+-->
