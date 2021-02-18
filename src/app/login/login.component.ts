@@ -40,20 +40,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-
-    console.log('avant');
-    this.signupService.corstest().subscribe(res=>{
-      console.log('pendant');
-      console.log(res)
-    },err=>{
-      console.log('error :   '+ err)
-    })
-    console.log('après');
-
     /*let lemail = sessionStorage.getItem('peddle_user_email');
     let lpassword = sessionStorage.getItem('peddle_user_password');*/
-    /*if(this.email.valid&&this.password.valid){
+    if(this.email.valid&&this.password.valid){
       var user = {
         peddle_user_password :this.password.value,
         peddle_user_email :this.email.value,
@@ -73,6 +62,6 @@ export class LoginComponent implements OnInit {
 
       });
       console.log(true)
-    }*/
+    }
   }
 }
