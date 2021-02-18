@@ -40,6 +40,17 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+
+
+    console.log('avant');
+    this.signupService.corstest().subscribe(res=>{
+      console.log('pendant');
+      console.log(res)
+    },err=>{
+      console.log('error :   '+ err)
+    })
+    console.log('après');
+
     /*let lemail = sessionStorage.getItem('peddle_user_email');
     let lpassword = sessionStorage.getItem('peddle_user_password');*/
     /*if(this.email.valid&&this.password.valid){
@@ -63,10 +74,5 @@ export class LoginComponent implements OnInit {
       });
       console.log(true)
     }*/
-    this.signupService.corstest().subscribe(res=>{
-      console.log(res)
-    },err=>{
-      console.log('error :   '+ err)
-    })
   }
 }
