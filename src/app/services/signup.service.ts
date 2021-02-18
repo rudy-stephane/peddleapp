@@ -19,4 +19,8 @@ export class SignupService {
     return this.http.post(this.endpoint+'/login',peddle_user_login);
  }
 
+ corstest(){
+    return this.http.get(this.endpoint+'/testcors');
+ }
+
 }
