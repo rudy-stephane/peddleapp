@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 // tslint:disable
 export class LinkedinService {
 
-  endpoint = 'http://localhost:5000';
+  endpoint = 'https://peddleservice.herokuapp.com';//'http://localhost:5000';
 
   endpointaccesslinkedIn = 'https://www.linkedin.com/oauth/v2/accessToken';
   response_type = 'code';

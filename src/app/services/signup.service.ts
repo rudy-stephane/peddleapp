@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 // tslint:disable
 export class SignupService {
 
-  endpoint = 'http://localhost:5000';
+  endpoint = 'https://peddleservice.herokuapp.com';//'http://localhost:5000';
   constructor(private http: HttpClient) { }
 
  signup(peddle_user_signup){
