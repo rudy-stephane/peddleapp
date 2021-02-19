@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 
 // tslint:disable
 export class LinkedinService {
@@ -15,6 +16,15 @@ export class LinkedinService {
   client_id='77b17box86iq9n';
   redirect_uri='https://peddleapp.herokuapp.com/brandambassador';
   scope='r_emailaddress r_liteprofile w_member_social';
+
+
+  optionRequete = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'*'
+    })
+  };
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -28,11 +38,11 @@ export class LinkedinService {
       'response_type=' + this.response_type+
       '&client_id=' + this.client_id+
       '&redirect_uri=' + this.redirect_uri+
-      '&scope='+this.scope);
+      '&scope='+this.scope,this.optionRequete);
   }
 
   getclienttoken(obj){
-    return this.http.post(this.endpointaccesslinkedIn,obj);
+    return this.http.post(this.endpointaccesslinkedIn,obj,this.optionRequete);
   }
   storeclienttoken(token){
     return this.http.post(this.endpoint+'/updateuser',token);
