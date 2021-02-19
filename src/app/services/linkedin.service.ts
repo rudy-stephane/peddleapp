@@ -13,7 +13,7 @@ export class LinkedinService {
   endpointaccesslinkedIn = 'https://www.linkedin.com/oauth/v2/accessToken';
   response_type = 'code';
   client_id='77b17box86iq9n';
-  redirect_uri='http://localhost:4200/brandambassador';
+  redirect_uri='https://peddleapp.herokuapp.com/brandambassador';
   scope='r_emailaddress r_liteprofile w_member_social';
 
   constructor(private http: HttpClient) { }

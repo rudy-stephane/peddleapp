@@ -65,7 +65,15 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.getclienttoken(peddle_access).subscribe(result=>{
         let reponse = result as any ;
         let access_token = reponse.access_token;
+        console.log('################################');
+        console.log('################################');
+        console.log('################################');
+        console.log('################################');
         console.log('access_token  :   '+ access_token);
+        console.log('################################');
+        console.log('################################');
+        console.log('################################');
+        console.log('################################');
         let user_linkedintoken = {
           peddle_user_email : peddle_user_email,
           access_token:access_token
