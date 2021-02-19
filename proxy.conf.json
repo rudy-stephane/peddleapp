@@ -1,10 +1,10 @@
 {
-  "/linkedin/api": {
+  "/api": {
     "target": "https://www.linkedin.com",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/linkedin/api": ""
+      "^/api": ""
     }
   }
 }
