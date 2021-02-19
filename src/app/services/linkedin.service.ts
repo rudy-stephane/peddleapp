@@ -18,11 +18,11 @@ export class LinkedinService {
   scope='r_emailaddress r_liteprofile w_member_social';
 
 
-  optionRequete = {
+ /* optionRequete = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*'
     })
-  };
+  };*/
 
 
 
@@ -38,11 +38,11 @@ export class LinkedinService {
       'response_type=' + this.response_type+
       '&client_id=' + this.client_id+
       '&redirect_uri=' + this.redirect_uri+
-      '&scope='+this.scope,this.optionRequete);
+      '&scope='+this.scope);
   }
 
   getclienttoken(obj){
-    return this.http.post(this.endpointaccesslinkedIn,obj,this.optionRequete);
+    return this.http.post(this.endpointaccesslinkedIn,obj);
   }
   storeclienttoken(token){
     return this.http.post(this.endpoint+'/updateuser',token);

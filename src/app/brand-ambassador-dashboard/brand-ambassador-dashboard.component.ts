@@ -28,7 +28,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   closeResult = '';
 
   grant_type = 'authorization_code';
-  redirect_uri = 'http://localhost:4200/brandambassador';
+  redirect_uri = 'https://peddleapp.herokuapp.com/brandambassador';
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
