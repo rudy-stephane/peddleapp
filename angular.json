@@ -77,8 +77,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "peddle:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "peddle:build:production"
             }
           }
         },
