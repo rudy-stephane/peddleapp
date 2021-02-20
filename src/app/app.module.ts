@@ -29,7 +29,7 @@ import { ToastsContainerComponent } from './toasts-container/toasts-container.co
 import { AnalyticsComponent } from './analytics/analytics.component';
 import {ChartModule} from 'primeng/chart';
 import {resolve} from 'url';
-import { LinkedinurlDirective } from './linkedinurl.directive';
+
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 const appRoutes: Routes = [
@@ -70,8 +70,7 @@ const appRoutes: Routes = [
     EntrepreneurSignupComponent,
     PasswordForgottenComponent,
     ToastsContainerComponent,
-    AnalyticsComponent,
-    LinkedinurlDirective
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
