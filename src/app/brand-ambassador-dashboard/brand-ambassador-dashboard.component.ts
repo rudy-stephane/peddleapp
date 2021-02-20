@@ -12,6 +12,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';*/
   templateUrl: './brand-ambassador-dashboard.component.html',
   styleUrls: ['./brand-ambassador-dashboard.component.css']
 })
+
+
 // tslint:disable
 export class BrandAmbassadorDashboardComponent implements OnInit {
 
