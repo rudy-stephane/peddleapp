@@ -21,6 +21,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   social_input = new FormControl('LinkedIn');
 
+  urllink = 'https://www.google.com/';
+
   /*calendarPlugins = [dayGridPlugin]*/
   display: boolean = false;
   displaypost:boolean = false;
