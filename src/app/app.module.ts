@@ -42,12 +42,6 @@ const appRoutes: Routes = [
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
     {path: 'entrepreneur-signup', component: EntrepreneurSignupComponent},
     {path: 'password-forgotten', component: PasswordForgottenComponent},
-    {
-      path: 'externalRedirect',
-      canActivate: [externalUrlProvider],
-      // We need a component here because we cannot define the route otherwise
-      component: FooterComponent,
-    },
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ]
@@ -85,15 +79,7 @@ const appRoutes: Routes = [
     SplitButtonModule,
     ChartModule
   ],
-  providers: [
-    {
-      provide: externalUrlProvider,
-      useValue: (route: ActivatedRouteSnapshot) => {
-        const externalUrl = route.paramMap.get('externalUrl');
-        window.open(externalUrl, '_self');
-      },
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
