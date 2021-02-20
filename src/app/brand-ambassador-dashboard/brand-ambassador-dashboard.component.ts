@@ -43,11 +43,33 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     //this.activatedRoute.queryParams.
 
     this.activatedRoute.queryParams.subscribe(params => {
-      console.log('parametre');
+      if("code" in params){
+        let peddle_access={
+          grant_type : this.grant_type,
+          code: params['code'],
+          redirect_uri:this.redirect_uri,
+          client_id: this.client_id,
+          client_secret : this.client_secret
+        };
+        this.linkedinService.getclienttoken(peddle_access).subscribe(result=>{
+          let reponse = result as any ;
+          let access_token = reponse.access_token;
+          console.log('################################');
+          console.log('################################');
+          console.log('################################');
+          console.log('################################');
+          console.log('access_token  :   '+ access_token);
+          console.log('################################');
+          console.log('################################');
+          console.log('################################');
+          console.log('################################');
+        })
+      }
+      /*console.log('parametre');
       console.log(params);
       console.log('code de parametre');
       let date = params['code'];
-      console.log(date); // Print the parameter to the console.
+      console.log(date); // Print the parameter to the console.*/
     });
   }
   onclickfacebook(){
