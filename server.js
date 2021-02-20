@@ -2,7 +2,18 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-//app.use(cors());
+app.use(cors());
+var allowlist = ['https://www.linkedin.com'];
+
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+};
 
 //CORS Middleware
 /*app.use(function (req, res, next) {
@@ -15,7 +26,7 @@ const cors = require('cors');
 
 app.use(express.static('./dist/peddle'));
 
-app.get('/*', (req, res) =>
+app.get('/*',cors(corsOptionsDelegate), (req, res) =>
   res.sendFile('index.html', {root: 'dist/peddle/'}),
 );
 
