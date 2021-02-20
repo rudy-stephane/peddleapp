@@ -28,11 +28,18 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import { ToastsContainerComponent } from './toasts-container/toasts-container.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import {ChartModule} from 'primeng/chart';
+import {resolve} from 'url';
 const appRoutes: Routes = [
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'welcome', component: WelcomeComponent},
+    {
+      path: 'google',
+      resolve: {
+        url: 'https://angular.io/guide/deployment'
+      }
+    },
     {path: 'compagnies', component: CompagniesDashboardComponent},
     {path: 'compagnies-signup', component: CompagniesSignupComponent},
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
