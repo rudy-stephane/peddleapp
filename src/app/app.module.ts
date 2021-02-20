@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ import { CompagniesLeftMenuComponent } from './compagnies-left-menu/compagnies-l
 import { EntrepreneurLeftMenuComponent } from './entrepreneur-left-menu/entrepreneur-left-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import {RouterModule, Routes} from '@angular/router';
+import {ActivatedRouteSnapshot, RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import { CompagniesSignupComponent } from './compagnies-signup/compagnies-signup.component';
@@ -30,6 +30,8 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import {ChartModule} from 'primeng/chart';
 import {resolve} from 'url';
 import { LinkedinurlDirective } from './linkedinurl.directive';
+
+const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 const appRoutes: Routes = [
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'login', component: LoginComponent},
@@ -40,6 +42,12 @@ const appRoutes: Routes = [
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
     {path: 'entrepreneur-signup', component: EntrepreneurSignupComponent},
     {path: 'password-forgotten', component: PasswordForgottenComponent},
+    {
+      path: 'externalRedirect',
+      canActivate: [externalUrlProvider],
+      // We need a component here because we cannot define the route otherwise
+      component: FooterComponent,
+    },
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ]
@@ -78,7 +86,15 @@ const appRoutes: Routes = [
     SplitButtonModule,
     ChartModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: externalUrlProvider,
+      useValue: (route: ActivatedRouteSnapshot) => {
+        const externalUrl = route.paramMap.get('externalUrl');
+        window.open(externalUrl, '_self');
+      },
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
