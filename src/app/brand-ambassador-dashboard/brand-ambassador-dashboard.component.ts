@@ -43,7 +43,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     //this.activatedRoute.queryParams.
 
     this.activatedRoute.queryParams.subscribe(params => {
-      ("code" in params)?console.log(true):console.log(false);
+      ("code" in params)?window.location.href='https://www.google.com/':console.log(false);
       /*console.log('parametre');
       console.log(params);
       console.log('code de parametre');
