@@ -43,12 +43,11 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     //this.activatedRoute.queryParams.
 
     this.activatedRoute.queryParams.subscribe(params => {
-      ("code" in params)?window.location.href='https://www.google.com/':console.log(false);
-      /*console.log('parametre');
+      console.log('parametre');
       console.log(params);
       console.log('code de parametre');
       let date = params['code'];
-      console.log(date); // Print the parameter to the console.*/
+      console.log(date); // Print the parameter to the console.
     });
   }
   onclickfacebook(){
