@@ -21,7 +21,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   social_input = new FormControl('LinkedIn');
 
-  urllink = 'https://www.google.com/';
+  urllink = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77b17box86iq9n&redirect_uri=https://peddleapp.herokuapp.com/brandambassador&scope=r_emailaddress r_liteprofile w_member_social';
 
   /*calendarPlugins = [dayGridPlugin]*/
   display: boolean = false;
