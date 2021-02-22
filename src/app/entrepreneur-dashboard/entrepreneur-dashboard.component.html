@@ -44,7 +44,22 @@
       </ul>
     </nav>
 
-   fffffffffffffffffffffffffffffff
+
+    stretch (default): stretch to fill the container (still respect min-width/max-width)
+    flex-start / start / self-start: items are placed at the start of the cross axis. The difference between these is subtle, and is about respecting the flex-direction rules or the writing-mode rules.
+    flex-end / end / self-end: items are placed at the end of the cross axis. The difference again is subtle and is about respecting flex-direction rules vs. writing-mode rules.
+    center: items are centered in the cross-axis.
+    align-content
+    examples of the align-content property where a group of items cluster at the top or bottom, or stretch out to fill the space, or have spacing.
+
+    This aligns a flex container’s lines within when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
+
+    Note: This property only takes effect on multi-line flexible containers, where flex-flow is set to either wrap or wrap-reverse). A single-line flexible container (i.e. where flex-flow is set to its default value, no-wrap) will not reflect align-content.
+    
+    normal (default): items are packed in their default position as if no value was set.
+    flex-start / start: items packed to the start of the container. The (more supported) flex-start honors the flex-direction while start honors the writing-mode direction.
+    flex-end / end: items packed to the end of the container. The (more support) flex-end honors the flex-direction while end honors the writing-mode direction.
+
   </div>
   <div class="bottom fixed-bottom">
     defrt
