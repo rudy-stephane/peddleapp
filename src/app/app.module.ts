@@ -29,6 +29,8 @@ import { ToastsContainerComponent } from './toasts-container/toasts-container.co
 import { AnalyticsComponent } from './analytics/analytics.component';
 import {ChartModule} from 'primeng/chart';
 import {resolve} from 'url';
+import {MessagesModule} from 'primeng/messages';
+import {ToastModule} from 'primeng/toast';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -77,7 +79,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ChipModule,
     SplitButtonModule,
-    ChartModule
+    ChartModule,
+    MessagesModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

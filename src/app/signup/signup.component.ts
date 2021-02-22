@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   name = new FormControl('',[Validators.required,Validators.minLength(1)]);
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
   passwordconfirm = new FormControl('',[Validators.required,Validators.minLength(8)]);
-  email = new FormControl('',[Validators.required,Validators.minLength(1)]);
+  email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   plan = new FormControl('Ambassador',[Validators.required,Validators.minLength(1)]);
   termsandconditions = new FormControl('',[Validators.required,Validators.minLength(1)]);
 
@@ -36,6 +36,21 @@ export class SignupComponent implements OnInit {
         peddle_user_email :this.email.value,
         peddle_user_plan :this.plan.value,
         peddle_user_profile :this.transform,
+        peddle_user_facebook_token:{
+          user_profile_token:''
+        },
+        peddle_user_twitter_token: {
+          user_profile_token:''
+        },
+        peddle_user_linkedin_token:{
+          user_profile_token:''
+        },
+        peddle_user_instagram_token:{
+          user_profile_token:''
+        },
+        peddle_user_pinterest_token:{
+          user_profile_token:''
+        },
       };
 
       this.signupService.signup(user).subscribe(res=>{
