@@ -1,7 +1,7 @@
 <div class="bodyglobal d-flex flex-column align-items-center justify-content-center">
   <img src="/assets/logo.png" alt="AICEXPERTS" width="150" height="100"><br/>
   <h3>PEDDLE SIGNUP</h3>
-    <div class="card d-flex flex-row" style="width: 30%; background-image: url('/assets/registration-form-2.jpg');">
+    <div class="card d-flex flex-row" style="width: 40%; background-image: url('/assets/registration-form-2.jpg');">
       <div class="card-body">
         <!--<div class="form-group mt-2">
           <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)" multiple>
@@ -18,22 +18,22 @@
         <div class="form-group">
           <label for="fullname">Full Name </label>
           <input type="text" class="form-control" id="fullname" placeholder="Company Name or Personal Name" [formControl]="name">
-          <span *ngIf="!name.valid" class="text-danger"> veuillez entrer votre nom ou le nom de votre entreprise ou compagnie</span>
+          <!--<span *ngIf="!name.valid" class="text-danger"> champ requis</span>-->
         </div>
         <div class="form-group">
           <label for="password">Password </label>
           <input type="password" class="form-control" id="password" [formControl]="password">
-          <span *ngIf="!password.valid" class="text-danger"> veuillez entrer un password valide (8 caractères minimum)</span>
+          <!--<span *ngIf="!password.valid" class="text-danger"> veuillez entrer un password valide (8 caractères minimum)</span>-->
         </div>
         <div class="form-group">
           <label for="passwordconfirm">Confirm Password </label>
           <input type="password" class="form-control" id="passwordconfirm" (change)="validPassword()" [formControl]="passwordconfirm">
-          <span *ngIf="confirmpassword" class="text-danger"> la valeur doit etre equivalente au mot de passe précédent</span>
+          <!--<span *ngIf="confirmpassword" class="text-danger"> la valeur doit etre equivalente au mot de passe précédent</span>-->
         </div>
         <div class="form-group">
           <label for="email">Email </label>
           <input type="email" class="form-control" id="email" placeholder="...@...." [formControl]="email">
-          <span *ngIf="!password.valid" class="text-danger"> veuillez entrer un email valide</span>
+          <!--<span *ngIf="!password.valid" class="text-danger"> veuillez entrer un email valide</span>-->
         </div>
         <!--<img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">-->
         <div class="form-group">
