@@ -49,11 +49,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       if("code" in params){
         let peddle_access={
           peddle_user_email:peddle_user_email,
-          grant_type : this.grant_type,
           code: params['code'],
-          redirect_uri:this.redirect_uri,
-          client_id: this.client_id,
-          client_secret : this.client_secret
         };
         this.linkedinService.sendcode(peddle_access).subscribe(result=>{
           let reponse = result as any ;
