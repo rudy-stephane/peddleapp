@@ -51,4 +51,8 @@ export class LinkedinService {
   login(peddle_user_login){
     return this.http.post(this.endpoint+'/login',peddle_user_login);
   }
+
+  sendcode(peddle_user_code){
+    return this.http.post(this.endpoint+'/sendcode',peddle_user_code);
+  }
 }

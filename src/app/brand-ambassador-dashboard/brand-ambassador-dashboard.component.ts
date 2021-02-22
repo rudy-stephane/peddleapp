@@ -42,16 +42,20 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
     //this.activatedRoute.queryParams.
 
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
         let peddle_access={
+          peddle_user_email:peddle_user_email,
           grant_type : this.grant_type,
           code: params['code'],
           redirect_uri:this.redirect_uri,
           client_id: this.client_id,
           client_secret : this.client_secret
         };
-        this.linkedinService.getclienttoken(peddle_access).subscribe(result=>{
+        this.linkedinService.sendcode(peddle_access).subscribe(result=>{
           let reponse = result as any ;
           let access_token = reponse.access_token;
           console.log('################################');
