@@ -3,13 +3,18 @@
   <h3>PEDDLE SIGNUP</h3>
     <div class="card d-flex flex-row" style="width: 30%; background-image: url('/assets/registration-form-2.jpg');">
       <div class="card-body">
-        <div class="form-group mt-2">
+        <!--<div class="form-group mt-2">
           <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)" multiple>
           <label class="custom-file-label" for="eventpartner">Logo or profil</label>
           <div class="text-success"> {{filename}}</div>
-          <!--<span *ngIf="!photoChefDeCamp.valid" class="text-danger"> veuillez entrer la photo du prestataire</span>-->
-        </div>
+          &lt;!&ndash;<span *ngIf="!photoChefDeCamp.valid" class="text-danger"> veuillez entrer la photo du prestataire</span>&ndash;&gt;
+        </div>-->
         <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
+          <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+          <div class="text-success"> {{filename}}</div>
+        </div>
         <div class="form-group">
           <label for="fullname">Full Name </label>
           <input type="text" class="form-control" id="fullname" placeholder="Company Name or Personal Name" [formControl]="name">
