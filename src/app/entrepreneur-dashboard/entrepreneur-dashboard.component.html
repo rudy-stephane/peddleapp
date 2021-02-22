@@ -1,1 +1,52 @@
-<p>entrepreneur-dashboard works!</p>
+<div class="wrapper">
+  <div class="sidebar">
+    list sidebar
+  </div>
+  <div class="body">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
+      <!--<form class="form-inline mr-auto my-2 mw-100 shadow">-->
+      <div class="input-group form-inline mr-auto my-2 w-25 shadow">
+        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fa fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+      <!--</form>-->
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ml-5">
+          <i class="fa fa-envelope-o fa-1x" style="color: #e3e6f0"></i>
+          <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
+        </li>
+        <div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div>
+        <li ngbDropdown placement="bottom" class="nav-item">
+          <a href (click)="false" class="nav-link" ngbDropdownToggle >
+            <i class="fa fa-user-circle-o fa-2x" style="color: #e3e6f0"></i>
+          </a>
+          <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
+            <a ngbDropdownItem (click)="false" >
+              <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+            <a ngbDropdownItem (click)="false" >
+              <i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              Setting
+            </a>
+            <div class="dropdown-divider"></div>
+            <a ngbDropdownItem (click)="open(content)" >
+              <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+              Deconnexion
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+   fffffffffffffffffffffffffffffff
+  </div>
+  <div class="bottom fixed-bottom">
+    defrt
+  </div>
+</div>

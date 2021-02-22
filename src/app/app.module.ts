@@ -9,16 +9,10 @@ import { SignupComponent } from './signup/signup.component';
 import { CompagniesDashboardComponent } from './compagnies-dashboard/compagnies-dashboard.component';
 import { EntrepreneurDashboardComponent } from './entrepreneur-dashboard/entrepreneur-dashboard.component';
 import { BrandAmbassadorDashboardComponent } from './brand-ambassador-dashboard/brand-ambassador-dashboard.component';
-import { BrandAmbassadorLeftMenuComponent } from './brand-ambassador-left-menu/brand-ambassador-left-menu.component';
-import { CompagniesLeftMenuComponent } from './compagnies-left-menu/compagnies-left-menu.component';
-import { EntrepreneurLeftMenuComponent } from './entrepreneur-left-menu/entrepreneur-left-menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
+
 import {ActivatedRouteSnapshot, RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular';
-import { CompagniesSignupComponent } from './compagnies-signup/compagnies-signup.component';
-import { EntrepreneurSignupComponent } from './entrepreneur-signup/entrepreneur-signup.component';
 import { PasswordForgottenComponent } from './password-forgotten/password-forgotten.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DialogModule} from 'primeng/dialog';
@@ -40,9 +34,7 @@ const appRoutes: Routes = [
     {path: 'signup', component: SignupComponent},
     {path: 'welcome', component: WelcomeComponent},
     {path: 'compagnies', component: CompagniesDashboardComponent},
-    {path: 'compagnies-signup', component: CompagniesSignupComponent},
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
-    {path: 'entrepreneur-signup', component: EntrepreneurSignupComponent},
     {path: 'password-forgotten', component: PasswordForgottenComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
@@ -57,13 +49,6 @@ const appRoutes: Routes = [
     CompagniesDashboardComponent,
     EntrepreneurDashboardComponent,
     BrandAmbassadorDashboardComponent,
-    BrandAmbassadorLeftMenuComponent,
-    CompagniesLeftMenuComponent,
-    EntrepreneurLeftMenuComponent,
-    FooterComponent,
-    HeaderComponent,
-    CompagniesSignupComponent,
-    EntrepreneurSignupComponent,
     PasswordForgottenComponent,
     ToastsContainerComponent,
     AnalyticsComponent

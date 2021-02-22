@@ -1,0 +1,23 @@
+.wrapper{
+  display : flex;
+  width:100%;
+}
+.sidebar{
+  background-color : #000080;
+  height: 100vh;
+  min-width: 10%;
+  max-width: 10%;
+  position : fixed;
+  top:0;
+  left:0;
+}
+.body{
+  margin-left:10%;
+  background-color :  green;
+  margin-bottom:50px;
+}
+.bottom{
+  height:50px;
+  background-color : black;
+  margin-left:10%;
+}

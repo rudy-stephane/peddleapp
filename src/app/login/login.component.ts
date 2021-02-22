@@ -64,8 +64,8 @@ export class LoginComponent implements OnInit {
           this.messageService.add({key: 'credential', severity:'error', summary: 'Credential', detail: 'Invalid Credential'});
           this.boolspinner= false;
         }else{
-          sessionStorage.setItem('user',JSON.stringify(res));
-          this.router.navigate(['brandambassador']);
+          sessionStorage.setItem('user',JSON.stringify(res));// brandambassador
+          this.router.navigate(['entrepreneur']);
         }
         //console.log(typeof  res);
        // this.router.navigate(['brandambassador']);
