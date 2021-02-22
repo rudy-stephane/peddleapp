@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
   signup(){
 
     if(this.name.valid && this.password.valid&& this.termsandconditions.valid&&this.plan.valid&&this.termsandconditions.valid){
+      this.boolspinner = true;
       var user = {
         peddle_user_name :this.name.value,
         peddle_user_password :this.password.value,
@@ -55,6 +56,7 @@ export class SignupComponent implements OnInit {
 
       this.signupService.signup(user).subscribe(res=>{
         this.router.navigate(['login']);
+        this.boolspinner=false;
       },err=>{
 
       });
@@ -75,6 +77,7 @@ export class SignupComponent implements OnInit {
 
   transform = 'assets/information.png';
   filename ='';
+  boolspinner = false;
 
   filechangeevent(event){
 

@@ -1,7 +1,7 @@
 <div class="bodyglobal d-flex flex-column align-items-center justify-content-center">
   <img src="/assets/logo.png" alt="AICEXPERTS" width="150" height="100"><br/>
   <h3>PEDDLE SIGNUP</h3>
-    <div class="card d-flex flex-row" style="width: 40%; background-image: url('/assets/registration-form-2.jpg');">
+    <div class="card d-flex flex-row" style="width: 30%; background-image: url('/assets/registration-form-2.jpg');">
       <div class="card-body">
         <!--<div class="form-group mt-2">
           <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)" multiple>
@@ -50,7 +50,10 @@
             <a>Terms and Conditions</a>
           </label>
         </div>
-        <button type="button" class="btn btn-primary w-25" (click)="signup()">Signup</button>
+        <button type="button" class="btn btn-primary w-25" (click)="signup()">
+          Signup
+          <span *ngIf="boolspinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
       </div>
       <!--<div class="card-body">
         <div class="container">
