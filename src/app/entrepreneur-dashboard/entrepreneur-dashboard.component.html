@@ -1,9 +1,135 @@
-<div class="wrapper">
-  <div class="sidebar">
-    list sidebar
+
+<style>
+
+
+  /*#content{
+    min-height: 100vh;
+    min-width: 100%;
+  }*/
+  .footer{
+    margin-top: auto;
+  }
+  .cardbord{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: mediumblue;
+    border-radius: 5%;
+  }
+
+  .cardbordpy{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: darkgreen;
+    border-radius: 5%;
+  }
+
+  .cardbordgr{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: darksalmon;
+    border-radius: 5%;
+  }
+  .item{
+    cursor: pointer;
+  }
+
+</style>
+
+<!-- page div glogale -->
+<div id="content" class="d-flex flex-row" style="background-color: #f8f9fc">
+  <!-- Section du menu de navigation-->
+  <div class="bg-primary shadow px-2 pt-2" style="width: 20%; height: 100rem">
+    <a class="text-decoration-none text-white" routerLink="/admin">
+      <div class="d-flex flex-row">
+        <img src="/assets/logo.png"  alt="AICEXPERTS" width="80"> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="h2 text-white text-decoration-none text-left text-uppercase ml-4">PEDDLE</span>
+      </div>
+    </a>
+    <hr class="mt-4 bg-white">
+    <a class="text-decoration-none text-white mt-5" routerLinkActive="/dashboard">
+      <div class="d-flex flex-row">
+        <i class="fa fa-dashboard fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-decoration-none text-left ml-4 ">Tableau de bord</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> social Network</div>
+    <a class="text-decoration-none text-white item"  (click)="showDialog()"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Add Social Network</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogPost()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Post</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogPin()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create PIN</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogstory()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Instagram story</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> integrating social</div>
+    <a class="text-decoration-none text-white item"  (click)="showDialog()"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Team Members</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">contacts</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Messages</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> Setup</div>
+    <a class="text-decoration-none text-white item"  routerLink="/analytics"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Analytics</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Upgrade My Plan</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Opportunities</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">SIGN OUT</span>
+      </div>
+    </a>
+
   </div>
-  <div class="body">
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 vw-100 static-top shadow">
+  <!-- Section du contenu de la page-->
+  <div class="d-inline-flex flex-column vh-100 mh-100 vw-100 mw-100">
+
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
       <!--<form class="form-inline mr-auto my-2 mw-100 shadow">-->
       <div class="input-group form-inline mr-auto my-2 w-25 shadow">
         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -35,7 +161,7 @@
               Setting
             </a>
             <div class="dropdown-divider"></div>
-            <a ngbDropdownItem  >
+            <a ngbDropdownItem (click)="open(content)" >
               <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
               Deconnexion
             </a>
@@ -44,24 +170,207 @@
       </ul>
     </nav>
 
+    <div class="container-fluid">
 
-    stretch (default): stretch to fill the container (still respect min-width/max-width)
-    flex-start / start / self-start: items are placed at the start of the cross axis. The difference between these is subtle, and is about respecting the flex-direction rules or the writing-mode rules.
-    flex-end / end / self-end: items are placed at the end of the cross axis. The difference again is subtle and is about respecting flex-direction rules vs. writing-mode rules.
-    center: items are centered in the cross-axis.
-    align-content
-    examples of the align-content property where a group of items cluster at the top or bottom, or stretch out to fill the space, or have spacing.
+      <div class="row">
+        <div class="form-group col-4 mt-3">
+          <label for="selectplan">Social Network</label>
+          <select class="form-control" id="selectplan" (change)="socialchange()" [formControl]="social_input">
+            <option>LinkedIn</option>
+            <option>FaceBook</option>
+            <option>Twitter</option>
+          </select>
+        </div>
+        <div class="col-8 " style="padding-left: 10%; padding-top: 4%">
+          <p-chip *ngFor="let item of peddle_stream_list" label="{{item}}" icon="pi pi-microsoft"  (onRemove)="removecolumn($event)" [removable]="true"></p-chip>
+        </div>
+      </div>
 
-    This aligns a flex container’s lines within when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
-
-    Note: This property only takes effect on multi-line flexible containers, where flex-flow is set to either wrap or wrap-reverse). A single-line flexible container (i.e. where flex-flow is set to its default value, no-wrap) will not reflect align-content.
-
-    normal (default): items are packed in their default position as if no value was set.
-    flex-start / start: items packed to the start of the container. The (more supported) flex-start honors the flex-direction while start honors the writing-mode direction.
-    flex-end / end: items packed to the end of the container. The (more support) flex-end honors the flex-direction while end honors the writing-mode direction.
-
-  </div>
-  <div class="bottom fixed-bottom">
-    defrt
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="w-50 ml-5 border-right" *ngFor="let item of peddle_stream_list">
+                <strong class="font-weight-bold">{{item}}</strong>
+                <hr/>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="">
+                      <img src="/assets/information.png" class="rounded-circle" alt="LinkedIn" width="20" height="20">
+                      <div class="d-inline-block ml-2">
+                        <div class="text-primary"> Stream Name</div>
+                      </div>
+                    </div>
+                    <div class="">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                      <img src="/assets/aiceperts.jpg" class="w-100" alt="information" >
+                    </div>
+                    <div class="mt-1">
+                      <i class="fa fa-thumbs-up" style="margin-left: 70%"></i>
+                      <i class="fa fa-comment ml-2" style=""></i>
+                      <i class="fa fa-share ml-3" style=""></i>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" id="comment" placeholder="write a comment" >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<app-toasts-container aria-live="polite" aria-atomic="true"></app-toasts-container>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="text-left"> voulez-vous vraiment vous déconnecter ?</p>
+
+    <a class="btn btn-outline-danger " routerLink="/authentification" (click)="modal.close('Save click')">Deconnexion</a> <!--modal.close('Save click')-->
+    <button type="button" class="btn btn-outline-primary ml-3" (click)="modal.close('Save click')">Annuler </button>
+  </div>
+</ng-template>
+
+
+<ng-template  let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-titre">Choisir le template</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+  </div>
+</ng-template>
+
+<p-dialog header="Add Social NetWork" [(visible)]="display" (onHide)="onHide()">
+  <div class="d-flex">
+    <div class="">
+      <!--<img  src=  "information.png" class="img-thumbnail" alt="..."  width="50" height="50">-->
+      <a  [href]="urllink"> <!--(click)="ongettoken()" target="_blank" class="item" (click)="onclicklinkedin()"-->
+        <img src="/assets/Linkedin.png" class="rounded-circle" alt="LinkedIn" width="100" height="100">
+        <p class="text-center"> LinkedIn</p>
+      </a>
+    </div>
+    <div class="ml-1">
+      <!--<a class="item" href="google">
+        <img src="/assets/Facebook.png" class="rounded-circle" alt="Facebook" width="100" height="100">
+        <p class="text-center"> Facebook </p>
+      </a>-->
+      <a [href]="'https://www.google.com/'" appLinkedinurl>
+        <img src="/assets/Facebook.png" class="rounded-circle" alt="Facebook" width="100" height="100">
+        <p class="text-center"> Facebook </p>
+      </a>
+    </div>
+
+    <div class="ml-1">
+      <a class="item" routerLink="google">
+        <img src="/assets/twitter.png" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Twitter </p>
+      </a>
+    </div>
+    <div class="ml-1">
+      <a class="item">
+        <img src="/assets/instagram.jpg" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Instagram </p>
+      </a>
+    </div>
+    <div class="ml-1">
+      <a class="item">
+        <img src="/assets/Pinterest.png" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Pinterest </p>
+      </a>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Post" [(visible)]="displaypost" (onHide)="onHideDialogPost()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="posto">Post To</label>
+        <select class="form-control" id="posto" >
+          <option>LinkedIn</option>
+          <option>FaceBook</option>
+          <option>Twitter</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="textarea">Text</label>
+        <textarea class="form-control" rows="5" id="textarea"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Post Now</button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Pins" [(visible)]="displaypin" (onHide)="onHideDialogPin()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="pinto">Pin To</label>
+        <input type="text" class="form-control" id="pinto" placeholder="Pin to" >
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" class="form-control" id="website" placeholder="Add the Url this pin link to (required)" >
+      </div>
+      <div class="form-group">
+        <label for="textareapin">Description</label>
+        <textarea class="form-control" rows="5" id="textareapin"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFilepin" required>
+        <label class="custom-file-label" for="validatedCustomFilepin">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Pin Now</button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Instagram Story" [(visible)]="displaystory" (onHide)="onHideDialogstory()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="postory">Post To</label>
+        <select class="form-control" id="postory" >
+          <option>Instagram</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="textareastory">Text</label>
+        <textarea class="form-control" rows="5" id="textareastory"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFilestory" required>
+        <label class="custom-file-label" for="validatedCustomFilestory">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Post Now</button>
+    </div>
+  </div>
+</p-dialog>
+
