@@ -87,13 +87,15 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
-      console.log(x);
-      console.log("#######################################")
+
       var data = {
         facebook_user_token: x.authToken,
         facebook_user_id: x.id
       };
-      console.log(data);
+      this.linkedinService.savefacebookaccount(data).subscribe(res=>{
+        this.messageService.add({key: 'facebooksaved', severity:'success', summary: 'Account', detail: 'Facebook and Instagram account Saved'});
+      });
+
     });
   }
 
