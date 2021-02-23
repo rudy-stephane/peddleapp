@@ -258,7 +258,7 @@
  <div class="d-flex">
    <div class="">
      <!--<img  src=  "information.png" class="img-thumbnail" alt="..."  width="50" height="50">-->
-     <a  (click)="SigninwithLinkedin()" > <!--(click)="ongettoken()" target="_blank" class="item" (click)="onclicklinkedin()" [href]="urllink"-->
+     <a  [href]="urllink" > <!--(click)="ongettoken()" target="_blank" class="item" (click)="onclicklinkedin()" [href]="urllink"-->
        <img src="/assets/Linkedin.png" class="rounded-circle" alt="LinkedIn" width="100" height="100">
        <p class="text-center"> LinkedIn</p>
      </a>
@@ -373,4 +373,6 @@
     </div>
   </div>
 </p-dialog>
+
+<p-toast key="linkedinaccount" position="top-right"></p-toast>
 

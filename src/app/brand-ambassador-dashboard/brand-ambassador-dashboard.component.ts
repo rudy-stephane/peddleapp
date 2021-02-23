@@ -12,6 +12,7 @@ import {SocialAuthService} from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 // @ts-ignore
 import { FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -27,7 +28,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   social_input = new FormControl('LinkedIn');
 
-  urllink = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77b17box86iq9n&redirect_uri=https://peddleapp.herokuapp.com/brandambassador&scope=r_emailaddress r_liteprofile w_member_social';
+  urllink = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77b17box86iq9n&redirect_uri=https://peddleapp.herokuapp.com/brandambassador&scope=r_emailaddress r_fullprofile w_member_social';
 
   /*calendarPlugins = [dayGridPlugin]*/
   display: boolean = false;
@@ -42,7 +43,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService) { }
 
   ngOnInit(): void {
 
@@ -58,14 +59,19 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
           code: params['code'],
         };
         this.linkedinService.sendcode(peddle_access).subscribe(result=>{
-          let reponse = result as any ;
+
+          if (result == true){
+            this.messageService.add({key: 'linkedinaccount', severity:'success', summary: 'Account', detail: 'your LinkedIn Account have been added'});
+          }
+
+          /*let reponse = result as any ;
           let access_token = reponse.access_token;
 
           console.log('################################');
           console.log('################################');
           console.log('access_token  :   '+ access_token);
           console.log('################################');
-          console.log('################################');
+          console.log('################################');*/
 
         })
       }
@@ -80,9 +86,24 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => console.log(x));
   }
 
-  SigninwithLinkedin(){
-    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID).then(x => console.log(x));
+
+  existlinkedinaccount(){
+    let existLinkedin = false;
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    this.linkedinService.sendcode(peddle_user_email).subscribe(result=>{
+      if (result == true){
+        existLinkedin = true;
+      }else{
+        existLinkedin = false;
+      }
+    })
+    return existLinkedin;
   }
+
+  /*SigninwithLinkedin(){
+    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID).then(x => console.log(x));
+  }*/
 
   onclicklinkedin(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));

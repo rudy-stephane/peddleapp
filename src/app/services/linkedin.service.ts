@@ -55,4 +55,8 @@ export class LinkedinService {
   sendcode(peddle_user_code){
     return this.http.post(this.endpoint+'/sendcode',peddle_user_code);
   }
+
+  existlnkedinatoken(peddle_user){
+    return this.http.post(this.endpoint+'/existlnkedinatoken',peddle_user);
+  }
 }
