@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
           this.boolspinner= false;
         }else{
           sessionStorage.setItem('user',JSON.stringify(res));// brandambassador
-          this.router.navigate(['entrepreneur']);
+          this.router.navigate(['brandambassador']);
         }
         //console.log(typeof  res);
        // this.router.navigate(['brandambassador']);
