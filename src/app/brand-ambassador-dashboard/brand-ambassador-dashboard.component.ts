@@ -87,8 +87,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
-
       var data = {
+        peddle_user_email:peddle_user_email,
         facebook_user_token: x.authToken,
         facebook_user_id: x.id
       };
