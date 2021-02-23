@@ -17,7 +17,8 @@ import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-brand-ambassador-dashboard',
   templateUrl: './brand-ambassador-dashboard.component.html',
-  styleUrls: ['./brand-ambassador-dashboard.component.css']
+  styleUrls: ['./brand-ambassador-dashboard.component.css'],
+  providers: [MessageService]
 })
 
 
@@ -101,7 +102,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     return existLinkedin;
   }
 
- 
+
 
   onclicklinkedin(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
