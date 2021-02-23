@@ -7,11 +7,11 @@ import {ActivatedRoute} from '@angular/router';
 /*import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';*/
 
-// @ts-ignore
-import { AuthService } from 'angularx-social-login';
+
+import {SocialAuthService} from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 // @ts-ignore
-import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -42,7 +42,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: AuthService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService) { }
 
   ngOnInit(): void {
 
