@@ -25,6 +25,9 @@ import {ChartModule} from 'primeng/chart';
 import {resolve} from 'url';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
+import {SocialLoginModule} from 'angularx-social-login';
+// @ts-ignore
+import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -38,8 +41,19 @@ const appRoutes: Routes = [
     {path: 'password-forgotten', component: PasswordForgottenComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
-  ]
-;
+  ];
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('177375814178051')
+   }
+]);
+
+// tslint:disable-next-line:typedef
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,9 +80,15 @@ const appRoutes: Routes = [
     SplitButtonModule,
     ChartModule,
     MessagesModule,
-    ToastModule
+    ToastModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,12 @@ import {ActivatedRoute} from '@angular/router';
 /*import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';*/
 
+// @ts-ignore
+import { AuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
+// @ts-ignore
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
+
 @Component({
   selector: 'app-brand-ambassador-dashboard',
   templateUrl: './brand-ambassador-dashboard.component.html',
@@ -36,7 +42,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -70,8 +76,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       console.log(date); // Print the parameter to the console.*/
     });
   }
-  onclickfacebook(){
-
+  SigninwithFacebook(){
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => console.log(x));
   }
 
   onclicklinkedin(){
