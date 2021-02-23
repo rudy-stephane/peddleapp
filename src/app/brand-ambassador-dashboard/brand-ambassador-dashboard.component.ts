@@ -11,7 +11,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';*/
 import {SocialAuthService} from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 // @ts-ignore
-import { FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
 
 @Component({
@@ -101,9 +101,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     return existLinkedin;
   }
 
-  /*SigninwithLinkedin(){
-    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID).then(x => console.log(x));
-  }*/
+ 
 
   onclicklinkedin(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));

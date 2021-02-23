@@ -95,10 +95,6 @@ export function provideConfig() {
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('177375814178051')
-          },
-          {
-            id: LinkedInLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('77b17box86iq9n')
           }
         ]
       } as SocialAuthServiceConfig,
