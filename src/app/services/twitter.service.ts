@@ -18,6 +18,9 @@ export class TwitterService {
   savetwitteraccount(peddle_twitter_account){
     return this.http.post(this.endpoint+'/savetwitteraccount',peddle_twitter_account);
   }
+  existtwitteraccount(peddle_user){
+    return this.http.post(this.endpoint+'/existtwitteraccount',peddle_user);
+  }
 
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/

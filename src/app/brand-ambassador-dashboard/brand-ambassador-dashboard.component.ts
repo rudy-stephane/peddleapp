@@ -16,6 +16,7 @@ import { FacebookLoginProvider } from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {FacebookService} from '../services/facebook.service';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -47,7 +48,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
   ngOnInit(): void {
 
@@ -135,17 +136,45 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
 
   existlinkedinaccount(){
-    let existLinkedin = false;
+    let existLinkedin = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    this.linkedinService.sendcode(peddle_user_email).subscribe(result=>{
+    this.linkedinService.existlinkedinaccount(peddle_user_email).subscribe(result=>{
       if (result == true){
         existLinkedin = true;
       }else{
         existLinkedin = false;
       }
-    })
+    });
     return existLinkedin;
+  }
+
+  existtwitteraccount(){
+    let existTwitter= true;
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    this.twitterservice.existtwitteraccount(peddle_user_email).subscribe(result=>{
+      if (result == true){
+        existTwitter = true;
+      }else{
+        existTwitter = false;
+      }
+    });
+    return existTwitter;
+  }
+
+  existfacebookaccount(){
+    let existFacebook= true;
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    this.facebookservice.existfacebookaccount(peddle_user_email).subscribe(result=>{
+      if (result == true){
+        existFacebook = true;
+      }else{
+        existFacebook = false;
+      }
+    });
+    return existFacebook;
   }
 
 

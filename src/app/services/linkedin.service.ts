@@ -56,8 +56,8 @@ export class LinkedinService {
     return this.http.post(this.endpoint+'/sendcode',peddle_user_code);
   }
 
-  existlnkedinatoken(peddle_user){
-    return this.http.post(this.endpoint+'/existlnkedinatoken',peddle_user);
+  existlinkedinaccount(peddle_user){
+    return this.http.post(this.endpoint+'/existlinkedinaccount',peddle_user);
   }
   savefacebookaccount(peddle_facebook_account){
     return this.http.post(this.endpoint+'/savefacebookaccount',peddle_facebook_account);
