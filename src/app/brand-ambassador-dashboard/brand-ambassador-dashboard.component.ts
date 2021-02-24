@@ -13,6 +13,7 @@ import { SocialUser } from 'angularx-social-login';
 // @ts-ignore
 import { FacebookLoginProvider } from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
+import {TwitterService} from '../services/twitter.service';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -44,7 +45,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, private twitterservice:TwitterService) { }
 
   ngOnInit(): void {
 

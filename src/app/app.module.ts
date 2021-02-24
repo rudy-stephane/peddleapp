@@ -28,6 +28,10 @@ import {ToastModule} from 'primeng/toast';
 import {SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 // @ts-ignore
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {environment} from '../environments/environment.prod';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -84,7 +88,10 @@ export function provideConfig() {
     ChartModule,
     MessagesModule,
     ToastModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
     {
