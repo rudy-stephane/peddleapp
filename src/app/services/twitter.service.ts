@@ -13,7 +13,7 @@ import {MessageService} from 'primeng/api';
 export class TwitterService {
   endpoint = 'https://peddleservice.herokuapp.com';
 
-  constructor(private http: HttpClient, public afAuth: AngularFireAuth,private messageService: MessageService) { }
+  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
 
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/
@@ -21,12 +21,12 @@ export class TwitterService {
   // Sign in with Twitter
 
 
-  twitterAuth() {
+  /*twitterAuth() {
     return this.AuthLogin(new fire.default.auth.TwitterAuthProvider());
-  }
+  }*/
 
 
-  AuthLogin(provider) {
+ /* AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
         let twitterusr = result as any;
@@ -40,7 +40,7 @@ export class TwitterService {
       }).catch((error) => {
         console.log(error)
       })
-  }
+  }*/
 
 
   /* callbackurl = 'https://peddleapp.herokuapp.com/brandambassador';

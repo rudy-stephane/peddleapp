@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
 import {ActivatedRoute} from '@angular/router';
+import * as fire from 'firebase';
 /*import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';*/
 
@@ -14,6 +15,7 @@ import { SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -45,7 +47,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService) { }
 
   ngOnInit(): void {
 
@@ -100,6 +102,25 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
     });
   }
+
+  SigninwithTwitter(){
+    return this.afAuth.signInWithPopup(new fire.default.auth.TwitterAuthProvider())
+      .then((result) => {
+        let twitterusr = result as any;
+        console.log('You have been successfully logged in!')
+        //console.log(twitterusr);
+        console.log(twitterusr.additionalUserInfo.profile.id);
+        console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
+        console.log(twitterusr.credential.accessToken);
+        this.messageService.add({key: 'twitteraccount', severity:'success', summary: 'Account', detail: 'your Twitter Account have been added'});
+      }).catch((error) => {
+        console.log(error)
+      })
+  }
+
+  /*twitterAuth() {
+    return this.twitterservice.AuthLogin(new fire.default.auth.TwitterAuthProvider());
+  }*/
 
 
   existlinkedinaccount(){
