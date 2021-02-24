@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as fire from 'firebase';
 import auth from 'firebase';
+import {MessageService} from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import auth from 'firebase';
 export class TwitterService {
   endpoint = 'https://peddleservice.herokuapp.com';
 
-  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
+  constructor(private http: HttpClient, public afAuth: AngularFireAuth,private messageService: MessageService) { }
 
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/
@@ -34,6 +35,8 @@ export class TwitterService {
         console.log(twitterusr.additionalUserInfo.profile.id);
         console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
         console.log(twitterusr.credential.accessToken);
+        this.messageService.add({key: 'twitteraccount', severity:'success', summary: 'Account', detail: 'your Twitter Account have been added'});
+
       }).catch((error) => {
         console.log(error)
       })
