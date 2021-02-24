@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AngularFireAuth} from '@angular/fire/auth';
+import * as fire from 'firebase';
 import auth from 'firebase';
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +14,26 @@ export class TwitterService {
 
   constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
 
+ /* provider = new fire.default.auth.GoogleAuthProvider();
+  credential = this.afAuth.signInWithPopup(this.provider);*/
+
   // Sign in with Twitter
+
+
+  twitterAuth() {
+    return this.AuthLogin(new fire.default.auth.TwitterAuthProvider());
+  }
+
+
+  AuthLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((result) => {
+        console.log('You have been successfully logged in!')
+        console.log(result);
+      }).catch((error) => {
+        console.log(error)
+      })
+  }
 
 
   /* callbackurl = 'https://peddleapp.herokuapp.com/brandambassador';
