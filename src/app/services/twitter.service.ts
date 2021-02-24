@@ -28,8 +28,12 @@ export class TwitterService {
   AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
+        let twitterusr = result as any;
         console.log('You have been successfully logged in!')
-        console.log(result);
+        console.log(twitterusr);
+        console.log(twitterusr.additionalUserInfo.profile.id);
+        console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
+        console.log(twitterusr.credential.accessToken);
       }).catch((error) => {
         console.log(error)
       })
