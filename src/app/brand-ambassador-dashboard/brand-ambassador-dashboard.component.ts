@@ -45,7 +45,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, private twitterservice:TwitterService) { }
+  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,public messageService: MessageService, private twitterservice:TwitterService) { }
 
   ngOnInit(): void {
 
