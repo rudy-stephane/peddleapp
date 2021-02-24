@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   firebase: {
     apiKey: 'AIzaSyBJMSPPpUrV-ekuYAl-MnxFuvbSRFkRcLw',
-    authDomain: 'peddle-4203c.firebaseapp.com',
+    authDomain: 'peddleapp.herokuapp.com',
     projectId: 'peddle-4203c',
     storageBucket: 'peddle-4203c.appspot.com',
     messagingSenderId: '982877524513',
