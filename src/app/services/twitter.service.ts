@@ -26,7 +26,7 @@ export class TwitterService {
 
 
   AuthLogin(provider) {
-    return this.afAuth.signInWithPopup(provider)
+    return this.afAuth.signInWithRedirect(provider)
       .then((result) => {
         console.log('You have been successfully logged in!')
         console.log(result);
