@@ -30,7 +30,7 @@ export class TwitterService {
       .then((result) => {
         let twitterusr = result as any;
         console.log('You have been successfully logged in!')
-        console.log(twitterusr);
+        //console.log(twitterusr);
         console.log(twitterusr.additionalUserInfo.profile.id);
         console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
         console.log(twitterusr.credential.accessToken);
