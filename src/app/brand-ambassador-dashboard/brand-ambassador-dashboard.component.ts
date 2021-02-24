@@ -104,15 +104,26 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
 
   SigninwithTwitter(){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
     return this.afAuth.signInWithPopup(new fire.default.auth.TwitterAuthProvider())
       .then((result) => {
+
         let twitterusr = result as any;
         console.log('You have been successfully logged in!')
         //console.log(twitterusr);
-        console.log(twitterusr.additionalUserInfo.profile.id);
-        console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
-        console.log(twitterusr.credential.accessToken);
-        this.messageService.add({key: 'twitteraccount', severity:'success', summary: 'Account', detail: 'your Twitter Account have been added'});
+        var data = {
+          peddle_user_email:peddle_user_email,
+          twitter_user_token: twitterusr.credential.accessToken,
+          twitter_user_id: twitterusr.additionalUserInfo.profile.id
+        };
+        this.twitterservice.savetwitteraccount(data).subscribe(res=>{
+          console.log(twitterusr.additionalUserInfo.profile.id);
+          console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
+          console.log(twitterusr.credential.accessToken);
+          this.messageService.add({key: 'twitteraccount', severity:'success', summary: 'Account', detail: 'your Twitter Account have been added'});
+          this.display=false;
+        });
       }).catch((error) => {
         console.log(error)
       })
