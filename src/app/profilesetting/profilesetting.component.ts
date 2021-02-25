@@ -31,6 +31,7 @@ export class ProfilesettingComponent implements OnInit {
   displaypost:boolean = false;
   displaypin:boolean = false;
   displaystory:boolean = false;
+  boolspinner = false;
 
   closeResult = '';
 
