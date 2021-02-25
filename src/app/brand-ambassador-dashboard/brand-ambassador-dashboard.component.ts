@@ -3,7 +3,7 @@ import { ChipModule } from 'primeng/chip';
 import {FormControl} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as fire from 'firebase';
 /*import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';*/
@@ -51,7 +51,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   user_name = '';
   user_plan='';
 
-  constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
+  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
   ngOnInit(): void {
 
@@ -298,6 +298,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
 
 
+  profilesetting(){
+    this.router.navigate(['setting']);
+  }
 
   /**
    * Methode pour le modal
