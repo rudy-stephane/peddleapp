@@ -32,7 +32,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment.prod';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { SettingComponent } from './setting/setting.component';
+import {SettingComponent} from './setting/setting.component';
+
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -40,12 +41,12 @@ const appRoutes: Routes = [
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
+    {path: 'setting', component: SettingComponent},
     {path: 'welcome', component: WelcomeComponent},
     {path: 'compagnies', component: CompagniesDashboardComponent},
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
     {path: 'password-forgotten', component: PasswordForgottenComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
-    {path: 'setting', component: SettingComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ];
 /*const config = new AuthServiceConfig([
