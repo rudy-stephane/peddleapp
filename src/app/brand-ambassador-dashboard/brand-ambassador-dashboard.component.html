@@ -132,7 +132,7 @@
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
       <!--<form class="form-inline mr-auto my-2 mw-100 shadow">-->
       <div class="mr-auto">
-        <strong class="text-primary font-weight-bold" style="font-size: 20%"> {{user_plan}}</strong>
+        <strong class="text-primary font-weight-bold" style="font-size: 50%"> {{user_plan}}</strong>
       </div>
 
       <div class="input-group form-inline mr-auto my-2 w-25 shadow">
@@ -148,16 +148,16 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item mt-2">
-          <i class="fa fa-plus fa-5x " style="color: red"></i>
+          <i class="fa fa-plus fa-3x " style="color: red"></i>
         </li>
 
         <li class="nav-item ml-3 mt-2">
-          <i class="fa fa-envelope-o fa-5x" style="color: #e3e6f0"></i>
+          <i class="fa fa-envelope-o fa-3x" style="color: #e3e6f0"></i>
           <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
         </li>
 
         <li class="nav-item ml-3 mt-2">
-          <i class="fa fa-cog fa-5x" style="color: #e3e6f0"></i>
+          <i class="fa fa-cog fa-3x" style="color: #e3e6f0"></i>
         </li>
 
         <li class="nav-item ml-5 mt-2">
@@ -253,7 +253,7 @@
   <div class="modal-body">
     <p class="text-left"> voulez-vous vraiment vous déconnecter ?</p>
 
-    <a class="btn btn-outline-danger " routerLink="/authentification" (click)="modal.close('Save click')">Deconnexion</a> <!--modal.close('Save click')-->
+    <a class="btn btn-outline-danger " routerLink="/welcome" (click)="modal.close('Save click')">Deconnexion</a> <!--modal.close('Save click')-->
     <button type="button" class="btn btn-outline-primary ml-3" (click)="modal.close('Save click')">Annuler </button>
   </div>
 </ng-template>
