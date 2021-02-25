@@ -131,6 +131,10 @@
 
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
       <!--<form class="form-inline mr-auto my-2 mw-100 shadow">-->
+      <div class="mr-auto shadow">
+        <strong class="text-primary font-weight-bold"> {{user_plan}}</strong>
+      </div>
+
       <div class="input-group form-inline mr-auto my-2 w-25 shadow">
         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
@@ -142,14 +146,18 @@
       <!--</form>-->
 
       <ul class="navbar-nav ml-auto">
+
         <li class="nav-item ml-5">
-          <i class="fa fa-envelope-o fa-1x" style="color: #e3e6f0"></i>
-          <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
+          <i class="fa fa-envelope-o fa-1x w-auto h-auto" style="color: red"></i>
         </li>
 
         <li class="nav-item ml-5">
-          <i class="fa fa-cog fa-1x" style="color: #e3e6f0"></i>
+          <i class="fa fa-envelope-o fa-1x w-auto h-auto" style="color: #e3e6f0"></i>
           <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
+        </li>
+
+        <li class="nav-item ml-2">
+          <i class="fa fa-cog fa-1x w-25 h-25" style="color: #e3e6f0"></i>
         </li>
 
         <li class="nav-item ml-5">

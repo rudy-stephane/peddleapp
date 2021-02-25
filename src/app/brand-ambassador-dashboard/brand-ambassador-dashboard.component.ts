@@ -49,6 +49,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   client_secret ='k6dMPUNP18aQULgY';
   user_profile = '';
   user_name = '';
+  user_plan='';
 
   constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
@@ -61,6 +62,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     let peddle_user_email = peddle_user.peddle_user_email;
     this.user_profile = peddle_user.peddle_user_profile;
     this.user_name = peddle_user.peddle_user_name;
+    this.user_plan = peddle_user.peddle_user_plan;
+
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
