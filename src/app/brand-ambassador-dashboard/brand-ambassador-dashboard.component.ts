@@ -299,7 +299,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
 
   profilesetting(){
-    this.router.navigate(['setting']);
+    this.router.navigate(['profilesetting']);
   }
 
   /**
