@@ -32,7 +32,6 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment.prod';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {SettingComponent} from './setting/setting.component';
 import { ProfilesettingComponent } from './profilesetting/profilesetting.component';
 
 
@@ -76,7 +75,6 @@ export function provideConfig() {
     PasswordForgottenComponent,
     ToastsContainerComponent,
     AnalyticsComponent,
-    SettingComponent,
     ProfilesettingComponent
   ],
   imports: [
