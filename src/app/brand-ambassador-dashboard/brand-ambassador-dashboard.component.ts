@@ -55,6 +55,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   ngOnInit(): void {
 
     //this.activatedRoute.queryParams.
+    //adding fields parameters
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
