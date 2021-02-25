@@ -47,6 +47,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   redirect_uri = 'https://peddleapp.herokuapp.com/brandambassador';
   client_id = '77b17box86iq9n';
   client_secret ='k6dMPUNP18aQULgY';
+  user_profile = '';
+  user_name = '';
 
   constructor(private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
@@ -56,6 +58,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
+    this.user_profile = peddle_user.peddle_user_profile;
+    this.user_name = peddle_user.peddle_user_name;
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
@@ -251,6 +255,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   onclicktwitter(){
 
   }
+
 
   showDialog() {
     this.display = true;

@@ -146,10 +146,19 @@
           <i class="fa fa-envelope-o fa-1x" style="color: #e3e6f0"></i>
           <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
         </li>
-        <div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div>
+
+        <li class="nav-item ml-5">
+          <i class="fa fa-cog fa-1x" style="color: #e3e6f0"></i>
+          <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">5</span></sup>
+        </li>
+
+        <li class="nav-item ml-5">
+          <span>{{user_name}}</span>
+        </li>
+        <!--<div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div>-->
         <li ngbDropdown placement="bottom" class="nav-item">
           <a href (click)="false" class="nav-link" ngbDropdownToggle >
-            <i class="fa fa-user-circle-o fa-2x" style="color: #e3e6f0"></i>
+            <img  [src]=  "user_profile" class="rounded rounded-circle" alt="..."  width="20" height="20">
           </a>
           <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
             <a ngbDropdownItem (click)="false" >
