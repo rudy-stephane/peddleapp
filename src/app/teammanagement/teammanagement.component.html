@@ -198,14 +198,14 @@
           <div class="text-black-50 h3"> Team Management</div>
           <div class="form-row">
             <div class="form-group col-6">
-              <label for="peddle_team_management">civility :</label>
+              <label for="peddle_team_management">Select team</label>
               <select class="form-control" id="peddle_team_management" [formControl]="peddle_team_management" (change)="gettingteammember()">
                 <option *ngFor="let teamname of listofteams"> {{teamname}}</option>
               </select>
             </div>
-            <div class="col-2">
-              <i class="fa fa-usersfa-2x" style="color: #e3e6f0" (click)="showdisplaypeddleteamcreate()"></i>
-              test
+            <div class="col-6 ml-3">
+              <img  src=  "assets/addteam" class="rounded rounded-circle" alt="..."  width="40" height="40">
+              add team
             </div>
           </div>
         </div>
