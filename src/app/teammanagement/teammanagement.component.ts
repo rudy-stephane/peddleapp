@@ -81,14 +81,14 @@ export class TeammanagementComponent implements OnInit {
 
     });
 
-    var peddle_user_request = {
+    /*var peddle_user_request = {
       peddle_user_email : peddle_user.peddle_user_email
     }
 
     this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
       let resultat  = peddle_list_result as [any];
       this.listofteams = resultat;
-    })
+    })*/
 
   }
 
