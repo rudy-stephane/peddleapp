@@ -1,4 +1,5 @@
 
+
 <style>
 
 
@@ -173,11 +174,11 @@
             <img  [src]=  "user_profile" class="rounded rounded-circle" alt="..."  width="20" height="20">
           </a>
           <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
-            <a ngbDropdownItem (click)="false" >
+            <a ngbDropdownItem (click)="profilesetting()" >
               <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>
-            <a ngbDropdownItem (click)="false" >
+            <a ngbDropdownItem (click)="profilesetting()" >
               <i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               Setting
             </a>
@@ -192,87 +193,19 @@
     </nav>
 
     <div class="container-fluid">
-
-      <!--<div class="row">
-        <div class="form-group col-4 mt-3">
-          <label for="selectplan">Social Network</label>
-          <select class="form-control" id="selectplan" (change)="socialchange()" [formControl]="social_input">
-            <option>LinkedIn</option>
-            <option>FaceBook</option>
-            <option>Twitter</option>
-          </select>
-        </div>
-        <div class="col-8 " style="padding-left: 10%; padding-top: 4%">
-          <p-chip *ngFor="let item of peddle_stream_list" label="{{item}}" icon="pi pi-microsoft"  (onRemove)="removecolumn($event)" [removable]="true"></p-chip>
-        </div>
-      </div>-->
-
-      <div class="container-fluid">
-        <div class="card mt-2">
-          <div class="card-body">
-            <div class="text-black-50 h3"> Setting</div>
-            <div class="form-row">
-              <div class="form-group col-6">
-                <label for="peddlename">Name :</label>
-                <input type="text" class="form-control" id="peddlename"  placeholder="Nom employe..." [formControl]="peddle_user_name">
-                <!--<span *ngIf="!nomemploye.valid" class="text-danger"> veuillez entrer le nom de l'employe</span>-->
-              </div>
-              <div class="form-group col-6">
-                <label for="peddleemail">Email :</label>
-                <input type="email" class="form-control" id="peddleemail"  placeholder="Prenom employe..." [formControl]="peddle_user_email">
-                <!--<span *ngIf="!prenomemploye.valid" class="text-danger"> veuillez entrer le prenom de l'employe</span>-->
-              </div>
+      <div class="card mt-2">
+        <div class="card-body">
+          <div class="text-black-50 h3"> Team Management</div>
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="peddle_team_management">civility :</label>
+              <select class="form-control" id="peddle_team_management" [formControl]="peddle_team_management" (change)="gettingteammember()">
+                <option *ngFor="let teamname of listofteams"> {{teamname}}</option>
+              </select>
             </div>
-            <div class="form-row">
-              <div class="form-group col-6">
-                <label for="peddleaddress">Address :</label>
-                <input type="text" class="form-control" id="peddleaddress"  placeholder="Address..." [formControl]="peddle_user_address">
-                <!--<span *ngIf="!nomemploye.valid" class="text-danger"> veuillez entrer le nom de l'employe</span>-->
-              </div>
-              <div class="form-group col-6">
-                <label for="peddlephone">Phone :</label>
-                <input type="tel" class="form-control" id="peddlephone"  placeholder="00237..." [formControl]="peddle_user_phone">
-                <!--<span *ngIf="!prenomemploye.valid" class="text-danger"> veuillez entrer le prenom de l'employe</span>-->
-              </div>
+            <div class="col-6">
+              <i class="fa fa-usersfa-2x" style="color: #e3e6f0" (click)="showdisplaypeddleteamcreate()"></i>
             </div>
-            <div class="form-row">
-              <div class="form-group col-6">
-                <label for="peddlebirthday">Birthday :</label>
-                <input type="date" class="form-control" id="peddlebirthday"  placeholder="Address..." [formControl]="peddle_user_birthday">
-                <!--<span *ngIf="!nomemploye.valid" class="text-danger"> veuillez entrer le nom de l'employe</span>-->
-              </div>
-              <div class="form-group col-6">
-                <label for="civiliteemploye">civility :</label>
-                <select class="form-control" id="civiliteemploye" [formControl]="peddle_user_civility">
-                  <option> Maried</option>
-                  <option> Single</option>
-                </select>
-                <!--<span *ngIf="!prenomemploye.valid" class="text-danger"> veuillez entrer le prenom de l'employe</span>-->
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-12">
-                <label for="peddledescription">Description :</label>
-                <textarea class="form-control" id="peddledescription" [formControl]="peddle_user_description" rows="5"></textarea>
-                <span class="text-success"> describe yourself, it will be seen by companies and entrepreneur</span>
-                <!--<span *ngIf="!nomemploye.valid" class="text-danger"> veuillez entrer le nom de l'employe</span>-->
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-12">
-                <label for="peddledserviceprice">Service price:</label>
-                <textarea class="form-control" id="peddledserviceprice" [formControl]="peddle_user_service_price" rows="3"></textarea>
-                <span class="text-success"> describe how you want to be paid about yours services</span>
-                <!--<span *ngIf="!nomemploye.valid" class="text-danger"> veuillez entrer le nom de l'employe</span>-->
-              </div>
-            </div>
-
-            <button type="button" class="btn btn-outline-primary w-25 ml-auto" >
-              Update
-              <span *ngIf="boolspinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            </button>
           </div>
         </div>
       </div>
@@ -430,9 +363,36 @@
   </div>
 </p-dialog>
 
+
+<p-dialog header="Create team members" [(visible)]="displaypeddleteamcreate" (onHide)="onHidedisplaypeddleteamcreate()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="peddle_team_name">team name</label>
+          <input type="text" class="form-control" id="peddle_team_name" (change)="checkpeddlename()"  placeholder="team name.." [formControl]="peddle_team_name">
+          <span *ngIf="checkpeddlename" class="text-danger"> this team already exist</span>
+          <span *ngIf="!peddle_team_name.valid" class="text-danger"> minimum 4 caracters</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="peddle_team_description">Team Description :</label>
+          <textarea class="form-control" id="peddle_team_description" [formControl]="peddle_team_description" rows="5"></textarea>
+          <span class="text-success"> describe the purpose of this team</span>
+          <span *ngIf="!peddle_team_description.valid" class="text-danger"> please enter description of group </span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1" (click)="addteam()">
+        Add stream
+        <span *ngIf="boolspinnersteam" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
 <p-toast key="linkedinaccount" position="top-right"></p-toast>
 <p-toast key="facebooksaved" position="top-right"></p-toast>
 <p-toast key="twitteraccount" position="top-right"></p-toast>
-
-
+<p-toast key="streamadded" position="top-right"></p-toast>
 

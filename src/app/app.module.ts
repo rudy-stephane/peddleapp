@@ -33,6 +33,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment.prod';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ProfilesettingComponent } from './profilesetting/profilesetting.component';
+import { TeammanagementComponent } from './teammanagement/teammanagement.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     {path: 'compagnies', component: CompagniesDashboardComponent},
     {path: 'entrepreneur', component: EntrepreneurDashboardComponent},
     {path: 'password-forgotten', component: PasswordForgottenComponent},
+    {path: 'teammanagement', component: TeammanagementComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ];
@@ -75,7 +77,8 @@ export function provideConfig() {
     PasswordForgottenComponent,
     ToastsContainerComponent,
     AnalyticsComponent,
-    ProfilesettingComponent
+    ProfilesettingComponent,
+    TeammanagementComponent
   ],
   imports: [
     BrowserModule,
