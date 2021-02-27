@@ -89,8 +89,8 @@ export class TeammanagementComponent implements OnInit {
     this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
       let resultat  = peddle_list_result as [any];
       console.log('console team');
-      console.log(resultat);
       this.listofteams = resultat;
+      console.log(this.listofteams);
     })
 
   }

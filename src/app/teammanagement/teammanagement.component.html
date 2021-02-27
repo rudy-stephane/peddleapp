@@ -200,8 +200,8 @@
             <div class="form-group col-6">
               <label for="peddle_team_management">Select team</label>
               <select class="form-control" id="peddle_team_management" [formControl]="peddle_team_management" (change)="gettingteammember()">
-                <!--<option *ngFor="let teamname of listofteams"> {{teamname}}</option>-->
-                <option> </option>
+                <option *ngFor="let teamname of listofteams"> {{teamname.peddle_team_name}}</option>
+               <!-- <option> </option>-->
               </select>
             </div>
             <div class="col-6 mt-4">
