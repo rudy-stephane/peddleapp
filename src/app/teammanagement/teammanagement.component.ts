@@ -342,6 +342,9 @@ export class TeammanagementComponent implements OnInit {
         peddle_team_member_statut: this.peddle_team_member_statut.value,
         peddle_team_member_profile: this.peddle_team_member_profile
       };
+      console.log('#####################');
+      console.log(peddle_team_member);
+      console.log('######################');
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
         let team_member_result = peddle_team_member_result as any;
         this.listofteamsmember.push(
@@ -442,6 +445,7 @@ export class TeammanagementComponent implements OnInit {
     this.createpeddleteammember = false;
     this.peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
     this.peddle_team_member_profile ='assets/information.png';//= new FormControl('');
+    this.peddle_team_member_file_name ='';
     this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
     this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
     this.peddle_team_member_statut = new FormControl('');
