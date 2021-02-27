@@ -27,5 +27,15 @@ export class TeamService {
     return this.http.post(this.endpoint+'/listteammember', peddleteammember)
   }
 
+  addteammember(teammember){
+    return this.http.post(this.endpoint+'/addteammember', teammember)
+  }
+
+  processingemail(stringemail:String){
+
+    var res = stringemail.indexOf('@');
+    var size = stringemail.length;
+    return  stringemail.substring(res+1, size);
+  }
 
 }

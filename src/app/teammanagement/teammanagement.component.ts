@@ -10,6 +10,7 @@ import {TwitterService} from '../services/twitter.service';
 import {FacebookService} from '../services/facebook.service';
 import * as fire from 'firebase';
 import {TeamService} from '../services/team.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-teammanagement',
@@ -48,10 +49,20 @@ export class TeammanagementComponent implements OnInit {
   peddle_team_management = new FormControl('');
   peddle_team_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
   peddle_team_description = new FormControl('',[Validators.required,Validators.minLength(100)]);
+
+  peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+  peddle_team_member_profile ='';//= new FormControl('');
+  peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
+  peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
+  peddle_team_member_statut = new FormControl(''); //activated desactivated
+  peddle_team_member_file_name='';
+
+
   listofteams=[];
   listofteamsmember=[];
+  listofteamselected=[];
 
-  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService) { }
+  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService,private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
 
@@ -100,7 +111,7 @@ export class TeammanagementComponent implements OnInit {
     let peddle_user_email = peddle_user.peddle_user_email;
     var peddle_teammember_request = {
       peddle_user_email : peddle_user_email,
-      peddle_team_name : this.peddle_team_management
+      peddle_team_name : this.peddle_team_management.value
     };
 
     this.teamService.getteammember(peddle_teammember_request).subscribe(teammember_result=>{
@@ -308,11 +319,63 @@ export class TeammanagementComponent implements OnInit {
     })
   }
 
+  addteammember(){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    if(this.peddle_team_member_name.valid&&this.peddle_team_member_password.valid&&this.checkemail(peddle_user_email,this.peddle_team_member_email)){
+      var peddle_team_member = {
+        peddle_team_name:this.peddle_team_management.value,
+        peddle_team_member_name : this.peddle_team_member_name.value,
+        peddle_team_member_password: this.peddle_team_member_password.value,
+        peddle_team_member_email: this.peddle_team_member_email.value,
+        peddle_team_member_statut: this.peddle_team_member_statut,
+        peddle_team_member_profile: this.peddle_team_member_profile
+      };
+      this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
+        let team_member_result = peddle_team_member_result as any;
+        this.listofteamsmember.splice(team_member_result);
+        this.messageService.add({key: 'teammemberadded', severity:'error', summary: 'Save team member', detail: 'your team member is added'});
+        console.log(team_member_result);
+      })
+    }
+  }
+
+  checkemail(companyemail,memberemail){
+    if(this.teamService.processingemail(companyemail)!=this.teamService.processingemail(memberemail)){
+      return false;
+    }else{
+      return true ;
+    }
+  }
+
   onclicktwitter(){
 
   }
 
 
+  filechangeevent(event){
+
+    let filename = '';
+
+    console.log('image');
+    let fileList: FileList = event.target.files;
+    let file: File = fileList[0];
+    filename = filename + + '  ' +file.name;
+    this.peddle_team_member_file_name = filename
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    //console.log(reader.readAsDataURL(file));
+
+    reader.onload = ()=> {
+      this.peddle_team_member_profile = reader.result as string
+      //me.modelvalue = reader.result
+      //console.log(typeof reader.result);
+    };
+  }
+
+  transformf(){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.peddle_team_member_profile);
+  }
 
 
   showDialog() {
