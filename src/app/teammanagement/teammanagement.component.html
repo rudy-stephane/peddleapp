@@ -209,17 +209,17 @@
             </div>
           </div>
 
-          <p-toolbar styleClass="p-mb-4">
+          <!--<p-toolbar styleClass="p-mb-4">
             <ng-template pTemplate="left">
-              <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" ></button><!--(click)="openNew()"-->
-              <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" ></button> <!--(click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"-->
+              <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" ></button>&lt;!&ndash;(click)="openNew()"&ndash;&gt;
+              <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" ></button> &lt;!&ndash;(click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"&ndash;&gt;
             </ng-template>
 
             <ng-template pTemplate="right">
               <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
               <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
             </ng-template>
-          </p-toolbar>
+          </p-toolbar>-->
 
           <p-table #dt [value]="listofteamsmember" [rows]="10" [paginator]="true" [globalFilterFields]="['name','email','status']"
                    [(selection)]="listofteamselected" [rowHover]="true" dataKey="email"
