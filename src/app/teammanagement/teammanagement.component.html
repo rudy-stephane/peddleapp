@@ -210,19 +210,19 @@
           </div>
 
           <div class="row">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" (click)="showDialogcreatepeddleteammember()">
               <i class="pi pi-plus"></i>
               Add Member
             </button>
             <button type="button" class="btn btn-danger ml-1 mr-auto">
               <i class="pi pi-trash"></i>
             </button>
-            <button type="button" class="btn btn-primary mr-1 ml-auto">
-              <i class="pi pi-arrow-up"></i>
+            <button type="button" class="btn btn-secondary mr-1 ml-auto">
+              <i class="pi pi-arrow-down"></i>
               Import
             </button>
-            <button type="button" class="btn btn-primary">
-              <i class="pi pi-arrow-down"></i>
+            <button type="button" class="btn btn-warning">
+              <i class="pi pi-arrow-up"></i>
               Export
             </button>
           </div>
@@ -446,7 +446,7 @@
 </p-dialog>
 
 
-<p-dialog header="Create team members" [(visible)]="displaypeddleteamcreate" (onHide)="onHidedisplaypeddleteamcreate()" >
+<p-dialog header="Create team" [(visible)]="displaypeddleteamcreate" (onHide)="onHidedisplaypeddleteamcreate()" >
   <div class="form-row">
     <div class="form-group col-6">
       <label for="peddle_team_name">team name</label>
@@ -465,6 +465,46 @@
   </div>
   <button type="button" class="btn btn-primary mt-1" (click)="addteam()">
     Add
+    <span *ngIf="boolspinnersteam" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+</p-dialog>
+
+<p-dialog header="Create team members" [(visible)]="createpeddleteammember" (onHide)="onHidecreatepeddleteammember()" >
+  <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+  <div class="custom-file col-12">
+    <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
+    <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+    <div class="text-success"> {{peddle_team_member_file_name}}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_member_name">Member name</label>
+      <input type="text" class="form-control" id="peddle_team_member_name" placeholder="member name..." [formControl]="peddle_team_member_name">
+      <div *ngIf="!peddle_team_member_name.valid" class="text-danger"> enter valid name</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="peddle_team_member_email">Member email</label>
+      <input type="email" class="form-control" id="peddle_team_member_email" placeholder=".....@....." [formControl]="peddle_team_member_email">
+      <div *ngIf="!peddle_team_member_email.valid" class="text-danger"> enter valid email</div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_member_password">Member Password :</label>
+      <input type="password" class="form-control" id="peddle_team_member_password"  [formControl]="peddle_team_member_password">
+      <div *ngIf="!peddle_team_member_password.valid" class="text-danger"> enter valid password</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="peddle_team_member_statut">Status</label>
+      <select class="form-control" id="peddle_team_member_statut" >
+        <option>activated</option>
+        <option>deactivated</option>
+      </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-1" >
+    Add Member
     <span *ngIf="boolspinnersteam" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
 </p-dialog>

@@ -33,6 +33,7 @@ export class TeammanagementComponent implements OnInit {
   displaystory:boolean = false;
   displaypeddleteamcreate:boolean = false;
   checkifpeddleexist = false; // check if peddle name already exist
+  createpeddleteammember = false;
 
   boolspinnersteam = false ;
 
@@ -51,7 +52,7 @@ export class TeammanagementComponent implements OnInit {
   peddle_team_description = new FormControl('',[Validators.required,Validators.minLength(100)]);
 
   peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
-  peddle_team_member_profile ='';//= new FormControl('');
+  peddle_team_member_profile ='assets/information.png';//= new FormControl('');
   peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
   peddle_team_member_statut = new FormControl(''); //activated desactivated
@@ -360,8 +361,8 @@ export class TeammanagementComponent implements OnInit {
     console.log('image');
     let fileList: FileList = event.target.files;
     let file: File = fileList[0];
-    filename = filename + + '  ' +file.name;
-    this.peddle_team_member_file_name = filename
+    filename = filename + '  ' +file.name;
+    this.peddle_team_member_file_name = filename;
     let reader = new FileReader();
     reader.readAsDataURL(file);
     //console.log(reader.readAsDataURL(file));
@@ -378,6 +379,9 @@ export class TeammanagementComponent implements OnInit {
   }
 
 
+  showDialogcreatepeddleteammember(){
+    this.createpeddleteammember = true;
+  }
   showDialog() {
     this.display = true;
   }
@@ -407,6 +411,9 @@ export class TeammanagementComponent implements OnInit {
   }
   onHidedisplaypeddleteamcreate(){
     this.displaypeddleteamcreate = false;
+  }
+  onHidecreatepeddleteammember(){
+    this.createpeddleteammember = false;
   }
   peddle_stream_list = this.peddle_social[0].peddle_social_stream;
   socialchange(){
