@@ -273,8 +273,7 @@ export class TeammanagementComponent implements OnInit {
   }
 
   addteam(){
-    
-    console.log(this.peddle_team_management.value);
+
     this.boolspinnersteam = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
@@ -397,7 +396,13 @@ export class TeammanagementComponent implements OnInit {
 
 
   showDialogcreatepeddleteammember(){
+    console.log(this.peddle_team_management.value);
     this.createpeddleteammember = true;
+    this.peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+    this.peddle_team_member_profile ='assets/information.png';//= new FormControl('');
+    this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
+    this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
+    this.peddle_team_member_statut = new FormControl('');
   }
   showDialog() {
     this.display = true;
