@@ -34,6 +34,7 @@ export class TeammanagementComponent implements OnInit {
   displaypeddleteamcreate:boolean = false;
   checkifpeddleexist = false; // check if peddle name already exist
   createpeddleteammember = false;
+  boolspinnersteammember = false ;
 
   boolspinnersteam = false ;
 
@@ -321,6 +322,7 @@ export class TeammanagementComponent implements OnInit {
   }
 
   addteammember(){
+    this.boolspinnersteammember = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     if(this.peddle_team_member_name.valid&&this.peddle_team_member_password.valid&&this.checkemail(peddle_user_email,this.peddle_team_member_email)){
@@ -334,10 +336,11 @@ export class TeammanagementComponent implements OnInit {
       };
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
         let team_member_result = peddle_team_member_result as any;
-        this.listofteamsmember.splice(team_member_result);
+        this.listofteamsmember.push(team_member_result);
         this.messageService.add({key: 'teammemberadded', severity:'error', summary: 'Save team member', detail: 'your team member is added'});
         console.log(team_member_result);
-      })
+        this.boolspinnersteammember = false;
+      });
     }
   }
 
