@@ -31,6 +31,7 @@ export class TeammanagementComponent implements OnInit {
   displaypin:boolean = false;
   displaystory:boolean = false;
   displaypeddleteamcreate:boolean = false;
+  checkifpeddleexist = false; // check if peddle name already exist
 
   boolspinnersteam = false ;
 
@@ -237,7 +238,6 @@ export class TeammanagementComponent implements OnInit {
   }
 
   checkpeddlename(){
-    let check = false ;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
@@ -246,21 +246,22 @@ export class TeammanagementComponent implements OnInit {
       peddle_user_email : peddle_user_email
     };
     this.teamService.existteamname(data).subscribe(res=>{
+      console.log('enter');
       if(res == true){
-        check = true;
+        this.checkifpeddleexist = true;
       }else{
-        check = false;
+        this.checkifpeddleexist = false;
       }
     });
 
-    return check ;
+    return this.checkifpeddleexist ;
   }
 
   addteam(){
     this.boolspinnersteam = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    if(!this.checkpeddlename()&&this.peddle_team_name.valid && this.peddle_team_description)
+    if(!this.checkifpeddleexist&&this.peddle_team_name.valid && this.peddle_team_description)
     var peddle_team = {
       peddle_team_name : this.peddle_team_name.value,
       peddle_team_description : this.peddle_team_description.value,
@@ -270,6 +271,7 @@ export class TeammanagementComponent implements OnInit {
     this.teamService.saveteam(peddle_team).subscribe(result=>{
       this.messageService.add({key: 'streamadded', severity:'success', summary: 'Save team', detail: 'New team is Saved'});
       this.boolspinnersteam = false;
+      this.displaypeddleteamcreate = false;
     },err=>{
       this.messageService.add({key: 'streamadded', severity:'error', summary: 'Save team', detail: 'server error : your team are not saved'});
       this.boolspinnersteam = false;

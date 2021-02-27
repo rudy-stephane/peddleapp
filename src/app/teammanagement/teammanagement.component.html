@@ -204,7 +204,7 @@
                 <option> </option>
               </select>
             </div>
-            <div class="col-6 mt-3">
+            <div class="col-6 mt-4">
               <button type="button" class="btn btn-primary" (click)="showdisplaypeddleteamcreate()">Add team</button>
             </div>
           </div>
@@ -370,8 +370,8 @@
     <div class="form-group col-6">
       <label for="peddle_team_name">team name</label>
       <input type="text" class="form-control" id="peddle_team_name" (change)="checkpeddlename()"  placeholder="team name.." [formControl]="peddle_team_name">
-      <span *ngIf="checkpeddlename" class="text-danger"> this team already exist</span>
-      <span *ngIf="!peddle_team_name.valid" class="text-danger"> minimum 4 caracters</span>
+      <div *ngIf="!checkifpeddleexist" class="text-danger"> this team already exist</div>
+      <div *ngIf="!peddle_team_name.valid" class="text-danger"> minimum 4 caracters</div>
     </div>
   </div>
   <div class="form-row">
