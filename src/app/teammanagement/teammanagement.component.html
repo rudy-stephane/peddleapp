@@ -378,8 +378,8 @@
     <div class="form-group col-6">
       <label for="peddle_team_description">Team Description :</label>
       <textarea class="form-control" id="peddle_team_description" [formControl]="peddle_team_description" rows="5"></textarea>
-      <span class="text-success"> describe the purpose of this team</span>
-      <span *ngIf="!peddle_team_description.valid" class="text-danger"> please enter description of group </span>
+      <div class="text-success"> describe the purpose of this team</div>
+      <div *ngIf="!peddle_team_description.valid" class="text-danger"> please enter description of group </div>
     </div>
   </div>
   <button type="button" class="btn btn-primary mt-1" (click)="addteam()">

@@ -47,7 +47,7 @@ export class TeammanagementComponent implements OnInit {
 
   peddle_team_management = new FormControl('');
   peddle_team_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
-  peddle_team_description = new FormControl('',[Validators.required,Validators.minLength(4)]);
+  peddle_team_description = new FormControl('',[Validators.required,Validators.minLength(100)]);
   listofteams=[];
   listofteamsmember=[];
 
@@ -82,14 +82,16 @@ export class TeammanagementComponent implements OnInit {
 
     });
 
-    /*var peddle_user_request = {
+    var peddle_user_request = {
       peddle_user_email : peddle_user.peddle_user_email
     }
 
     this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
       let resultat  = peddle_list_result as [any];
+      console.log('console team');
+      console.log(resultat);
       this.listofteams = resultat;
-    })*/
+    })
 
   }
 
