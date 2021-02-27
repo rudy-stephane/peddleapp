@@ -101,9 +101,12 @@ export class TeammanagementComponent implements OnInit {
 
     this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
       let resultat  = peddle_list_result as [any];
-      console.log('console team');
+      //console.log('console team');
       this.listofteams = resultat;
-      console.log(this.listofteams);
+      if(this.listofteams.length!=0){
+        this.peddle_team_management = new FormControl(this.listofteams[0]);
+      }
+      //console.log(this.listofteams);
     })
 
   }
@@ -396,13 +399,12 @@ export class TeammanagementComponent implements OnInit {
 
 
   showDialogcreatepeddleteammember(){
-    console.log(this.peddle_team_management.value);
-    this.createpeddleteammember = true;
-    this.peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
-    this.peddle_team_member_profile ='assets/information.png';//= new FormControl('');
-    this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
-    this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
-    this.peddle_team_member_statut = new FormControl('');
+    if(this.listofteams.length!=0){
+      this.createpeddleteammember = true;
+      console.log(this.peddle_team_management.value);
+    }else {
+      this.messageService.add({key: 'emptyteam', severity:'error', summary: 'Select team', detail: 'empty team'});
+    }
   }
   showDialog() {
     this.display = true;
@@ -436,7 +438,14 @@ export class TeammanagementComponent implements OnInit {
   }
   onHidecreatepeddleteammember(){
     this.createpeddleteammember = false;
+    this.peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+    this.peddle_team_member_profile ='assets/information.png';//= new FormControl('');
+    this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
+    this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
+    this.peddle_team_member_statut = new FormControl('');
   }
+
+
   peddle_stream_list = this.peddle_social[0].peddle_social_stream;
   socialchange(){
     console.log(this.social_input.value);
