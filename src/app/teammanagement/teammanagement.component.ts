@@ -104,7 +104,7 @@ export class TeammanagementComponent implements OnInit {
       //console.log('console team');
       this.listofteams = resultat;
       if(this.listofteams.length!=0){
-        this.peddle_team_management = new FormControl(this.listofteams[0]);
+        this.peddle_team_management = new FormControl(this.listofteams[0].peddle_team_name);
       }
       //console.log(this.listofteams);
     })
