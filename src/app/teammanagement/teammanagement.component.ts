@@ -448,7 +448,7 @@ export class TeammanagementComponent implements OnInit {
     this.peddle_team_member_file_name ='';
     this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
     this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
-    this.peddle_team_member_statut = new FormControl('');
+    this.peddle_team_member_statut = new FormControl('activated');
   }
 
 
