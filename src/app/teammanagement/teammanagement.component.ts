@@ -56,7 +56,7 @@ export class TeammanagementComponent implements OnInit {
   peddle_team_member_profile ='assets/information.png';//= new FormControl('');
   peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
-  peddle_team_member_statut = new FormControl(''); //activated desactivated
+  peddle_team_member_statut = new FormControl('activated'); //activated desactivated
   peddle_team_member_file_name='';
 
 
@@ -353,7 +353,8 @@ export class TeammanagementComponent implements OnInit {
             peddle_team_member_profile: this.peddle_team_member_profile
           }
         );
-        this.messageService.add({key: 'teammemberadded', severity:'error', summary: 'Save team member', detail: 'your team member is added'});
+        this.createpeddleteammember = false;
+        this.messageService.add({key: 'teammemberadded', severity:'success', summary: 'Save team member', detail: 'your team member is added'});
         console.log(team_member_result);
         this.boolspinnersteammember = false;
       });
@@ -363,6 +364,7 @@ export class TeammanagementComponent implements OnInit {
   checkemail(companyemail,memberemail){
     if(this.teamService.processingemail(companyemail.toString())!=this.teamService.processingemail(memberemail.toString())){
       return false;
+      this.messageService.add({key: 'teammemberaddederror', severity:'error', summary: 'Save team member', detail: 'email must match email company'});
     }else{
       return true ;
     }
