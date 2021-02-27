@@ -285,6 +285,10 @@ export class TeammanagementComponent implements OnInit {
 
     this.teamService.saveteam(peddle_team).subscribe(result=>{
       this.messageService.add({key: 'streamadded', severity:'success', summary: 'Save team', detail: 'New team is Saved'});
+      this.listofteams.push({
+        peddle_team_name : this.peddle_team_name.value,
+        peddle_team_description : this.peddle_team_description.value
+      });
       this.boolspinnersteam = false;
       this.displaypeddleteamcreate = false;
     },err=>{
@@ -325,7 +329,7 @@ export class TeammanagementComponent implements OnInit {
     this.boolspinnersteammember = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    if(this.peddle_team_member_name.valid&&this.peddle_team_member_password.valid&&this.checkemail(peddle_user_email,this.peddle_team_member_email)){
+    if(this.peddle_team_member_name.valid&&this.peddle_team_member_password.valid&&this.checkemail(peddle_user_email,this.peddle_team_member_email.value)){
       var peddle_team_member = {
         peddle_team_name:this.peddle_team_management.value,
         peddle_team_member_name : this.peddle_team_member_name.value,
@@ -336,7 +340,15 @@ export class TeammanagementComponent implements OnInit {
       };
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
         let team_member_result = peddle_team_member_result as any;
-        this.listofteamsmember.push(team_member_result);
+        this.listofteamsmember.push(
+          {
+            peddle_team_member_name : this.peddle_team_member_name.value,
+            peddle_team_member_password: this.peddle_team_member_password.value,
+            peddle_team_member_email: this.peddle_team_member_email.value,
+            peddle_team_member_statut: this.peddle_team_member_statut.value,
+            peddle_team_member_profile: this.peddle_team_member_profile
+          }
+        );
         this.messageService.add({key: 'teammemberadded', severity:'error', summary: 'Save team member', detail: 'your team member is added'});
         console.log(team_member_result);
         this.boolspinnersteammember = false;
@@ -345,7 +357,7 @@ export class TeammanagementComponent implements OnInit {
   }
 
   checkemail(companyemail,memberemail){
-    if(this.teamService.processingemail(companyemail)!=this.teamService.processingemail(memberemail)){
+    if(this.teamService.processingemail(companyemail.toString())!=this.teamService.processingemail(memberemail.toString())){
       return false;
     }else{
       return true ;
