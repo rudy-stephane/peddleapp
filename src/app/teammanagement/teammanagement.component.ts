@@ -329,7 +329,7 @@ export class TeammanagementComponent implements OnInit {
         peddle_team_member_name : this.peddle_team_member_name.value,
         peddle_team_member_password: this.peddle_team_member_password.value,
         peddle_team_member_email: this.peddle_team_member_email.value,
-        peddle_team_member_statut: this.peddle_team_member_statut,
+        peddle_team_member_statut: this.peddle_team_member_statut.value,
         peddle_team_member_profile: this.peddle_team_member_profile
       };
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
