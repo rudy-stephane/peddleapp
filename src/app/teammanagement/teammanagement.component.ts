@@ -99,7 +99,7 @@ export class TeammanagementComponent implements OnInit {
 
     var peddle_user_request = {
       peddle_user_email : peddle_user.peddle_user_email
-    }
+    };
 
     this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
       let resultat  = peddle_list_result as [any];
@@ -110,6 +110,8 @@ export class TeammanagementComponent implements OnInit {
       }
       //console.log(this.listofteams);
     })
+
+    this.listofteamsmember.push(22222);
 
   }
 
@@ -370,6 +372,7 @@ export class TeammanagementComponent implements OnInit {
         this.messageService.add({key: 'teammemberadded', severity:'success', summary: 'Save team member', detail: 'your team member is added'});
         //let team_member_result = peddle_team_member_result as any;
         //console.log(typeof  this.listofteamsmember)
+
         this.listofteamsmember.push({
           'peddle_team_member_name' : this.peddle_team_member_name.value,
           'peddle_team_member_password': this.peddle_team_member_password.value,
