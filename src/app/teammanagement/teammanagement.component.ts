@@ -333,10 +333,19 @@ export class TeammanagementComponent implements OnInit {
 
   addteammember(){
     this.boolspinnersteammember = true;
+
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
+
+    //console.log(peddle_user_email);
+
+    console.log('#####################');
+    console.log(peddle_user_email);
+    console.log('######################');
+
     if(this.peddle_team_member_name.valid&&this.peddle_team_member_password.valid&&this.checkemail(peddle_user_email,this.peddle_team_member_email.value)){
       var peddle_team_member = {
+        peddle_user_email : peddle_user_email,
         peddle_team_name:this.peddle_team_management.value,
         peddle_team_member_name : this.peddle_team_member_name.value,
         peddle_team_member_password: this.peddle_team_member_password.value,
@@ -344,9 +353,6 @@ export class TeammanagementComponent implements OnInit {
         peddle_team_member_statut: this.peddle_team_member_statut.value,
         peddle_team_member_profile: this.peddle_team_member_profile
       };
-      console.log('#####################');
-      console.log(peddle_team_member);
-      console.log('######################');
 
       /*this.listofteamsmember.push(
         {
@@ -362,6 +368,15 @@ export class TeammanagementComponent implements OnInit {
 
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
         //let team_member_result = peddle_team_member_result as any;
+        console.log(typeof  this.listofteamsmember)
+        this.listofteamsmember.push({
+          'peddle_team_member_name' : this.peddle_team_member_name.value,
+          'peddle_team_member_password': this.peddle_team_member_password.value,
+          'peddle_team_member_email': this.peddle_team_member_email.value,
+          'peddle_team_member_statut': this.peddle_team_member_statut.value,
+          'peddle_team_member_profile': this.peddle_team_member_profile
+        });
+        console.log(typeof  this.listofteamsmember)
         this.createpeddleteammember = false;
         this.messageService.add({key: 'teammemberadded', severity:'success', summary: 'Save team member', detail: 'your team member is added'});
         //console.log(team_member_result);
