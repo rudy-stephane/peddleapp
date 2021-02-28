@@ -11,6 +11,8 @@ import {FacebookService} from '../services/facebook.service';
 import * as fire from 'firebase';
 import {TeamService} from '../services/team.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {any} from 'codelyzer/util/function';
+
 
 @Component({
   selector: 'app-teammanagement',
@@ -345,17 +347,17 @@ export class TeammanagementComponent implements OnInit {
       console.log('#####################');
       console.log(peddle_team_member);
       console.log('######################');
+      this.listofteamsmember.push(
+        {
+          peddle_team_member_name : this.peddle_team_member_name.value,
+          peddle_team_member_password: this.peddle_team_member_password.value,
+          peddle_team_member_email: this.peddle_team_member_email.value,
+          peddle_team_member_statut: this.peddle_team_member_statut.value,
+          peddle_team_member_profile: this.peddle_team_member_profile
+        }
+      );
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
         let team_member_result = peddle_team_member_result as any;
-        this.listofteamsmember.push(
-          {
-            peddle_team_member_name : this.peddle_team_member_name.value,
-            peddle_team_member_password: this.peddle_team_member_password.value,
-            peddle_team_member_email: this.peddle_team_member_email.value,
-            peddle_team_member_statut: this.peddle_team_member_statut.value,
-            peddle_team_member_profile: this.peddle_team_member_profile
-          }
-        );
         this.createpeddleteammember = false;
         this.messageService.add({key: 'teammemberadded', severity:'success', summary: 'Save team member', detail: 'your team member is added'});
         console.log(team_member_result);
@@ -449,6 +451,7 @@ export class TeammanagementComponent implements OnInit {
     this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
     this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
     this.peddle_team_member_statut = new FormControl('activated');
+    this.boolspinnersteammember=false;
   }
 
 
