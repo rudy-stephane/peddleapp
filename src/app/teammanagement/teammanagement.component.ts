@@ -63,7 +63,7 @@ export class TeammanagementComponent implements OnInit {
 
 
   listofteams=[];
-  listofteamsmember=[];
+  listofteamsmember=[{}];
   listofteamselected=[];
 
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService,private sanitizer:DomSanitizer) { }
@@ -111,7 +111,7 @@ export class TeammanagementComponent implements OnInit {
       //console.log(this.listofteams);
     })
 
-    this.listofteamsmember.push(22222);
+    //this.listofteamsmember.push(22222);
 
   }
 
@@ -428,6 +428,7 @@ export class TeammanagementComponent implements OnInit {
 
 
   showDialogcreatepeddleteammember(){
+    this.listofteamsmember.push({'res':'res'});
     if(this.listofteams.length!=0){
       this.createpeddleteammember = true;
       console.log(this.peddle_team_management.value);
