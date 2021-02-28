@@ -347,7 +347,8 @@ export class TeammanagementComponent implements OnInit {
       console.log('#####################');
       console.log(peddle_team_member);
       console.log('######################');
-      this.listofteamsmember.push(
+
+      /*this.listofteamsmember.push(
         {
           peddle_team_member_name : this.peddle_team_member_name.value,
           peddle_team_member_password: this.peddle_team_member_password.value,
@@ -355,12 +356,15 @@ export class TeammanagementComponent implements OnInit {
           peddle_team_member_statut: this.peddle_team_member_statut.value,
           peddle_team_member_profile: this.peddle_team_member_profile
         }
-      );
+      );*/
+
+      console.log(typeof  this.listofteamsmember)
+
       this.teamService.addteammember(peddle_team_member).subscribe(peddle_team_member_result=>{
-        let team_member_result = peddle_team_member_result as any;
+        //let team_member_result = peddle_team_member_result as any;
         this.createpeddleteammember = false;
         this.messageService.add({key: 'teammemberadded', severity:'success', summary: 'Save team member', detail: 'your team member is added'});
-        console.log(team_member_result);
+        //console.log(team_member_result);
         this.boolspinnersteammember = false;
       });
     }
