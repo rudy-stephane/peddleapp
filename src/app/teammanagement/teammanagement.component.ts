@@ -334,7 +334,6 @@ export class TeammanagementComponent implements OnInit {
   }
 
   addteammember(){
-    this.listofteamsmember.push({'res':'res'});
     this.boolspinnersteammember = true;
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
