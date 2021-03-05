@@ -418,7 +418,11 @@ export class TeammanagementComponent implements OnInit {
       'peddle_team_member_profile': this.peddle_team_member_profile
     }; //sameobject
 
-    if(objecttoupdate == originalobject){
+    console.log('###############################################################');
+    console.log(JSON.stringify(objecttoupdate) === JSON.stringify(originalobject));
+    console.log('###############################################################');
+
+    if(JSON.stringify(objecttoupdate) === JSON.stringify(originalobject)){
       this.messageService.add({key: 'sameobject', severity:'error', summary: 'Same value', detail: 'values are same than older'});
     }else{
       this.boolspinnersupdateteammember = true;
