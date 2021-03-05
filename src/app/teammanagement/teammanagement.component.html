@@ -543,9 +543,12 @@
       </select>
     </div>
   </div>
-  <button *ngIf="boutonupdate" type="button" class="btn btn-primary mt-1" (click)="updateteammember()">
+  <button  type="button" class="btn btn-primary mt-1" (click)="updateteammember()" >
     Update Member
     <span *ngIf="boolspinnersupdateteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+  <button  type="button" class="btn btn-danger mt-1" (click)="cancelupdatemember()" >
+    Cancel
   </button>
 </p-dialog>
 
@@ -555,4 +558,5 @@
 <p-toast key="streamadded" position="top-right"></p-toast>
 <p-toast key="teammemberadded" position="top-right"></p-toast>
 <p-toast key="emptyteam" position="top-right"></p-toast>
+<p-toast key="sameobject" position="top-right"></p-toast>
 

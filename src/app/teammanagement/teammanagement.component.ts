@@ -39,7 +39,7 @@ export class TeammanagementComponent implements OnInit {
   boolspinnersteammember = false;
   updatepeddleteammember = false;
   boolspinnersupdateteammember = false;
-  boutonupdate = false ;
+  //boutonupdate = false ;
 
   boolspinnersteam = false ;
 
@@ -402,7 +402,6 @@ export class TeammanagementComponent implements OnInit {
   }
 
   updateteammember(){
-
     var objecttoupdate={
       'peddle_team_member_name' : this.update_peddle_team_member_name.value,
       'peddle_team_member_password': this.update_peddle_team_member_password.value,
@@ -417,13 +416,15 @@ export class TeammanagementComponent implements OnInit {
       'peddle_team_member_email': this.peddle_team_member_email.value,
       'peddle_team_member_statut': this.peddle_team_member_statut.value,
       'peddle_team_member_profile': this.peddle_team_member_profile
-    };
+    }; //sameobject
 
-    if(objecttoupdate != originalobject){
-      this.boutonupdate = true ;
+    if(objecttoupdate == originalobject){
+      this.messageService.add({key: 'sameobject', severity:'error', summary: 'Same value', detail: 'values are same than older'});
+    }else{
+      this.boolspinnersupdateteammember = true;
     }
-
   }
+
 
   checkemail(companyemail,memberemail){
     if(this.teamService.processingemail(companyemail.toString())!=this.teamService.processingemail(memberemail.toString())){
@@ -547,6 +548,12 @@ export class TeammanagementComponent implements OnInit {
 
   onHideupdatepeddleteammember(){
     this.updatepeddleteammember = false;
+    this.boolspinnersupdateteammember = false ;
+  }
+
+  cancelupdatemember(){
+    this.updatepeddleteammember = false;
+    this.boolspinnersupdateteammember = false ;
   }
 
 
