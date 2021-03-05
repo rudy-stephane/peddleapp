@@ -543,7 +543,7 @@
       </select>
     </div>
   </div>
-  <button type="button" class="btn btn-primary mt-1" (click)="updateteammember()">
+  <button *ngIf="boutonupdate" type="button" class="btn btn-primary mt-1" (click)="updateteammember()">
     Update Member
     <span *ngIf="boolspinnersupdateteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
