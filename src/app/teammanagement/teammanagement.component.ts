@@ -472,7 +472,7 @@ export class TeammanagementComponent implements OnInit {
     //console.log(reader.readAsDataURL(file));
 
     reader.onload = ()=> {
-      this.update_peddle_team_member_file_name = reader.result as string
+      this.update_peddle_team_member_profile = reader.result as string
       //me.modelvalue = reader.result
       //console.log(typeof reader.result);
     };
@@ -483,7 +483,7 @@ export class TeammanagementComponent implements OnInit {
   }
 
   updatetransformf(){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.update_peddle_team_member_file_name);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.update_peddle_team_member_profile);
   }
 
 
@@ -497,7 +497,7 @@ export class TeammanagementComponent implements OnInit {
   }
   showDialogupdatepeddleteammember(member){
     this.updatepeddleteammember = true;
-    this.update_peddle_team_member_file_name = member.peddle_team_member_profile;
+    this.update_peddle_team_member_profile = member.peddle_team_member_profile;
     this.update_peddle_team_member_name = new FormControl(member.peddle_team_member_name);
     this.update_peddle_team_member_email = new FormControl(member.peddle_team_member_email);
     this.update_peddle_team_member_password = new FormControl(member.peddle_team_member_password);
