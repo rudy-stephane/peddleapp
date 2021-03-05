@@ -402,15 +402,8 @@ export class TeammanagementComponent implements OnInit {
   }
 
   updateteammember(){
-    var objecttoupdate={
-      'peddle_team_member_name' : this.update_peddle_team_member_name.value,
-      'peddle_team_member_password': this.update_peddle_team_member_password.value,
-      'peddle_team_member_email': this.update_peddle_team_member_email.value,
-      'peddle_team_member_statut': this.update_peddle_team_member_statut.value,
-      'peddle_team_member_profile': this.update_peddle_team_member_profile
-    };
 
-    var originalobject={
+    var newobject={
       'peddle_team_member_name' : this.peddle_team_member_name.value,
       'peddle_team_member_password': this.peddle_team_member_password.value,
       'peddle_team_member_email': this.peddle_team_member_email.value,
@@ -419,11 +412,11 @@ export class TeammanagementComponent implements OnInit {
     }; //sameobject
 
     console.log('#############################update##################################');
-    console.log(objecttoupdate);
+    console.log(this.objecttoupdate);
     console.log('#############################object##################################');
-    console.log(originalobject);
+    console.log(newobject);
 
-    if(JSON.stringify(objecttoupdate) === JSON.stringify(originalobject)){
+    if(JSON.stringify(this.objecttoupdate) === JSON.stringify(newobject)){
       this.messageService.add({key: 'sameobject', severity:'error', summary: 'Same value', detail: 'values are same than older'});
     }else{
       this.boolspinnersupdateteammember = true;
@@ -501,7 +494,11 @@ export class TeammanagementComponent implements OnInit {
       this.messageService.add({key: 'emptyteam', severity:'error', summary: 'Select team', detail: 'empty team'});
     }
   }
+
+  objecttoupdate;// objet(membre) initial lorsqu'on ouvre le popup
   showDialogupdatepeddleteammember(member){
+    this.objecttoupdate = member;
+
     this.updatepeddleteammember = true;
     this.update_peddle_team_member_profile = member.peddle_team_member_profile;
     this.update_peddle_team_member_name = new FormControl(member.peddle_team_member_name);
