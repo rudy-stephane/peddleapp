@@ -36,7 +36,9 @@ export class TeammanagementComponent implements OnInit {
   displaypeddleteamcreate:boolean = false;
   checkifpeddleexist = false; // check if peddle name already exist
   createpeddleteammember = false;
-  boolspinnersteammember = false ;
+  boolspinnersteammember = false;
+  updatepeddleteammember = false;
+  boolspinnersupdateteammember = false;
 
   boolspinnersteam = false ;
 
@@ -60,6 +62,16 @@ export class TeammanagementComponent implements OnInit {
   peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
   peddle_team_member_statut = new FormControl('activated'); //activated desactivated
   peddle_team_member_file_name='';
+
+
+
+
+  update_peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+  update_peddle_team_member_profile ='assets/information.png';//= new FormControl('');
+  update_peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
+  update_peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
+  update_peddle_team_member_statut = new FormControl('activated'); //activated desactivated
+  update_peddle_team_member_file_name='';
 
 
   listofteams=[];
@@ -388,6 +400,10 @@ export class TeammanagementComponent implements OnInit {
     }
   }
 
+  updateteammember(){
+
+  }
+
   checkemail(companyemail,memberemail){
     if(this.teamService.processingemail(companyemail.toString())!=this.teamService.processingemail(memberemail.toString())){
       return false;
@@ -422,8 +438,31 @@ export class TeammanagementComponent implements OnInit {
     };
   }
 
+  fileupdateevent(event){
+    let filename = '';
+
+    console.log('image');
+    let fileList: FileList = event.target.files;
+    let file: File = fileList[0];
+    filename = filename + '  ' +file.name;
+    this.update_peddle_team_member_file_name = filename;
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    //console.log(reader.readAsDataURL(file));
+
+    reader.onload = ()=> {
+      this.update_peddle_team_member_file_name = reader.result as string
+      //me.modelvalue = reader.result
+      //console.log(typeof reader.result);
+    };
+  }
+
   transformf(){
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.peddle_team_member_profile);
+  }
+
+  updatetransformf(){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.update_peddle_team_member_file_name);
   }
 
 
@@ -434,6 +473,10 @@ export class TeammanagementComponent implements OnInit {
     }else {
       this.messageService.add({key: 'emptyteam', severity:'error', summary: 'Select team', detail: 'empty team'});
     }
+  }
+  showDialogupdatepeddleteammember(member){
+    this.updatepeddleteammember = true;
+    console.log(member)
   }
   showDialog() {
     this.display = true;
@@ -474,6 +517,10 @@ export class TeammanagementComponent implements OnInit {
     this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
     this.peddle_team_member_statut = new FormControl('activated');
     this.boolspinnersteammember=false;
+  }
+
+  onHideupdatepeddleteammember(){
+    this.updatepeddleteammember = false;
   }
 
 

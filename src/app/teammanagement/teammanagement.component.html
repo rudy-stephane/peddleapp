@@ -264,7 +264,7 @@
                   <td>{{member.peddle_team_member_password}}</td>
                   <td>{{member.peddle_team_member_statut}}</td>
                   <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button><!--(click)="editProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="showDialogupdatepeddleteammember(member)"></button><!--(click)="editProduct(product)"-->
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button><!--(click)="deleteProduct(product)"-->
                   </td>
                 </tr>
@@ -497,7 +497,7 @@
     </div>
     <div class="form-group col-6">
       <label for="peddle_team_member_statut">Status</label>
-      <select class="form-control" id="peddle_team_member_statut" >
+      <select class="form-control" id="peddle_team_member_statut" [formControl]="peddle_team_member_statut">
         <option>activated</option>
         <option>deactivated</option>
       </select>
@@ -506,6 +506,46 @@
   <button type="button" class="btn btn-primary mt-1" (click)="addteammember()">
     Add Member
     <span *ngIf="boolspinnersteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+</p-dialog>
+
+<p-dialog header=" Update team members" [(visible)]="updatepeddleteammember" (onHide)="onHideupdatepeddleteammember()" >
+  <img  [src]=  "updatetransformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+  <div class="custom-file col-12">
+    <input type="file" class="custom-file-input" id="updateeventpartner" (change)="fileupdateevent($event)">
+    <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+    <div class="text-success"> {{update_peddle_team_member_file_name}}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_name">Member name</label>
+      <input type="text" class="form-control" id="update_peddle_team_member_name" placeholder="member name..." [formControl]="update_peddle_team_member_name">
+      <div *ngIf="!update_peddle_team_member_name.valid" class="text-danger"> enter valid name</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_email">Member email</label>
+      <input type="email" class="form-control" id="update_peddle_team_member_email" placeholder=".....@....." [formControl]="update_peddle_team_member_email">
+      <div *ngIf="!update_peddle_team_member_email.valid" class="text-danger"> enter valid email</div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_password">Member Password :</label>
+      <input type="password" class="form-control" id="update_peddle_team_member_password"  [formControl]="update_peddle_team_member_password">
+      <div *ngIf="!update_peddle_team_member_password.valid" class="text-danger"> enter valid password</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_statut">Status</label>
+      <select class="form-control" id="update_peddle_team_member_statut" [formControl]="update_peddle_team_member_statut">
+        <option>activated</option>
+        <option>deactivated</option>
+      </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-1" (click)="updateteammember()">
+    Update Member
+    <span *ngIf="boolspinnersupdateteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
 </p-dialog>
 
