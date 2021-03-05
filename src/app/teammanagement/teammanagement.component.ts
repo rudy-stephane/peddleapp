@@ -416,7 +416,7 @@ export class TeammanagementComponent implements OnInit {
     console.log('#############################object##################################');
     console.log(newobject);
 
-    if(this.objecttoupdate == newobject){
+    if(this.objecttoupdate === newobject){
       this.messageService.add({key: 'sameobject', severity:'error', summary: 'Same value', detail: 'values are same than older'});
     }else{
       this.boolspinnersupdateteammember = true;
