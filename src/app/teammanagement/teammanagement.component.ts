@@ -39,6 +39,7 @@ export class TeammanagementComponent implements OnInit {
   boolspinnersteammember = false;
   updatepeddleteammember = false;
   boolspinnersupdateteammember = false;
+  boutonupdate = false ;
 
   boolspinnersteam = false ;
 
@@ -400,7 +401,19 @@ export class TeammanagementComponent implements OnInit {
     }
   }
 
-  updateteammember(){
+  updateteammember(member){
+
+    var objecttoupdate={
+      'peddle_team_member_name' : this.peddle_team_member_name.value,
+      'peddle_team_member_password': this.peddle_team_member_password.value,
+      'peddle_team_member_email': this.peddle_team_member_email.value,
+      'peddle_team_member_statut': this.peddle_team_member_statut.value,
+      'peddle_team_member_profile': this.peddle_team_member_profile
+    };
+    
+    if(!member.equal(objecttoupdate)){
+      this.boutonupdate = true ;
+    }
 
   }
 
@@ -476,6 +489,11 @@ export class TeammanagementComponent implements OnInit {
   }
   showDialogupdatepeddleteammember(member){
     this.updatepeddleteammember = true;
+    this.update_peddle_team_member_file_name = member.peddle_team_member_profile;
+    this.update_peddle_team_member_name = new FormControl(member.peddle_team_member_name);
+    this.update_peddle_team_member_email = new FormControl(member.peddle_team_member_email);
+    this.update_peddle_team_member_password = new FormControl(member.peddle_team_member_password);
+    this.update_peddle_team_member_statut = new FormControl(member.peddle_team_member_statut);
     console.log(member)
   }
   showDialog() {
