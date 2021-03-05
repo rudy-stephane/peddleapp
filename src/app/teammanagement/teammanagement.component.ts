@@ -403,26 +403,34 @@ export class TeammanagementComponent implements OnInit {
 
   updateteammember(){
 
-    var newobject={
-      'peddle_team_member_name' : this.update_peddle_team_member_name.value,
-      'peddle_team_member_password': this.update_peddle_team_member_password.value,
-      'peddle_team_member_email': this.update_peddle_team_member_email.value,
-      'peddle_team_member_statut': this.update_peddle_team_member_statut.value,
-      'peddle_team_member_profile': this.update_peddle_team_member_profile
-    }; //sameobject
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
 
-    console.log('#############################update##################################');
-    console.log(this.objecttoupdate);
-    console.log('#############################object##################################');
-    console.log(newobject);
+    var newobject={
+      peddle_user_email : peddle_user_email,
+      peddle_team_name:this.peddle_team_management.value,
+      peddle_team_member_email_to_update : this.objecttoupdate.peddle_team_member_email, // valeur de l'ancien email qu'on doit modifier
+      peddle_team_member_name : this.update_peddle_team_member_name.value,
+      peddle_team_member_password: this.update_peddle_team_member_password.value,
+      peddle_team_member_email: this.update_peddle_team_member_email.value,
+      peddle_team_member_statut: this.update_peddle_team_member_statut.value,
+      peddle_team_member_profile: this.update_peddle_team_member_profile
+    }; //sameobject
 
     if(this.objecttoupdate.peddle_team_member_name == newobject.peddle_team_member_name &&  this.objecttoupdate.peddle_team_member_password == newobject.peddle_team_member_password &&
       this.objecttoupdate.peddle_team_member_email == newobject.peddle_team_member_email && this.objecttoupdate.peddle_team_member_statut == newobject.peddle_team_member_statut &&
       this.objecttoupdate.peddle_team_member_profile == newobject.peddle_team_member_profile){
-      
+
       this.messageService.add({key: 'sameobject', severity:'error', summary: 'Same value', detail: 'values are same than older'});
     }else{
       this.boolspinnersupdateteammember = true;
+      this.teamService.updatememberinformation(newobject).subscribe(resmemberupdate=>{
+        this.messageService.add({key: 'updatemembersucess', severity:'success', summary: 'Member updated', detail: 'member has been updated'});
+        // j'enlève l'ancien membre et je met le nouveau
+
+        this.boolspinnersupdateteammember = false;
+        this.updatepeddleteammember = false;
+      });
     }
   }
 

@@ -24,11 +24,11 @@ export class TeamService {
   }
 
   getteammember(peddleteammember){
-    return this.http.post(this.endpoint+'/listteammember', peddleteammember)
+    return this.http.post(this.endpoint+'/listteammember', peddleteammember);
   }
 
   addteammember(teammember){
-    return this.http.post(this.endpoint+'/addteammember', teammember)
+    return this.http.post(this.endpoint+'/addteammember', teammember);
   }
 
   processingemail(stringemail:String){
@@ -36,6 +36,10 @@ export class TeamService {
     var res = stringemail.indexOf('@');
     var size = stringemail.length;
     return  stringemail.substring(res+1, size);
+  }
+
+  updatememberinformation(member){
+    return this.http.post(this.endpoint+'/updatemember', member);
   }
 
 }
