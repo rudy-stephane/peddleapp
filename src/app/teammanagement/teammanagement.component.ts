@@ -449,12 +449,21 @@ export class TeammanagementComponent implements OnInit {
         var membertodelete = {
           peddle_user_email : peddle_user_email,
           peddle_team_name:this.peddle_team_management.value,
-          peddle_team_member_email: this.update_peddle_team_member_email.value
+          peddle_team_member_email: member.peddle_team_member_email
         };
 
         console.log(membertodelete);
         this.teamService.deletemember(membertodelete).subscribe(resmemberdelete=>{
-          this.messageService.add({severity:'success', summary: 'Successful', detail: 'Member Deleted', life: 3000});
+          for(let i =0; i<this.listofteamsmember.length; i++){
+            let membertodelete = this.listofteamsmember[i] as any ;
+            if(membertodelete.peddle_team_member_email == member.peddle_team_member_email){
+              console.log("########");
+              console.log(true);
+              console.log("########");
+              this.listofteamsmember.splice(i,1);
+            }
+          }
+          this.messageService.add({key: 'memberdeleted',severity:'success', summary: 'Successful', detail: 'Member Deleted', life: 3000});
         })
       }
     });
