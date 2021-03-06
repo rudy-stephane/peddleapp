@@ -423,7 +423,7 @@
 
 <p-dialog header="Create team members" [(visible)]="displayaddcontactdialog" (onHide)="onHideCreateContact()" >
   <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
-  <div class="custom-file col-12">
+  <div class="custom-file col-6">
     <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
     <label class="custom-file-label" for="eventpartner">Logo or profil</label>
     <div class="text-success"> {{peddle_contact_file_name}}</div>
@@ -451,7 +451,7 @@
     </div>
 
     <div class="col-2">
-      <button type="button" class="btn btn-primary mt-5" (click)="addingcontactinfos()">
+      <button type="button" class="btn btn-primary mt-3" (click)="addingcontactinfos()">
         Add infos
       </button>
     </div>
