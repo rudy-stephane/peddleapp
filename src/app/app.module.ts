@@ -36,6 +36,7 @@ import { ProfilesettingComponent } from './profilesetting/profilesetting.compone
 import { TeammanagementComponent } from './teammanagement/teammanagement.component';
 import {TableModule} from 'primeng/table';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -115,7 +116,8 @@ export function provideConfig() {
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
