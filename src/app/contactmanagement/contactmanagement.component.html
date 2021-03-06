@@ -195,24 +195,12 @@
     <div class="container-fluid">
       <div class="card mt-2">
         <div class="card-body">
-          <div class="text-black-50 h3"> Team Management</div>
-          <div class="row">
-            <div class="form-group col-6">
-              <label for="peddle_team_management">Select team</label>
-              <select class="form-control" id="peddle_team_management" [formControl]="peddle_team_management" (change)="gettingteammember()">
-                <option *ngFor="let teamname of listofteams"> {{teamname.peddle_team_name}}</option>
-                <!-- <option> </option>-->
-              </select>
-            </div>
-            <div class="col-6 mt-4">
-              <button type="button" class="btn btn-primary" (click)="showdisplaypeddleteamcreate()">Add team</button>
-            </div>
-          </div>
+          <div class="text-black-50 h3"> Contact Management</div>
 
           <div class="row">
-            <button type="button" class="btn btn-primary" (click)="showDialogcreatepeddleteammember()">
+            <button type="button" class="btn btn-primary" (click)="showDialogcreatecontact()">
               <i class="pi pi-plus"></i>
-              Add Member
+              Add Contact
             </button>
             <button type="button" class="btn btn-danger ml-1 mr-auto">
               <i class="pi pi-trash"></i>
@@ -228,12 +216,12 @@
           </div>
 
           <div class="row">
-            <p-table #dt [value]="listofteamsmember" [rows]="10" [paginator]="true" [globalFilterFields]="['name','email','status']"
-                     [(selection)]="listofteamselected" [rowHover]="true" dataKey="email"
+            <p-table #dt [value]="listofcontacts" [rows]="10" [paginator]="true" [globalFilterFields]="['name','email','status']"
+                     [(selection)]="listofcontactselected" [rowHover]="true" dataKey="email"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
               <ng-template pTemplate="caption">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                  <h5 class="p-m-0">Manage Team Member</h5>
+                  <h5 class="p-m-0">Manage Contact</h5>
                   <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
@@ -245,50 +233,35 @@
                   <th style="width: 3rem">
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                   </th>
-                  <th pSortableColumn="name">Name <p-sortIcon field="peddle_team_member_name"></p-sortIcon></th>
-                  <th pSortableColumn="profil">Profil <p-sortIcon field="peddle_team_member_profile"></p-sortIcon></th>
-                  <th pSortableColumn="email">Email <p-sortIcon field="peddle_team_member_email"></p-sortIcon></th>
-                  <th pSortableColumn="password">Password <p-sortIcon field="peddle_team_member_password"></p-sortIcon></th>
-                  <th pSortableColumn="status">Status <p-sortIcon field="peddle_team_member_statut"></p-sortIcon></th>
+                  <th pSortableColumn="name">Name <p-sortIcon field="peddle_contact_name"></p-sortIcon></th>
+                  <th pSortableColumn="profil">Profil <p-sortIcon field="peddle_contact_profile"></p-sortIcon></th>
+                  <th pSortableColumn="company">Company <p-sortIcon field="peddle_contact_company"></p-sortIcon></th>
+                  <th pSortableColumn="password">Contact Infos<p-sortIcon field="peddle_contact_infos"></p-sortIcon></th>
                   <th></th>
                 </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-member>
+              <ng-template pTemplate="body" let-contact>
                 <tr>
                   <td>
-                    <p-tableCheckbox [value]="member"></p-tableCheckbox>
+                    <p-tableCheckbox [value]="contact"></p-tableCheckbox>
                   </td>
-                  <td>{{member.peddle_team_member_name}}</td>
-                  <td><img [src]="member.peddle_team_member_profile" [alt]="member.peddle_team_member_name" width="70" height="70" class="p-shadow-4"/></td>
-                  <td>{{member.peddle_team_member_email}}</td>
-                  <td>{{member.peddle_team_member_password}}</td>
-                  <td>{{member.peddle_team_member_statut}}</td>
+                  <td>{{contact.peddle_contact_name}}</td>
+                  <td><img [src]="contact.peddle_contact_profile" [alt]="contact.peddle_contact_name" width="70" height="70" class="p-shadow-4"/></td>
+                  <td>{{contact.peddle_contact_company}}</td>
+                  <td>{{contact.peddle_contact_infos}}</td>
                   <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="showDialogupdatepeddleteammember(member)"></button><!--(click)="editProduct(product)"-->
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletemember(member)"></button><!--(click)="deleteProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button><!--(click)="editProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button><!--(click)="deleteProduct(product)"-->
                   </td>
                 </tr>
               </ng-template>
               <ng-template pTemplate="summary">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                  In total there are {{listofteamsmember ? listofteamsmember.length : 0 }} members for this team.
+                  In total there are {{listofcontacts ? listofcontacts.length : 0 }} members for this team.
                 </div>
               </ng-template>
             </p-table>
           </div>
-
-          <!--<p-toolbar styleClass="p-mb-4">
-            <ng-template pTemplate="left">
-              <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" ></button>&lt;!&ndash;(click)="openNew()"&ndash;&gt;
-              <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" ></button> &lt;!&ndash;(click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"&ndash;&gt;
-            </ng-template>
-
-            <ng-template pTemplate="right">
-              <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
-              <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
-            </ng-template>
-          </p-toolbar>-->
-
         </div>
       </div>
     </div>
@@ -446,70 +419,50 @@
 </p-dialog>
 
 
-<p-dialog header="Create team" [(visible)]="displaypeddleteamcreate" (onHide)="onHidedisplaypeddleteamcreate()" >
-  <div class="form-row">
-    <div class="form-group col-6">
-      <label for="peddle_team_name">team name</label>
-      <input type="text" class="form-control" id="peddle_team_name" (change)="checkpeddlename()"  placeholder="team name.." [formControl]="peddle_team_name">
-      <div *ngIf="checkifpeddleexist" class="text-danger"> this team already exist</div>
-      <div *ngIf="!peddle_team_name.valid" class="text-danger"> minimum 4 caracters</div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-6">
-      <label for="peddle_team_description">Team Description :</label>
-      <textarea class="form-control" id="peddle_team_description" [formControl]="peddle_team_description" rows="5"></textarea>
-      <div class="text-success"> describe the purpose of this team</div>
-      <div *ngIf="!peddle_team_description.valid" class="text-danger"> please enter description of group </div>
-    </div>
-  </div>
-  <button type="button" class="btn btn-primary mt-1" (click)="addteam()">
-    Add
-    <span *ngIf="boolspinnersteam" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  </button>
-</p-dialog>
 
-<p-dialog header="Create team members" [(visible)]="createpeddleteammember" (onHide)="onHidecreatepeddleteammember()" >
+
+<p-dialog header="Create team members" [(visible)]="displayaddcontactdialog" (onHide)="onHideCreateContact()" >
   <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
   <div class="custom-file col-12">
     <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
     <label class="custom-file-label" for="eventpartner">Logo or profil</label>
-    <div class="text-success"> {{peddle_team_member_file_name}}</div>
+    <div class="text-success"> {{peddle_contact_file_name}}</div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-6">
-      <label for="peddle_team_member_name">Member name</label>
-      <input type="text" class="form-control" id="peddle_team_member_name" placeholder="member name..." [formControl]="peddle_team_member_name">
-      <div *ngIf="!peddle_team_member_name.valid" class="text-danger"> enter valid name</div>
-    </div>
-    <div class="form-group col-6">
-      <label for="peddle_team_member_email">Member email</label>
-      <input type="email" class="form-control" id="peddle_team_member_email" placeholder=".....@....." [formControl]="peddle_team_member_email">
-      <div *ngIf="!peddle_team_member_email.valid" class="text-danger"> enter valid email</div>
+      <label for="peddle_contact_name">Contact Name :</label>
+      <input type="text" class="form-control" id="peddle_contact_name" placeholder="contact name..." [formControl]="peddle_contact_name">
+      <div *ngIf="!peddle_contact_name.valid" class="text-danger"> enter valid name</div>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-6">
-      <label for="peddle_team_member_password">Member Password :</label>
-      <input type="password" class="form-control" id="peddle_team_member_password"  [formControl]="peddle_team_member_password">
-      <div *ngIf="!peddle_team_member_password.valid" class="text-danger"> enter valid password</div>
-    </div>
-    <div class="form-group col-6">
-      <label for="peddle_team_member_statut">Status</label>
-      <select class="form-control" id="peddle_team_member_statut" [formControl]="peddle_team_member_statut">
-        <option>activated</option>
-        <option>deactivated</option>
-      </select>
+      <label for="peddle_contact_company">Contact Company :</label>
+      <input type="text" class="form-control" id="peddle_contact_company"  [formControl]="peddle_contact_company">
+      <div *ngIf="!peddle_contact_company.valid" class="text-danger"> enter valid text</div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary mt-1" (click)="addteammember()">
-    Add Member
-    <span *ngIf="boolspinnersteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_contact_information">Contact Company :</label>
+      <input type="text" class="form-control" id="peddle_contact_information"  [formControl]="peddle_contact_information">
+      <div *ngIf="!peddle_contact_information.valid" class="text-danger"> enter valid link</div>
+    </div>
+
+    <div class="col-6">
+      <button type="button" class="btn btn-primary mt-2" (click)="addingcontactinfos()">
+        Add infos
+      </button>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-1" (click)="addingcontact()">
+    Add Contact
+    <span *ngIf="boolspinneraddingcontact" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   </button>
 </p-dialog>
 
-<p-dialog header=" Update team members" [(visible)]="updatepeddleteammember" (onHide)="onHideupdatepeddleteammember()" >
+<!--<p-dialog header=" Update team members" [(visible)]="updatepeddleteammember" (onHide)="onHideupdatepeddleteammember()" >
   <img  [src]=  "updatetransformf()" class="img-thumbnail" alt="..."  width="150" height="150">
   <div class="custom-file col-12">
     <input type="file" class="custom-file-input" id="updateeventpartner" (change)="fileupdateevent($event)">
@@ -550,17 +503,12 @@
   <button  type="button" class="btn btn-danger mt-1" (click)="cancelupdatemember()" >
     Cancel
   </button>
-</p-dialog>
+</p-dialog>-->
 
 <p-confirmDialog></p-confirmDialog>
-
 <p-toast key="linkedinaccount" position="top-right"></p-toast>
 <p-toast key="facebooksaved" position="top-right"></p-toast>
 <p-toast key="twitteraccount" position="top-right"></p-toast>
 <p-toast key="streamadded" position="top-right"></p-toast>
-<p-toast key="teammemberadded" position="top-right"></p-toast>
-<p-toast key="emptyteam" position="top-right"></p-toast>
-<p-toast key="sameobject" position="top-right"></p-toast>
-<p-toast key="updatemembersucess" position="top-right"></p-toast>
-<p-toast key="memberdeleted" position="top-right"></p-toast>
+<p-toast key="contactadded" position="top-right"></p-toast>
 

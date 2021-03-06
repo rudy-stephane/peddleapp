@@ -11,6 +11,7 @@ import {FacebookService} from '../services/facebook.service';
 import {TeamService} from '../services/team.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import * as fire from 'firebase';
+import {ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'app-contactmanagement',
@@ -33,15 +34,15 @@ export class ContactmanagementComponent implements OnInit {
   displaypost:boolean = false;
   displaypin:boolean = false;
   displaystory:boolean = false;
-  displaypeddleteamcreate:boolean = false;
+  /*displaypeddleteamcreate:boolean = false;*/
   checkifpeddleexist = false; // check if peddle name already exist
-  createpeddleteammember = false;
+  /*createpeddleteammember = false;
   boolspinnersteammember = false;
   updatepeddleteammember = false;
   boolspinnersupdateteammember = false;
   //boutonupdate = false ;
 
-  boolspinnersteam = false ;
+  boolspinnersteam = false ;*/
 
   closeResult = '';
 
@@ -53,7 +54,7 @@ export class ContactmanagementComponent implements OnInit {
   user_name = '';
   user_plan='';
 
-  peddle_team_management = new FormControl('');
+  /*peddle_team_management = new FormControl('');
   peddle_team_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
   peddle_team_description = new FormControl('',[Validators.required,Validators.minLength(100)]);
 
@@ -62,36 +63,42 @@ export class ContactmanagementComponent implements OnInit {
   peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
   peddle_team_member_statut = new FormControl('activated'); //activated desactivated
-  peddle_team_member_file_name='';
+  peddle_team_member_file_name='';*/
+
+  peddle_contact_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+  peddle_contact_profile ='assets/information.png';
+  peddle_contact_company =new FormControl('',[Validators.required,Validators.minLength(4)]);
+  peddle_contact_information =new FormControl('',[Validators.required,Validators.minLength(4)]);
+  peddle_contact_file_name = '';
+
+  peddle_contact_infos = [];
 
 
 
 
-  update_peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+  /*update_peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
   update_peddle_team_member_profile ='assets/information.png';//= new FormControl('');
   update_peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   update_peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
   update_peddle_team_member_statut = new FormControl('activated'); //activated desactivated
-  update_peddle_team_member_file_name='';
+  update_peddle_team_member_file_name='';*/
+
+  listofcontacts = [];
+  listofcontactselected = [];
 
 
-  listofteams=[];
+  /*listofteams=[];
   listofteamsmember=[{}];
-  listofteamselected=[];
+  listofteamselected=[];*/
 
-  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService,private sanitizer:DomSanitizer, private confirmationService: ConfirmationService) { }
+
+
+  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private contactService: ContactService,private sanitizer:DomSanitizer, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
-    //this.activatedRoute.queryParams.
-    //adding fields parameters
-
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    this.user_profile = peddle_user.peddle_user_profile;
-    this.user_name = peddle_user.peddle_user_name;
-    this.user_plan = peddle_user.peddle_user_plan;
-
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
@@ -109,38 +116,52 @@ export class ContactmanagementComponent implements OnInit {
       }
 
     });
-
-    var peddle_user_request = {
-      peddle_user_email : peddle_user.peddle_user_email
-    };
-
-    this.teamService.gettinglistteam(peddle_user_request).subscribe(peddle_list_result=>{
-      let resultat  = peddle_list_result as [any];
-      //console.log('console team');
-      this.listofteams = resultat;
-      if(this.listofteams.length!=0){
-        this.peddle_team_management = new FormControl(this.listofteams[0].peddle_team_name);
-      }
-      //console.log(this.listofteams);
-    })
-
-    //this.listofteamsmember.push(22222);
-
   }
 
-  gettingteammember(){
+  presentlistinfos = '';
+
+  addingcontactinfos(){
+    if(this.peddle_contact_information.valid){
+      this.presentlistinfos = this.presentlistinfos + this.peddle_contact_information + '  \n'
+      this.listofcontacts.push(this.peddle_contact_information.value);
+    }
+  }
+
+  boolspinneraddingcontact = false;
+  displayaddcontactdialog = false;
+  addingcontact(){
+    this.boolspinneraddingcontact = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    var peddle_teammember_request = {
-      peddle_user_email : peddle_user_email,
-      peddle_team_name : this.peddle_team_management.value
-    };
 
-    this.teamService.getteammember(peddle_teammember_request).subscribe(teammember_result=>{
-      let peddle_teammember_result = teammember_result as [any];
-      this.listofteamsmember = peddle_teammember_result;
-    })
+    if(this.peddle_contact_name.valid && this.peddle_contact_company.valid){
+      var peddle_contact= {
+        peddle_user_email : peddle_user_email,
+        peddle_contact_name:this.peddle_contact_name.value,
+        peddle_contact_profile:this.peddle_contact_profile,
+        peddle_contact_company:this.peddle_contact_company.value,
+        peddle_contact_infos:this.peddle_contact_infos
+      };
+      this.contactService.addcontact(peddle_contact).subscribe(addcontactreponse=>{
+        this.listofcontacts.push({
+          peddle_contact_name:this.peddle_contact_name.value,
+          peddle_contact_profile:this.peddle_contact_profile,
+          peddle_contact_company:this.peddle_contact_company.value,
+          peddle_contact_infos:this.peddle_contact_infos.length!=0?this.peddle_contact_infos.toString():' nothing to show'
+        });
+        this.messageService.add({key: 'contactadded', severity:'success', summary: 'Contact', detail: 'Contact has been added'});
+        this.boolspinneraddingcontact = false;
+        this.displayaddcontactdialog = false;
+      })
+    }
+
   }
+
+  updatecontact(contact){
+
+  }
+
+
 
   SigninwithFacebook(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
@@ -229,7 +250,6 @@ export class ContactmanagementComponent implements OnInit {
   }
 
 
-
   onclicklinkedin(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
@@ -272,7 +292,7 @@ export class ContactmanagementComponent implements OnInit {
     console.log(gtr.currentTarget);
   }
 
-  checkpeddlename(){
+  /*checkpeddlename(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
@@ -290,9 +310,9 @@ export class ContactmanagementComponent implements OnInit {
     });
 
     return this.checkifpeddleexist ;
-  }
+  }*/
 
-  addteam(){
+  /*addteam(){
 
     this.boolspinnersteam = true;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
@@ -317,7 +337,7 @@ export class ContactmanagementComponent implements OnInit {
       this.boolspinnersteam = false;
     })
 
-  }
+  }*/
 
 
   code = 'AQRjikE7Rc8-p3DIuwnqBV6dHpcWJQHTTfw-sWj9WIUFRcLI9c85usUjPVLA3zv48yTg3GqIIgXfEmyAB1C5XEj1bKgoGZJ62JLFwE6j2wze1BXHAPSSiQq34tqj5ElrBg7D53ecb8NOtdxdMih2pQJBk9BT7lymJmdQBp_lvaeCt_xYPWZFQXa9LyuHAw';
@@ -346,7 +366,7 @@ export class ContactmanagementComponent implements OnInit {
     })
   }
 
-  addteammember(){
+  /*addteammember(){
     this.boolspinnersteammember = true;
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
@@ -369,7 +389,7 @@ export class ContactmanagementComponent implements OnInit {
         peddle_team_member_profile: this.peddle_team_member_profile
       };
 
-      /*this.listofteamsmember.push(
+      /!*this.listofteamsmember.push(
         {
           peddle_team_member_name : this.peddle_team_member_name.value,
           peddle_team_member_password: this.peddle_team_member_password.value,
@@ -377,7 +397,7 @@ export class ContactmanagementComponent implements OnInit {
           peddle_team_member_statut: this.peddle_team_member_statut.value,
           peddle_team_member_profile: this.peddle_team_member_profile
         }
-      );*/
+      );*!/
 
       console.log(typeof  this.listofteamsmember)
 
@@ -399,9 +419,9 @@ export class ContactmanagementComponent implements OnInit {
         this.boolspinnersteammember = false;
       });
     }
-  }
+  }*/
 
-  updateteammember(){
+  /*updateteammember(){
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
@@ -441,11 +461,11 @@ export class ContactmanagementComponent implements OnInit {
         this.updatepeddleteammember = false;
       });
     }
-  }
+  }*/
 
   //gestion du confirm dialog pour le delete member
 
-  deletemember(member){
+  /*deletemember(member){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     this.confirmationService.confirm({
@@ -453,8 +473,8 @@ export class ContactmanagementComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        /*this.products = this.products.filter(val => val.id !== product.id);
-        this.product = {};*/
+        /!*this.products = this.products.filter(val => val.id !== product.id);
+        this.product = {};*!/
         var membertodelete = {
           peddle_user_email : peddle_user_email,
           peddle_team_name:this.peddle_team_management.value,
@@ -477,18 +497,8 @@ export class ContactmanagementComponent implements OnInit {
         })
       }
     });
-  }
+  }*/
 
-
-
-  checkemail(companyemail,memberemail){
-    if(this.teamService.processingemail(companyemail.toString())!=this.teamService.processingemail(memberemail.toString())){
-      return false;
-      this.messageService.add({key: 'teammemberaddederror', severity:'error', summary: 'Save team member', detail: 'email must match email company'});
-    }else{
-      return true ;
-    }
-  }
 
   onclicktwitter(){
 
@@ -503,19 +513,19 @@ export class ContactmanagementComponent implements OnInit {
     let fileList: FileList = event.target.files;
     let file: File = fileList[0];
     filename = filename + '  ' +file.name;
-    this.peddle_team_member_file_name = filename;
+    this.peddle_contact_file_name = filename;
     let reader = new FileReader();
     reader.readAsDataURL(file);
     //console.log(reader.readAsDataURL(file));
 
     reader.onload = ()=> {
-      this.peddle_team_member_profile = reader.result as string
+      this.peddle_contact_profile = reader.result as string
       //me.modelvalue = reader.result
       //console.log(typeof reader.result);
     };
   }
 
-  fileupdateevent(event){
+  /*fileupdateevent(event){
     let filename = '';
 
     console.log('image');
@@ -532,38 +542,20 @@ export class ContactmanagementComponent implements OnInit {
       //me.modelvalue = reader.result
       //console.log(typeof reader.result);
     };
-  }
+  }*/
 
   transformf(){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.peddle_team_member_profile);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.peddle_contact_profile);
   }
 
-  updatetransformf(){
+  /*updatetransformf(){
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.update_peddle_team_member_profile);
-  }
+  }*/
 
 
-  showDialogcreatepeddleteammember(){
-    if(this.listofteams.length!=0){
-      this.createpeddleteammember = true;
-      console.log(this.peddle_team_management.value);
-    }else {
-      this.messageService.add({key: 'emptyteam', severity:'error', summary: 'Select team', detail: 'empty team'});
-    }
-  }
 
-  objecttoupdate;// objet(membre) initial lorsqu'on ouvre le popup
-  showDialogupdatepeddleteammember(member){
-    this.objecttoupdate = member;
 
-    this.updatepeddleteammember = true;
-    this.update_peddle_team_member_profile = member.peddle_team_member_profile;
-    this.update_peddle_team_member_name = new FormControl(member.peddle_team_member_name);
-    this.update_peddle_team_member_email = new FormControl(member.peddle_team_member_email);
-    this.update_peddle_team_member_password = new FormControl(member.peddle_team_member_password);
-    this.update_peddle_team_member_statut = new FormControl(member.peddle_team_member_statut);
-    console.log(member)
-  }
+
   showDialog() {
     this.display = true;
   }
@@ -576,9 +568,11 @@ export class ContactmanagementComponent implements OnInit {
   showDialogstory(){
     this.displaystory= true;
   }
-  showdisplaypeddleteamcreate(){
-    this.displaypeddleteamcreate = true;
+
+  showDialogcreatecontact(){
+    this.displayaddcontactdialog = true;
   }
+
   onHideDialogPost(){
     this.displaypost = false;
   }
@@ -591,28 +585,20 @@ export class ContactmanagementComponent implements OnInit {
   onHide(){
     this.display = false;
   }
-  onHidedisplaypeddleteamcreate(){
-    this.displaypeddleteamcreate = false;
-  }
-  onHidecreatepeddleteammember(){
-    this.createpeddleteammember = false;
-    this.peddle_team_member_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
-    this.peddle_team_member_profile ='assets/information.png';//= new FormControl('');
-    this.peddle_team_member_file_name ='';
-    this.peddle_team_member_email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
-    this.peddle_team_member_password = new FormControl('',[Validators.required,Validators.minLength(2)]);
-    this.peddle_team_member_statut = new FormControl('activated');
-    this.boolspinnersteammember=false;
+
+  onHideCreateContact(){
+    this.displayaddcontactdialog = false;
+    this.peddle_contact_name = new FormControl('',[Validators.required,Validators.minLength(4)]);
+    this.peddle_contact_profile ='assets/information.png';
+    this.peddle_contact_company =new FormControl('',[Validators.required,Validators.minLength(4)]);
+    this.peddle_contact_information =new FormControl('',[Validators.required,Validators.minLength(4)]);
+    this.peddle_contact_file_name = '';
+    this.peddle_contact_infos = [];
   }
 
-  onHideupdatepeddleteammember(){
-    this.updatepeddleteammember = false;
-    this.boolspinnersupdateteammember = false ;
-  }
 
   cancelupdatemember(){
-    this.updatepeddleteammember = false;
-    this.boolspinnersupdateteammember = false ;
+
   }
 
 
