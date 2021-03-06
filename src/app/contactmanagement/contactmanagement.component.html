@@ -251,13 +251,13 @@
                   <td>{{contact.peddle_contact_infos}}</td>
                   <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button><!--(click)="editProduct(product)"-->
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button><!--(click)="deleteProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletecountacts(contact)"></button><!--(click)="deleteProduct(product)"-->
                   </td>
                 </tr>
               </ng-template>
               <ng-template pTemplate="summary">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                  In total there are {{listofcontacts ? listofcontacts.length : 0 }} members for this team.
+                  In total there are {{listofcontacts ? listofcontacts.length : 0 }} contacts.
                 </div>
               </ng-template>
             </p-table>
@@ -515,4 +515,5 @@
 <p-toast key="twitteraccount" position="top-right"></p-toast>
 <p-toast key="streamadded" position="top-right"></p-toast>
 <p-toast key="contactadded" position="top-right"></p-toast>
+<p-toast key="contactdeleted" position="top-right"></p-toast>
 

@@ -170,6 +170,41 @@ export class ContactmanagementComponent implements OnInit {
 
   }
 
+  deletecountacts(contact){
+
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + contact.peddle_contact_name + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        /*this.products = this.products.filter(val => val.id !== product.id);
+        this.product = {};*/
+        var contacttodelete = {
+          peddle_user_email : peddle_user_email,
+          peddle_contact_name: contact.peddle_contact_name
+        };
+
+        console.log(contacttodelete);
+        this.contactService.deletecontact(contacttodelete).subscribe(resmemberdelete=>{
+          for(let i =0; i<this.listofcontacts.length; i++){
+            let delcontact = this.listofcontacts[i] as any ;
+            if(delcontact.peddle_contact_name == contact.peddle_contact_name){
+              console.log("########");
+              console.log(true);
+              console.log("########");
+              this.listofcontacts.splice(i,1);
+              break;
+            }
+          }
+          this.messageService.add({key: 'contactdeleted',severity:'success', summary: 'Successful', detail: 'Contact Deleted', life: 3000});
+        })
+      }
+    });
+
+  }
+
   updatecontact(contact){
 
   }
