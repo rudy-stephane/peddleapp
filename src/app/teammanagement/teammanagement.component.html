@@ -265,7 +265,7 @@
                   <td>{{member.peddle_team_member_statut}}</td>
                   <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="showDialogupdatepeddleteammember(member)"></button><!--(click)="editProduct(product)"-->
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button><!--(click)="deleteProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletemember(member)"></button><!--(click)="deleteProduct(product)"-->
                   </td>
                 </tr>
               </ng-template>
@@ -551,6 +551,8 @@
     Cancel
   </button>
 </p-dialog>
+
+<p-confirmDialog></p-confirmDialog>
 
 <p-toast key="linkedinaccount" position="top-right"></p-toast>
 <p-toast key="facebooksaved" position="top-right"></p-toast>

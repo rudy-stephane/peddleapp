@@ -42,4 +42,8 @@ export class TeamService {
     return this.http.post(this.endpoint+'/updatemember', member);
   }
 
+  deletemember(membertodelete){
+    return this.http.post(this.endpoint+'/deletemember', membertodelete);
+  }
+
 }

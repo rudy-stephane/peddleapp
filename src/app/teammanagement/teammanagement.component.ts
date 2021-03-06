@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {FormControl, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -79,7 +79,7 @@ export class TeammanagementComponent implements OnInit {
   listofteamsmember=[{}];
   listofteamselected=[];
 
-  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService,private sanitizer:DomSanitizer) { }
+  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private teamService: TeamService,private sanitizer:DomSanitizer, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
@@ -433,6 +433,31 @@ export class TeammanagementComponent implements OnInit {
       });
     }
   }
+
+  //gestion du confirm dialog pour le delete member
+
+  deletemember(member){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + member.peddle_team_member_name + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        /*this.products = this.products.filter(val => val.id !== product.id);
+        this.product = {};*/
+        var membertodelete = {
+          peddle_user_email : peddle_user_email,
+          peddle_team_name:this.peddle_team_management.value,
+          peddle_team_member_email: this.update_peddle_team_member_email.value
+        };
+        this.teamService.deletemember(membertodelete).subscribe(resmemberdelete=>{
+          this.messageService.add({severity:'success', summary: 'Successful', detail: 'Member Deleted', life: 3000});
+        })
+      }
+    });
+  }
+
 
 
   checkemail(companyemail,memberemail){

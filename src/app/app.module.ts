@@ -35,6 +35,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ProfilesettingComponent } from './profilesetting/profilesetting.component';
 import { TeammanagementComponent } from './teammanagement/teammanagement.component';
 import {TableModule} from 'primeng/table';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -99,7 +100,8 @@ export function provideConfig() {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    TableModule
+    TableModule,
+    ConfirmDialogModule
   ],
   providers: [
     {
