@@ -99,6 +99,9 @@ export class ContactmanagementComponent implements OnInit {
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
+    this.user_profile = peddle_user.peddle_user_profile;
+    this.user_name = peddle_user.peddle_user_name;
+    this.user_plan = peddle_user.peddle_user_plan;
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
@@ -116,6 +119,15 @@ export class ContactmanagementComponent implements OnInit {
       }
 
     });
+
+    var peddle_list_contact_request = {
+      peddle_user_email : peddle_user_email
+    };
+
+    this.contactService.listcontacts(peddle_list_contact_request).subscribe(response=>{
+      let listedescontacts = response as [any];
+      this.listofcontacts = listedescontacts;
+    })
   }
 
   presentlistinfos = '';
@@ -123,7 +135,8 @@ export class ContactmanagementComponent implements OnInit {
   addingcontactinfos(){
     if(this.peddle_contact_information.valid){
       this.presentlistinfos = this.presentlistinfos + this.peddle_contact_information + '  \n'
-      this.listofcontacts.push(this.peddle_contact_information.value);
+      this.peddle_contact_infos.push(this.peddle_contact_information.value);
+      this.peddle_contact_information =new FormControl('',[Validators.required,Validators.minLength(4)]);
     }
   }
 
