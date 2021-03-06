@@ -134,7 +134,7 @@ export class ContactmanagementComponent implements OnInit {
 
   addingcontactinfos(){
     if(this.peddle_contact_information.valid){
-      this.presentlistinfos = this.presentlistinfos + this.peddle_contact_information + '  \n'
+      this.presentlistinfos = this.presentlistinfos + this.peddle_contact_information.value + '  \n'
       this.peddle_contact_infos.push(this.peddle_contact_information.value);
       this.peddle_contact_information =new FormControl('',[Validators.required,Validators.minLength(4)]);
     }
