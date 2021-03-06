@@ -451,6 +451,8 @@ export class TeammanagementComponent implements OnInit {
           peddle_team_name:this.peddle_team_management.value,
           peddle_team_member_email: this.update_peddle_team_member_email.value
         };
+
+        console.log(membertodelete);
         this.teamService.deletemember(membertodelete).subscribe(resmemberdelete=>{
           this.messageService.add({severity:'success', summary: 'Successful', detail: 'Member Deleted', life: 3000});
         })
