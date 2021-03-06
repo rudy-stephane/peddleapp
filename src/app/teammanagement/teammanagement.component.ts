@@ -427,7 +427,21 @@ export class TeammanagementComponent implements OnInit {
       this.teamService.updatememberinformation(newobject).subscribe(resmemberupdate=>{
         this.messageService.add({key: 'updatemembersucess', severity:'success', summary: 'Member updated', detail: 'member has been updated'});
         // j'enlève l'ancien membre et je met le nouveau
-
+        for(let i =0; i<this.listofteamsmember.length; i++){
+          let membertoupdate = this.listofteamsmember[i] as any ;
+          if(membertoupdate.peddle_team_member_email == this.objecttoupdate.peddle_team_member_email){
+            console.log("########");
+            console.log(true);
+            console.log("########");
+            this.listofteamsmember.splice(i,1);
+            this.listofteamsmember.push({peddle_team_member_name : this.update_peddle_team_member_name.value,
+              peddle_team_member_password: this.update_peddle_team_member_password.value,
+              peddle_team_member_email: this.update_peddle_team_member_email.value,
+              peddle_team_member_statut: this.update_peddle_team_member_statut.value,
+              peddle_team_member_profile: this.update_peddle_team_member_profile});
+            break
+          }
+        }
         this.boolspinnersupdateteammember = false;
         this.updatepeddleteammember = false;
       });
@@ -461,6 +475,7 @@ export class TeammanagementComponent implements OnInit {
               console.log(true);
               console.log("########");
               this.listofteamsmember.splice(i,1);
+              break;
             }
           }
           this.messageService.add({key: 'memberdeleted',severity:'success', summary: 'Successful', detail: 'Member Deleted', life: 3000});
