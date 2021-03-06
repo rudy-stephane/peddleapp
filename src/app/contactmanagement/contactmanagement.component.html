@@ -216,7 +216,7 @@
           </div>
 
           <div class="row">
-            <p-table #dt [value]="listofcontacts" [rows]="10" [paginator]="true" [globalFilterFields]="['name','email','status']"
+            <p-table #dt [value]="listofcontacts" [rows]="10" [paginator]="true" [globalFilterFields]="['name','company']"
                      [(selection)]="listofcontactselected" [rowHover]="true" dataKey="email"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
               <ng-template pTemplate="caption">
@@ -422,7 +422,7 @@
 
 
 <p-dialog header="Create team members" [(visible)]="displayaddcontactdialog" (onHide)="onHideCreateContact()" >
-  <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+  <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150"><br>
   <div class="custom-file col-6">
     <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
     <label class="custom-file-label" for="eventpartner">Logo or profil</label>
@@ -445,7 +445,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-6">
-      <label for="peddle_contact_information">Contact Company :</label>
+      <label for="peddle_contact_information">Contact Information :</label>
       <input type="text" class="form-control" id="peddle_contact_information"  [formControl]="peddle_contact_information">
       <div *ngIf="!peddle_contact_information.valid" class="text-danger"> enter valid link</div>
     </div>
