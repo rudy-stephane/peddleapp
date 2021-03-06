@@ -1,0 +1,566 @@
+
+
+<style>
+
+
+  /*#content{
+    min-height: 100vh;
+    min-width: 100%;
+  }*/
+  .footer{
+    margin-top: auto;
+  }
+  .cardbord{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: mediumblue;
+    border-radius: 5%;
+  }
+
+  .cardbordpy{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: darkgreen;
+    border-radius: 5%;
+  }
+
+  .cardbordgr{
+    border-left-style: solid;
+    border-left-width: 4px;
+    border-left-color: darksalmon;
+    border-radius: 5%;
+  }
+  .item{
+    cursor: pointer;
+  }
+
+</style>
+
+<!-- page div glogale -->
+<div id="content" class="d-flex flex-row" style="background-color: #f8f9fc">
+  <!-- Section du menu de navigation-->
+  <div class="bg-primary shadow px-2 pt-2" style="width: 20%; height: 100rem">
+    <a class="text-decoration-none text-white" routerLink="/admin">
+      <div class="d-flex flex-row">
+        <img src="/assets/logo.png"  alt="AICEXPERTS" width="80"> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="h2 text-white text-decoration-none text-left text-uppercase ml-4">PEDDLE</span>
+      </div>
+    </a>
+    <hr class="mt-4 bg-white">
+    <a class="text-decoration-none text-white mt-5" routerLinkActive="/dashboard">
+      <div class="d-flex flex-row">
+        <i class="fa fa-dashboard fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-decoration-none text-left ml-4 ">Tableau de bord</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> social Network</div>
+    <a class="text-decoration-none text-white item"  (click)="showDialog()"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Add Social Network</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogPost()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Post</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogPin()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create PIN</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" (click)="showDialogstory()">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Instagram story</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> integrating social</div>
+    <a class="text-decoration-none text-white item"  (click)="showDialog()"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Team Members</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">contacts</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Messages</span>
+      </div>
+    </a>
+    <hr class="mt-3 bg-white">
+    <div class="text-left text-light text-uppercase my-3 " style="padding: 0 1rem;font-weight: 800;font-size: 0.8rem; color: #b7b9cc;"> Setup</div>
+    <a class="text-decoration-none text-white item"  routerLink="/analytics"> <!--routerLink="/template"-->
+      <div class="d-flex flex-row">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Analytics</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Upgrade My Plan</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">Create Opportunities</span>
+      </div>
+    </a>
+    <a class="text-decoration-none text-white item" routerLink="/">
+      <div class="d-flex flex-row mt-3">
+        <i class="fa fa-save fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <span class="text-white text-uppercase text-left ml-4 ">SIGN OUT</span>
+      </div>
+    </a>
+
+  </div>
+  <!-- Section du contenu de la page-->
+  <div class="d-inline-flex flex-column vh-100 mh-100 vw-100 mw-100">
+
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
+      <!--<form class="form-inline mr-auto my-2 mw-100 shadow">-->
+      <div class="mr-auto">
+        <strong class="text-primary font-weight-bold" style="font-size: 40px"> {{user_plan}}</strong>
+      </div>
+
+      <div class="input-group form-inline mr-auto my-2 w-25 shadow">
+        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fa fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+      <!--</form>-->
+
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item mt-2">
+          <i class="fa fa-plus fa-2x " style="color: #e3e6f0"></i>
+        </li>
+
+        <li class="nav-item ml-3 mt-2">
+          <i class="fa fa-envelope-o fa-2x" style="color: #e3e6f0"></i>
+          <sup><span class="badge badge-danger badge-counter" style="font-size: 6pt">0</span></sup>
+        </li>
+
+        <li class="nav-item ml-3 mt-2">
+          <i class="fa fa-cog fa-2x" style="color: #e3e6f0"></i>
+        </li>
+
+        <li class="nav-item ml-3 mt-2">
+          <div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div>
+        </li>
+
+        <li class="nav-item ml-3 mt-2">
+          <span>{{user_name}}</span>
+        </li>
+        <!--<div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div> -->
+        <li ngbDropdown placement="bottom" class="nav-item">
+          <a href (click)="false" class="nav-link" ngbDropdownToggle >
+            <img  [src]=  "user_profile" class="rounded rounded-circle" alt="..."  width="20" height="20">
+          </a>
+          <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
+            <a ngbDropdownItem (click)="profilesetting()" >
+              <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+            <a ngbDropdownItem (click)="profilesetting()" >
+              <i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              Setting
+            </a>
+            <div class="dropdown-divider"></div>
+            <a ngbDropdownItem (click)="open(content)" >
+              <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+              Deconnexion
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="card mt-2">
+        <div class="card-body">
+          <div class="text-black-50 h3"> Team Management</div>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="peddle_team_management">Select team</label>
+              <select class="form-control" id="peddle_team_management" [formControl]="peddle_team_management" (change)="gettingteammember()">
+                <option *ngFor="let teamname of listofteams"> {{teamname.peddle_team_name}}</option>
+                <!-- <option> </option>-->
+              </select>
+            </div>
+            <div class="col-6 mt-4">
+              <button type="button" class="btn btn-primary" (click)="showdisplaypeddleteamcreate()">Add team</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn btn-primary" (click)="showDialogcreatepeddleteammember()">
+              <i class="pi pi-plus"></i>
+              Add Member
+            </button>
+            <button type="button" class="btn btn-danger ml-1 mr-auto">
+              <i class="pi pi-trash"></i>
+            </button>
+            <button type="button" class="btn btn-secondary mr-1 ml-auto">
+              <i class="pi pi-arrow-down"></i>
+              Import
+            </button>
+            <button type="button" class="btn btn-warning">
+              <i class="pi pi-arrow-up"></i>
+              Export
+            </button>
+          </div>
+
+          <div class="row">
+            <p-table #dt [value]="listofteamsmember" [rows]="10" [paginator]="true" [globalFilterFields]="['name','email','status']"
+                     [(selection)]="listofteamselected" [rowHover]="true" dataKey="email"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+              <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                  <h5 class="p-m-0">Manage Team Member</h5>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th pSortableColumn="name">Name <p-sortIcon field="peddle_team_member_name"></p-sortIcon></th>
+                  <th pSortableColumn="profil">Profil <p-sortIcon field="peddle_team_member_profile"></p-sortIcon></th>
+                  <th pSortableColumn="email">Email <p-sortIcon field="peddle_team_member_email"></p-sortIcon></th>
+                  <th pSortableColumn="password">Password <p-sortIcon field="peddle_team_member_password"></p-sortIcon></th>
+                  <th pSortableColumn="status">Status <p-sortIcon field="peddle_team_member_statut"></p-sortIcon></th>
+                  <th></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-member>
+                <tr>
+                  <td>
+                    <p-tableCheckbox [value]="member"></p-tableCheckbox>
+                  </td>
+                  <td>{{member.peddle_team_member_name}}</td>
+                  <td><img [src]="member.peddle_team_member_profile" [alt]="member.peddle_team_member_name" width="70" height="70" class="p-shadow-4"/></td>
+                  <td>{{member.peddle_team_member_email}}</td>
+                  <td>{{member.peddle_team_member_password}}</td>
+                  <td>{{member.peddle_team_member_statut}}</td>
+                  <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="showDialogupdatepeddleteammember(member)"></button><!--(click)="editProduct(product)"-->
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletemember(member)"></button><!--(click)="deleteProduct(product)"-->
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                  In total there are {{listofteamsmember ? listofteamsmember.length : 0 }} members for this team.
+                </div>
+              </ng-template>
+            </p-table>
+          </div>
+
+          <!--<p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+              <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" ></button>&lt;!&ndash;(click)="openNew()"&ndash;&gt;
+              <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" ></button> &lt;!&ndash;(click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"&ndash;&gt;
+            </ng-template>
+
+            <ng-template pTemplate="right">
+              <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+              <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+            </ng-template>
+          </p-toolbar>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-toasts-container aria-live="polite" aria-atomic="true"></app-toasts-container>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="text-left"> voulez-vous vraiment vous déconnecter ?</p>
+
+    <a class="btn btn-outline-danger " routerLink="/welcome" (click)="modal.close('Save click')">Deconnexion</a> <!--modal.close('Save click')-->
+    <button type="button" class="btn btn-outline-primary ml-3" (click)="modal.close('Save click')">Annuler </button>
+  </div>
+</ng-template>
+
+
+<ng-template  let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-titre">Choisir le template</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+  </div>
+</ng-template>
+
+<p-dialog header="Add Social NetWork" [(visible)]="display" (onHide)="onHide()">
+  <div class="d-flex">
+    <div class="">
+      <!--<img  src=  "information.png" class="img-thumbnail" alt="..."  width="50" height="50">-->
+      <a  [href]="urllink" > <!--*ngIf="!existlinkedinaccount()"--><!--(click)="ongettoken()" target="_blank" class="item" (click)="onclicklinkedin()" [href]="urllink"-->
+        <img src="/assets/Linkedin.png" class="rounded-circle" alt="LinkedIn" width="100" height="100">
+        <p class="text-center"> LinkedIn</p>
+      </a>
+    </div>
+    <div class="ml-1">
+      <!--<a class="item" href="google">
+        <img src="/assets/Facebook.png" class="rounded-circle" alt="Facebook" width="100" height="100">
+        <p class="text-center"> Facebook </p>
+      </a>-->
+      <a (click)="SigninwithFacebook()"  ><!--*ngIf="!existfacebookaccount()"-->
+        <img src="/assets/Facebook.png" class="rounded-circle" alt="Facebook" width="100" height="100">
+        <p class="text-center"> Facebook </p>
+      </a>
+    </div>
+
+    <div class="ml-1">
+      <a class="item" (click)="SigninwithTwitter()" > <!--*ngIf="!existtwitteraccount()"-->
+        <img src="/assets/twitter.png" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Twitter </p>
+      </a>
+    </div>
+    <!--<div class="ml-1">
+      <a class="item">
+        <img src="/assets/instagram.jpg" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Instagram </p>
+      </a>
+    </div>
+    <div class="ml-1">
+      <a class="item">
+        <img src="/assets/Pinterest.png" class="rounded-circle" alt="Twitter" width="100" height="100">
+        <p class="text-center"> Pinterest </p>
+      </a>
+    </div>-->
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Post" [(visible)]="displaypost" (onHide)="onHideDialogPost()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="posto">Post To</label>
+        <select class="form-control" id="posto" >
+          <option>LinkedIn</option>
+          <option>FaceBook</option>
+          <option>Twitter</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="textarea">Text</label>
+        <textarea class="form-control" rows="5" id="textarea"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Post Now</button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Pins" [(visible)]="displaypin" (onHide)="onHideDialogPin()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="pinto">Pin To</label>
+        <input type="text" class="form-control" id="pinto" placeholder="Pin to" >
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" class="form-control" id="website" placeholder="Add the Url this pin link to (required)" >
+      </div>
+      <div class="form-group">
+        <label for="textareapin">Description</label>
+        <textarea class="form-control" rows="5" id="textareapin"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFilepin" required>
+        <label class="custom-file-label" for="validatedCustomFilepin">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Pin Now</button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create Instagram Story" [(visible)]="displaystory" (onHide)="onHideDialogstory()" >
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="postory">Post To</label>
+        <select class="form-control" id="postory" >
+          <option>Instagram</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="textareastory">Text</label>
+        <textarea class="form-control" rows="5" id="textareastory"></textarea>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFilestory" required>
+        <label class="custom-file-label" for="validatedCustomFilestory">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-secondary ml-2 mt-1">Post Now</button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Create team" [(visible)]="displaypeddleteamcreate" (onHide)="onHidedisplaypeddleteamcreate()" >
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_name">team name</label>
+      <input type="text" class="form-control" id="peddle_team_name" (change)="checkpeddlename()"  placeholder="team name.." [formControl]="peddle_team_name">
+      <div *ngIf="checkifpeddleexist" class="text-danger"> this team already exist</div>
+      <div *ngIf="!peddle_team_name.valid" class="text-danger"> minimum 4 caracters</div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_description">Team Description :</label>
+      <textarea class="form-control" id="peddle_team_description" [formControl]="peddle_team_description" rows="5"></textarea>
+      <div class="text-success"> describe the purpose of this team</div>
+      <div *ngIf="!peddle_team_description.valid" class="text-danger"> please enter description of group </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-1" (click)="addteam()">
+    Add
+    <span *ngIf="boolspinnersteam" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+</p-dialog>
+
+<p-dialog header="Create team members" [(visible)]="createpeddleteammember" (onHide)="onHidecreatepeddleteammember()" >
+  <img  [src]=  "transformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+  <div class="custom-file col-12">
+    <input type="file" class="custom-file-input" id="eventpartner" (change)="filechangeevent($event)">
+    <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+    <div class="text-success"> {{peddle_team_member_file_name}}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_member_name">Member name</label>
+      <input type="text" class="form-control" id="peddle_team_member_name" placeholder="member name..." [formControl]="peddle_team_member_name">
+      <div *ngIf="!peddle_team_member_name.valid" class="text-danger"> enter valid name</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="peddle_team_member_email">Member email</label>
+      <input type="email" class="form-control" id="peddle_team_member_email" placeholder=".....@....." [formControl]="peddle_team_member_email">
+      <div *ngIf="!peddle_team_member_email.valid" class="text-danger"> enter valid email</div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="peddle_team_member_password">Member Password :</label>
+      <input type="password" class="form-control" id="peddle_team_member_password"  [formControl]="peddle_team_member_password">
+      <div *ngIf="!peddle_team_member_password.valid" class="text-danger"> enter valid password</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="peddle_team_member_statut">Status</label>
+      <select class="form-control" id="peddle_team_member_statut" [formControl]="peddle_team_member_statut">
+        <option>activated</option>
+        <option>deactivated</option>
+      </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-1" (click)="addteammember()">
+    Add Member
+    <span *ngIf="boolspinnersteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+</p-dialog>
+
+<p-dialog header=" Update team members" [(visible)]="updatepeddleteammember" (onHide)="onHideupdatepeddleteammember()" >
+  <img  [src]=  "updatetransformf()" class="img-thumbnail" alt="..."  width="150" height="150">
+  <div class="custom-file col-12">
+    <input type="file" class="custom-file-input" id="updateeventpartner" (change)="fileupdateevent($event)">
+    <label class="custom-file-label" for="eventpartner">Logo or profil</label>
+    <div class="text-success"> {{update_peddle_team_member_file_name}}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_name">Member name</label>
+      <input type="text" class="form-control" id="update_peddle_team_member_name" placeholder="member name..." [formControl]="update_peddle_team_member_name">
+      <div *ngIf="!update_peddle_team_member_name.valid" class="text-danger"> enter valid name</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_email">Member email</label>
+      <input type="email" class="form-control" id="update_peddle_team_member_email" placeholder=".....@....." [formControl]="update_peddle_team_member_email">
+      <div *ngIf="!update_peddle_team_member_email.valid" class="text-danger"> enter valid email</div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_password">Member Password :</label>
+      <input type="password" class="form-control" id="update_peddle_team_member_password"  [formControl]="update_peddle_team_member_password">
+      <div *ngIf="!update_peddle_team_member_password.valid" class="text-danger"> enter valid password</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="update_peddle_team_member_statut">Status</label>
+      <select class="form-control" id="update_peddle_team_member_statut" [formControl]="update_peddle_team_member_statut">
+        <option>activated</option>
+        <option>deactivated</option>
+      </select>
+    </div>
+  </div>
+  <button  type="button" class="btn btn-primary mt-1" (click)="updateteammember()" >
+    Update Member
+    <span *ngIf="boolspinnersupdateteammember" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+  <button  type="button" class="btn btn-danger mt-1" (click)="cancelupdatemember()" >
+    Cancel
+  </button>
+</p-dialog>
+
+<p-confirmDialog></p-confirmDialog>
+
+<p-toast key="linkedinaccount" position="top-right"></p-toast>
+<p-toast key="facebooksaved" position="top-right"></p-toast>
+<p-toast key="twitteraccount" position="top-right"></p-toast>
+<p-toast key="streamadded" position="top-right"></p-toast>
+<p-toast key="teammemberadded" position="top-right"></p-toast>
+<p-toast key="emptyteam" position="top-right"></p-toast>
+<p-toast key="sameobject" position="top-right"></p-toast>
+<p-toast key="updatemembersucess" position="top-right"></p-toast>
+<p-toast key="memberdeleted" position="top-right"></p-toast>
+

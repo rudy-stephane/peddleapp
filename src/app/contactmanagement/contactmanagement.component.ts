@@ -8,20 +8,20 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {FacebookLoginProvider, SocialAuthService} from 'angularx-social-login';
 import {TwitterService} from '../services/twitter.service';
 import {FacebookService} from '../services/facebook.service';
-import * as fire from 'firebase';
 import {TeamService} from '../services/team.service';
 import {DomSanitizer} from '@angular/platform-browser';
-import {any} from 'codelyzer/util/function';
-
+import * as fire from 'firebase';
 
 @Component({
-  selector: 'app-teammanagement',
-  templateUrl: './teammanagement.component.html',
-  styleUrls: ['./teammanagement.component.css'],
+  selector: 'app-contactmanagement',
+  templateUrl: './contactmanagement.component.html',
+  styleUrls: ['./contactmanagement.component.css'],
   providers: [MessageService]
 })
 // tslint:disable
-export class TeammanagementComponent implements OnInit {
+export class ContactmanagementComponent implements OnInit {
+
+
 
   peddle_social = [{peddle_social_name:'LinkedIn',peddle_social_stream:['post','scheduled']},{peddle_social_name:'FaceBook',peddle_social_stream:['post','page','mentions','scheduled']},{peddle_social_name:'Twitter',peddle_social_stream:['tweet','page','scheduled']}]
   social_input = new FormControl('LinkedIn');
@@ -298,11 +298,11 @@ export class TeammanagementComponent implements OnInit {
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     if(!this.checkifpeddleexist&&this.peddle_team_name.valid && this.peddle_team_description)
-    var peddle_team = {
-      peddle_team_name : this.peddle_team_name.value,
-      peddle_team_description : this.peddle_team_description.value,
-      peddle_user_email : peddle_user_email
-    };
+      var peddle_team = {
+        peddle_team_name : this.peddle_team_name.value,
+        peddle_team_description : this.peddle_team_description.value,
+        peddle_user_email : peddle_user_email
+      };
 
     this.teamService.saveteam(peddle_team).subscribe(result=>{
       this.messageService.add({key: 'streamadded', severity:'success', summary: 'Save team', detail: 'New team is Saved'});

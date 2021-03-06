@@ -37,6 +37,7 @@ import { TeammanagementComponent } from './teammanagement/teammanagement.compone
 import {TableModule} from 'primeng/table';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { ContactmanagementComponent } from './contactmanagement/contactmanagement.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     {path: 'password-forgotten', component: PasswordForgottenComponent},
     {path: 'teammanagement', component: TeammanagementComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
+    {path: 'contactmanagement', component: ContactmanagementComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ];
 /*const config = new AuthServiceConfig([
@@ -81,7 +83,8 @@ export function provideConfig() {
     ToastsContainerComponent,
     AnalyticsComponent,
     ProfilesettingComponent,
-    TeammanagementComponent
+    TeammanagementComponent,
+    ContactmanagementComponent
   ],
   imports: [
     BrowserModule,
