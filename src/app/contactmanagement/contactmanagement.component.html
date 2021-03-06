@@ -197,7 +197,7 @@
         <div class="card-body">
           <div class="text-black-50 h3"> Contact Management</div>
 
-          <div class="row">
+          <div class="row mt-4 mb-1">
             <button type="button" class="btn btn-primary" (click)="showDialogcreatecontact()">
               <i class="pi pi-plus"></i>
               Add Contact
@@ -450,10 +450,14 @@
       <div *ngIf="!peddle_contact_information.valid" class="text-danger"> enter valid link</div>
     </div>
 
-    <div class="col-6">
-      <button type="button" class="btn btn-primary mt-2" (click)="addingcontactinfos()">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary mt-5" (click)="addingcontactinfos()">
         Add infos
       </button>
+    </div>
+
+    <div class="col-4">
+      {{presentlistinfos}}
     </div>
   </div>
   <button type="button" class="btn btn-primary mt-1" (click)="addingcontact()">
