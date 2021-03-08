@@ -33,7 +33,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   social_input = new FormControl('LinkedIn');
 
-  urllink = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77b17box86iq9n&redirect_uri=https://peddleapp.herokuapp.com/brandambassador&scope=r_emailaddress r_basicprofile w_member_social r_organization_social r_1st_connections_size rw_organization_admin w_member_social w_organization_social';
+  urllink = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77b17box86iq9n&redirect_uri=https://peddleapp.herokuapp.com/brandambassador&scope=r_emailaddress r_basicprofile w_member_social r_organization_social r_1st_connections_size rw_organization_admin r_member_social w_organization_social';
 
   /*calendarPlugins = [dayGridPlugin]*/
   display: boolean = false;

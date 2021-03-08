@@ -38,6 +38,7 @@ import {TableModule} from 'primeng/table';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { ContactmanagementComponent } from './contactmanagement/contactmanagement.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     {path: 'teammanagement', component: TeammanagementComponent},
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: 'contactmanagement', component: ContactmanagementComponent},
+    {path: 'message', component: MessagesComponent},
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ];
 /*const config = new AuthServiceConfig([
@@ -84,7 +86,8 @@ export function provideConfig() {
     AnalyticsComponent,
     ProfilesettingComponent,
     TeammanagementComponent,
-    ContactmanagementComponent
+    ContactmanagementComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
