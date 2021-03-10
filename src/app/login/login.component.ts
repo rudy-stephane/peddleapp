@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   boolspinner= false;
 
-  constructor(private router: Router, private signupService:SignupService,private messageService: MessageService, private msgService:MsgService) { }
+  constructor(private router: Router, private signupService:SignupService,private messageService: MessageService, private msgservice:MsgService) { }
 //new
   ngOnInit(): void {
     this.msgs = [
@@ -66,6 +66,8 @@ export class LoginComponent implements OnInit {
           this.boolspinner= false;
         }else{
           sessionStorage.setItem('user',JSON.stringify(res));// brandambassador
+          //l'utilisateur signale qu'il est connecté
+          this.msgservice.conectuser(this.email.value);
           this.router.navigate(['brandambassador']);
         }
         //console.log(typeof  res);

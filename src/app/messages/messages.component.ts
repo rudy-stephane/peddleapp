@@ -60,8 +60,6 @@ export class MessagesComponent implements OnInit {
     this.user_name = peddle_user.peddle_user_name;
     this.user_plan = peddle_user.peddle_user_plan;
 
-    //l'utilisateur signale qu'il est connecté
-    this.msgservice.conectuser(peddle_user_email);
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
@@ -195,7 +193,7 @@ export class MessagesComponent implements OnInit {
       peddle_message_recipient: this.recipient,
       peddle_message_content : this.messagetosend.value,
       peddle_message_date : new Date()
-    }
+    };
     this.msgservice.sendingMessage(datatosend);
     this.peddle_message_list.push(this.messagetosend.value);
     this.messagetosend = new FormControl('');
