@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {SignupService} from '../services/signup.service';
 import {Message, MessageService} from 'primeng/api';
+import {MsgService} from '../services/msg.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]);
   boolspinner= false;
 
-  constructor(private router: Router, private signupService:SignupService,private messageService: MessageService) { }
+  constructor(private router: Router, private signupService:SignupService,private messageService: MessageService, private msgService:MsgService) { }
 //new
   ngOnInit(): void {
     this.msgs = [

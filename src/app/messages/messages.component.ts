@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
@@ -46,8 +46,9 @@ export class MessagesComponent implements OnInit {
   user_name = '';
   user_plan='';
 
-
+  messagetosend = new FormControl('');
   peddle_member_list = [];
+  peddle_message_list = [];
 
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private msgservice: MsgService) { }
 
@@ -59,6 +60,8 @@ export class MessagesComponent implements OnInit {
     this.user_name = peddle_user.peddle_user_name;
     this.user_plan = peddle_user.peddle_user_plan;
 
+    //l'utilisateur signale qu'il est connecté
+    this.msgservice.conectuser(peddle_user_email);
 
     this.activatedRoute.queryParams.subscribe(params => {
       if("code" in params){
@@ -78,8 +81,14 @@ export class MessagesComponent implements OnInit {
     this.msgservice.gettingpeddlemember().subscribe(lrest=>{
       let lmember = lrest as [any];
       this.peddle_member_list = lmember;
-    })
+    });
 
+    // Recepteur de message venant du serveur
+    this.msgservice
+      .getMessages()
+      .subscribe((message: string) => {
+        this.peddle_message_list.push(message);
+      });
   }
   SigninwithFacebook(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
@@ -170,11 +179,24 @@ export class MessagesComponent implements OnInit {
     });
     return existFacebook;
   }
-
+  recipient = '';
   memberselected(member){
     console.log("#######");
     console.log(member);
+    this.recipient = member.peddle_user_email,
     console.log("#######");
+  }
+
+  sendMessage(){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    var datatosend = {
+      peddle_message_sender : peddle_user_email,
+      peddle_message_recipient: this.recipient,
+      peddle_message_content : this.messagetosend.value,
+      peddle_message_date : new Date()
+    }
+    this.msgservice.sendingMessage(datatosend);
   }
 
 

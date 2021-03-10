@@ -302,6 +302,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     this.router.navigate(['profilesetting']);
   }
 
+
   /**
    * Methode pour le modal
    * @param content
