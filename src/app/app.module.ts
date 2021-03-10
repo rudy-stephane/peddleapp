@@ -39,6 +39,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { ContactmanagementComponent } from './contactmanagement/contactmanagement.component';
 import { MessagesComponent } from './messages/messages.component';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -108,7 +109,8 @@ export function provideConfig() {
     AngularFireAuthModule,
     AngularFirestoreModule,
     TableModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    VirtualScrollerModule
   ],
   providers: [
     {
