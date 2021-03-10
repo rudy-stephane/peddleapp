@@ -197,6 +197,8 @@ export class MessagesComponent implements OnInit {
       peddle_message_date : new Date()
     }
     this.msgservice.sendingMessage(datatosend);
+    this.peddle_message_list.push(this.messagetosend.value);
+    this.messagetosend = new FormControl('');
   }
 
 
