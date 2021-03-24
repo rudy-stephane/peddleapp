@@ -13,7 +13,7 @@ import {SocialAuthService} from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 // @ts-ignore
 import { FacebookLoginProvider } from 'angularx-social-login';
-import {MessageService} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FacebookService} from '../services/facebook.service';
@@ -51,6 +51,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   user_name = '';
   user_plan='';
 
+  socialnetworks: MenuItem[]; // Gestion des différents reseaux sociaux
+
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
   ngOnInit(): void {
@@ -76,24 +78,48 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
           if (result == true){
             this.messageService.add({key: 'linkedinaccount', severity:'success', summary: 'Account', detail: 'your LinkedIn Account have been added'});
           }
-
-          /*let reponse = result as any ;
-          let access_token = reponse.access_token;
-
-          console.log('################################');
-          console.log('################################');
-          console.log('access_token  :   '+ access_token);
-          console.log('################################');
-          console.log('################################');*/
-
         })
       }
-      /*console.log('parametre');
-      console.log(params);
-      console.log('code de parametre');
-      let date = params['code'];
-      console.log(date); // Print the parameter to the console.*/
     });
+
+    this.socialnetworks = [
+      {
+        label : 'Facebook',
+        icon : 'pi pi-fw pi-facebook',
+        command : ()=> this.SigninwithFacebook(),
+        items : [
+          {
+            label : 'Pages',
+            icon : 'pi pi-fw pi-wallet'
+          },
+          {
+            label : 'Groupes',
+            icon : 'pi pi-fw pi-users'
+          }
+        ]
+      },
+      {
+        label : 'Linkedin',
+        icon : 'fa fa-linkedin-square',
+        command: ()=> window.location.href = this.urllink,
+        items : [
+          {
+            label : 'Compagnies',
+            icon : 'pi pi-fw pi-home'
+          }
+        ]
+      },
+      {
+        label : 'Twitter',
+        icon : 'pi pi-fw pi-twitter',
+        command : ()=> this.SigninwithTwitter(),
+      },
+      {
+        label : 'Instagram',
+        icon : 'fa fa-instagram',
+      }
+    ];
+
   }
   SigninwithFacebook(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
