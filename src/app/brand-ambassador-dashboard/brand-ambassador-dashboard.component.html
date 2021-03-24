@@ -204,7 +204,7 @@
             <option>Twitter</option>
           </select>
         </div>-->
-        <p-splitButton label="add social network" icon="pi pi-plus" (click)="showDialog()" styleClass="p-button-help"></p-splitButton>  <!--(onClick)="save()" [model]="items"-->
+        <p-splitButton label="add social network" icon="pi pi-plus" (click)="showDialog()" [model]="socialnetworks" styleClass="p-button-help"></p-splitButton>  <!--(onClick)="save()" [model]="items"-->
         <button type="button" class="btn btn-outline-primary ml-5">adding stream</button>
         <!--<div class="col-8 " style="padding-left: 10%; padding-top: 4%">
           <p-chip *ngFor="let item of peddle_stream_list" label="{{item}}" icon="pi pi-microsoft"  (onRemove)="removecolumn($event)" [removable]="true"></p-chip>
