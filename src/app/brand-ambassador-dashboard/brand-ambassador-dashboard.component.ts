@@ -86,8 +86,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       {
         label : 'Facebook',
         icon : 'pi pi-fw pi-facebook',
-        command : ()=> this.SigninwithFacebook(),
         items : [
+          {
+            label : 'Personal account',
+            icon : 'pi pi-fw pi-id-card',
+            command : ()=> this.SigninwithFacebook(),
+          },
           {
             label : 'Pages',
             icon : 'pi pi-fw pi-wallet'
@@ -101,8 +105,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       {
         label : 'Linkedin',
         icon : 'fa fa-linkedin-square',
-        command: ()=> window.location.href = this.urllink,
         items : [
+          {
+            label : 'Personnal account',
+            icon : 'fa fa-linkedin-square',
+            command: ()=> window.location.href = this.urllink,
+          },
           {
             label : 'Compagnies',
             icon : 'pi pi-fw pi-home'
@@ -111,12 +119,24 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       },
       {
         label : 'Twitter',
-        icon : 'pi pi-fw pi-twitter',
-        command : ()=> this.SigninwithTwitter(),
+        icon : 'pi pi-fw pi-twitter',  //command : ()=> this.SigninwithTwitter(),
+        items : [
+          {
+            label : 'personal account',
+            icon : 'pi pi-fw pi-twitter',
+            command : ()=> this.SigninwithTwitter()
+          },
+        ]
       },
       {
         label : 'Instagram',
         icon : 'fa fa-instagram',
+        items : [
+          {
+            label : 'personal account',
+            icon : 'fa fa-instagram',
+          },
+        ]
       }
     ];
 
