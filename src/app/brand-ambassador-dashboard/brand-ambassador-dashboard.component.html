@@ -195,7 +195,7 @@
 
       <!-- header to manage "adding social networks" and "adding stream" -->
 
-      <div class="row mt-3">
+      <div class="row mt-3 ml-5 mb-2">
         <!--<div class="form-group col-4 mt-3">
           <label for="selectplan">Social Network</label>
           <select class="form-control" id="selectplan" (change)="socialchange()" [formControl]="social_input">
@@ -204,7 +204,7 @@
             <option>Twitter</option>
           </select>
         </div>-->
-        <p-splitButton label="add social network" icon="pi pi-plus"></p-splitButton>  <!--(onClick)="save()" [model]="items"-->
+        <p-splitButton label="add social network" icon="pi pi-plus" (click)="showDialog()" styleClass="p-button-help"></p-splitButton>  <!--(onClick)="save()" [model]="items"-->
         <button type="button" class="btn btn-outline-primary ml-5">adding stream</button>
         <!--<div class="col-8 " style="padding-left: 10%; padding-top: 4%">
           <p-chip *ngFor="let item of peddle_stream_list" label="{{item}}" icon="pi pi-microsoft"  (onRemove)="removecolumn($event)" [removable]="true"></p-chip>
