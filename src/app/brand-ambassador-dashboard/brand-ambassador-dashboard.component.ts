@@ -113,7 +113,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
           },
           {
             label : 'Compagnies',
-            icon : 'pi pi-fw pi-home'
+            icon : 'pi pi-fw pi-home',
+            command: ()=> this.searchlinkedincompagnies(),
           }
         ]
       },
@@ -139,8 +140,27 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         ]
       }
     ];
+  }
+
+  searchlinkedincompagnies(){
+
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+
+    var user_email = {
+      peddle_user_email:peddle_user_email
+    };
+
+    this.linkedinService.searchlinkedincompagnies(user_email).subscribe(compagnies_result=>{
+      console.log('###################');
+      console.log(compagnies_result);
+      console.log('###################');
+    })
 
   }
+
+
+
   SigninwithFacebook(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;

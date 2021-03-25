@@ -62,4 +62,10 @@ export class LinkedinService {
   savefacebookaccount(peddle_facebook_account){
     return this.http.post(this.endpoint+'/savefacebookaccount',peddle_facebook_account);
   }
+  searchlinkedincompagnies(peddle_user){
+    return this.http.post(this.endpoint+'/searchlinkedincompagnies',peddle_user);
+  }
+  alreadyexistlinkedincompagnie(linkedin_user_compagnies){
+    return this.http.post(this.endpoint+'/alreadyexistlinkedincompagnie',linkedin_user_compagnies);
+  }
 }
