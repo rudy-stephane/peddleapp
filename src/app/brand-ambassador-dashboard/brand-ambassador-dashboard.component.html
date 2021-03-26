@@ -404,9 +404,9 @@
   <div class="card">
     <div class="card-body">
       <div class="d-inline-block" *ngFor="let company of listedescompagnies">
-        <img src="{{company.imageUrl}}"  alt="{{company.localizedname}}" width="80" height="80" class="rounded rounded-circle">
+        <img src="{{company.imageUrl}}"  alt="{{company.localizedname}}" width="40" height="40" class="rounded">
         <span class="ml-2">{{company.localizedname}}</span>
-        <button type="button" class="btn btn-primary ml-2" *ngIf="!linkedincompanyalreadyexist(company)" (click)="addinglinkedincompagny(company)">add</button>
+        <button type="button" class="btn btn-primary ml-2" *ngIf="!linkedincompanyalreadyexist(company)" (click)="addinglinkedincompagny(company)">add</button> <!--!btnboolexistcompagnie-->
         <button type="button" class="btn btn-primary ml-2" *ngIf="linkedincompanyalreadyexist(company)" disabled>already added</button>
       </div>
     </div>

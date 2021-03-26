@@ -163,9 +163,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   }
 
- // btnboolexistcompagnie//=false;// booleen qui définit si la compagnie existe ou pas
+  btnboolexistcompagnie=false;// booleen qui définit si la compagnie existe ou pas
   linkedincompanyalreadyexist(entreprise){
-    let boolresult = false;
+    //let varresult = false;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     var donnesrequete = {
@@ -174,12 +174,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
     this.linkedinService.alreadyexistlinkedincompagnie(donnesrequete).subscribe(resexit=>{
       if(resexit == true){
-        boolresult = true
+        this.btnboolexistcompagnie = true
       }else{
-        boolresult = false;
+        this.btnboolexistcompagnie = false;
       }
     });
-    return boolresult ;
+    return this.btnboolexistcompagnie ;
   }
 
   addinglinkedincompagny(compagnie){
@@ -194,7 +194,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
     this.linkedinService.addinglinkedincompagnies(compagnierequest).subscribe(addingresult=>{
       this.messageService.add({key: 'companyadded', severity:'success', summary: 'Added', detail: compagnie.localizedname +'   added'});
-      //this.btnboolexistcompagnie = true;
+      this.btnboolexistcompagnie = true;
       //this.linkedincompanyalreadyexist(compagnie);
     })
   }
@@ -400,7 +400,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
   onHideDisplayLinkedincompagnies(){
     this.displaylinkedincompany = false;
-    //this.btnboolexistcompagnie = false;
+    this.btnboolexistcompagnie = false;
   }
   peddle_stream_list = this.peddle_social[0].peddle_social_stream;
   socialchange(){
