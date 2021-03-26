@@ -399,7 +399,22 @@
   </div>
 </p-dialog>
 
+
+<p-dialog header="Liste des compagnies"  [(visible)]="displaylinkedincompany" (onHide)="onHideDisplayLinkedincompagnies()"> <!--[(visible)]="displaystory" (onHide)="onHideDialogstory()"-->
+  <div class="card">
+    <div class="card-body">
+      <div class="d-inline-block" *ngFor="let company of listedescompagnies">
+        <img src="{{company.imageUrl}}"  alt="{{company.localizedname}}" width="80" height="80" class="rounded rounded-circle">
+        <span>{{company.localizedname}}</span>
+        <button type="button" class="btn btn-primary" *ngIf="!linkedincompanyalreadyexist(company)" (click)="addinglinkedincompagny(company)">add</button>
+        <button type="button" class="btn btn-primary" *ngIf="linkedincompanyalreadyexist(company)" disabled>already added</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
 <p-toast key="linkedinaccount" position="top-right"></p-toast>
 <p-toast key="facebooksaved" position="top-right"></p-toast>
 <p-toast key="twitteraccount" position="top-right"></p-toast>
+<p-toast key="companyadded" position="top-right"></p-toast>
 

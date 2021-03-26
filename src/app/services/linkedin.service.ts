@@ -65,7 +65,11 @@ export class LinkedinService {
   searchlinkedincompagnies(peddle_user){
     return this.http.post(this.endpoint+'/searchlinkedincompagnies',peddle_user);
   }
+
   alreadyexistlinkedincompagnie(linkedin_user_compagnies){
     return this.http.post(this.endpoint+'/alreadyexistlinkedincompagnie',linkedin_user_compagnies);
+  }
+  addinglinkedincompagnies(company){
+    return this.http.post(this.endpoint+'/addinglinkedincompagnies',company);
   }
 }
