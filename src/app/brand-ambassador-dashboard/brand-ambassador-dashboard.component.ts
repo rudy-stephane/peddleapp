@@ -163,8 +163,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   }
 
+  btnboolexistcompagnie=false;// booleen qui définit si la compagnie existe ou pas
   linkedincompanyalreadyexist(entreprise){
-    let varresult = false;
+    //let varresult = false;
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
     var donnesrequete = {
@@ -173,12 +174,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
     this.linkedinService.alreadyexistlinkedincompagnie(donnesrequete).subscribe(resexit=>{
       if(resexit == true){
-        varresult = true
+        this.btnboolexistcompagnie = true
       }else{
-        varresult = false;
+        this.btnboolexistcompagnie = false;
       }
     });
-    return varresult ;
+    return this.btnboolexistcompagnie ;
   }
 
   addinglinkedincompagny(compagnie){
@@ -193,7 +194,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
     this.linkedinService.addinglinkedincompagnies(compagnierequest).subscribe(addingresult=>{
       this.messageService.add({key: 'companyadded', severity:'success', summary: 'Added', detail: compagnie.localizedname +'   added'});
-      this.linkedincompanyalreadyexist(compagnie);
+      this.btnboolexistcompagnie = true;
+      //this.linkedincompanyalreadyexist(compagnie);
     })
   }
 
