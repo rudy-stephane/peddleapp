@@ -400,6 +400,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
   onHideDisplayLinkedincompagnies(){
     this.displaylinkedincompany = false;
+    this.btnboolexistcompagnie = false;
   }
   peddle_stream_list = this.peddle_social[0].peddle_social_stream;
   socialchange(){
