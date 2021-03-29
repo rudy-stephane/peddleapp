@@ -54,6 +54,15 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   socialnetworks: MenuItem[]; // Gestion des différents reseaux sociaux
 
+  facebooklistflux = ['Activity','Mentions', 'Posts', 'Messages','scheduled'];
+  linkedinlistsflux = ['Flux','posts','scheduled'];
+  twitterlistsflux = ['Acceuil','Mentions', 'Mes Tweets', 'retweets','scheduled'];
+  instagramlistsflux = ['Posts', 'scheduled'];
+
+  socialstreamlist = [];
+
+  dboolchoosedashboard = false ;
+
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
   ngOnInit(): void {
@@ -368,6 +377,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   showDialogstory(){
     this.displaystory= true;
   }
+  showDialogDashboard(){
+    this.dboolchoosedashboard = true;
+  }
   onHideDialogPost(){
     this.displaypost = false;
   }
@@ -383,16 +395,46 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   onHideDisplayLinkedincompagnies(){
     this.displaylinkedincompany = false;
   }
+  onHideDialogDashboard(){
+    this.dboolchoosedashboard = false;
+  }
   peddle_stream_list = this.peddle_social[0].peddle_social_stream;
   socialchange(){
-    console.log(this.social_input.value);
+
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+
+    var user_email = {
+      peddle_user_email:peddle_user_email
+    };
+
+    if(this.social_input.value == 'FaceBook'){
+      this.facebookservice.gettingfacebooklisttream(user_email).subscribe(resliststream=>{
+        let fcbkliststream = resliststream as [any];
+        this.socialstreamlist = fcbkliststream;
+      })
+    }else if(this.social_input.value == 'LinkedIn'){
+      this.linkedinService.gettinglinkedinliststream(user_email).subscribe(resliststream=>{
+        let lkdliststream = resliststream as [any];
+        this.socialstreamlist = lkdliststream;
+      })
+    }else if(this.social_input.value == 'Twitter'){
+      this.twitterservice.gettingtwitterliststream(user_email).subscribe(resliststream=>{
+        let twliststream = resliststream as [any];
+        this.socialstreamlist = twliststream;
+      })
+    }else if(this.social_input.value == 'Instagram'){
+
+    }
+
+    /*console.log(this.social_input.value);
     for(let i=0;i<this.peddle_social.length;i++){
       if(this.social_input.value == this.peddle_social[i].peddle_social_name){
         this.peddle_stream_list = this.peddle_social[i].peddle_social_stream;
         break;
       }
     }
-    console.log(this.peddle_stream_list);
+    console.log(this.peddle_stream_list);*/
   }
 
 

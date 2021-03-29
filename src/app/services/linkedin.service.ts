@@ -72,4 +72,8 @@ export class LinkedinService {
   addinglinkedincompagnies(company){
     return this.http.post(this.endpoint+'/addinglinkedincompagnies',company);
   }
+
+  gettinglinkedinliststream(peddle_user){
+    return this.http.post(this.endpoint+'/gettinglinkedinliststream',peddle_user)
+  }
 }

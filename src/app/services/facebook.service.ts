@@ -16,4 +16,8 @@ export class FacebookService {
   existfacebookaccount(peddle_user){
     return this.http.post(this.endpoint+'/existfacebookaccount',peddle_user);
   }
+
+  gettingfacebooklisttream(peddle_user){
+    return this.http.post(this.endpoint+'/gettingfacebooklisttream',peddle_user);
+  }
 }

@@ -22,6 +22,10 @@ export class TwitterService {
     return this.http.post(this.endpoint+'/existtwitteraccount',peddle_user);
   }
 
+  gettingtwitterliststream(peddle_user){
+    return this.http.post(this.endpoint+'/gettingtwitterliststream',peddle_user)
+  }
+
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/
 
