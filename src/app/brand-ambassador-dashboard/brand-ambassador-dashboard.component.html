@@ -422,8 +422,8 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-6">
-            <label for="network">Social Network</label>
+          <div class="">
+            <label for="network" class="text-primary">select Network</label>
             <select class="form-control" id="network" (change)="socialchange()" [formControl]="social_input">
               <option>FaceBook</option>
               <option>LinkedIn</option>
@@ -431,28 +431,27 @@
               <option>Instagram</option>
             </select>
           </div>
-          <div class="form-group col-6">
-            <label for="profil">select profil</label>
+          <div class="form-group" *ngIf="social_input.value == 'LinkedIn' ">
+            <label for="profil" class="text-primary">select profil</label>
             <select class="form-control" id="profil" >  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let item of socialstreamlist">
-                <div *ngIf="social_input.value == 'LinkedIn' ">
                   <img src="{{item.imageUrl}}"  alt="image" width="40" height="40" class="rounded">
                   <span class="ml-2">{{item.localizedname}} </span>
-                </div>
               </option>
             </select>
           </div>
         </div>
+
         <div class="row">
-          <div  *ngIf="social_input.value == 'LinkedIn'" class="form-group col-6">
-            <label for="fluxlinkedin">type of flux</label>
+          <div  *ngIf="social_input.value == 'LinkedIn'" class="form-group">
+            <label for="fluxlinkedin" class="text-primary">type of flux</label>
             <select class="form-control" id="fluxlinkedin" >  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let lkdin of linkedinlistsflux">
                 {{lkdin}}
               </option>
             </select>
           </div>
-          <div  *ngIf="social_input.value == 'FaceBook'" class="form-group col-6">
+          <div  *ngIf="social_input.value == 'FaceBook'" class="form-group">
             <label for="fluxfacebook">type of flux</label>
             <select class="form-control" id="fluxfacebook" >  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let fck of facebooklistflux">
