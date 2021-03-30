@@ -456,7 +456,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       //console.log(this.valeurselectionnee);
       console.log('#################');
       console.log(this.select_profil.value);
-      console.log(this.select_profil.value.imageUrl);
+      console.log(this.select_profil.value.imageUrl); 
       console.log(this.select_profil.value.localizedname);
       /*console.log(JSON.parse(this.valeurselectionnee.toString()).localizedname);*/
 
