@@ -449,7 +449,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       //this.peddle_stream_list.push({icon : 'fa fa-linkedin-square', title : 'Activities'});
 
       console.log(this.select_flux.value);
-      console.log(this.social_input.value);
+      console.log('#################');
+      console.log(this.select_profil);
 
       /*let companie = this.select_profil.value;
       console.log('##########');
