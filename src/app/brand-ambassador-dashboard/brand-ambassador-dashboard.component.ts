@@ -421,7 +421,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.gettinglinkedinliststream(user_email).subscribe(resliststream=>{
         let lkdliststream = resliststream as [any];
         this.socialstreamlist = lkdliststream;
-        console.log(lkdliststream[0].companyurn);
+        //console.log(lkdliststream[0].companyurn);
       })
     }else if(this.social_input.value == 'Twitter'){
       /*this.twitterservice.gettingtwitterliststream(user_email).subscribe(resliststream=>{
@@ -456,8 +456,8 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       //console.log(this.valeurselectionnee);
       console.log('################# localized');
       console.log(this.select_profil.value);
-      console.log(this.select_profil.value.imageUrl);
-      console.log(this.select_profil.value.localizedname);
+      //console.log(this.select_profil.value.imageUrl);
+      //console.log(this.select_profil.value.localizedname);
       /*console.log(JSON.parse(this.valeurselectionnee.toString()).localizedname);*/
 
       /*let companie = this.select_profil.value;
