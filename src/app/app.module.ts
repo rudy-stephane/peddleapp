@@ -40,6 +40,7 @@ import {ConfirmationService} from 'primeng/api';
 import { ContactmanagementComponent } from './contactmanagement/contactmanagement.component';
 import { MessagesComponent } from './messages/messages.component';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -110,7 +111,8 @@ export function provideConfig() {
     AngularFirestoreModule,
     TableModule,
     ConfirmDialogModule,
-    VirtualScrollerModule
+    VirtualScrollerModule,
+    DropdownModule
   ],
   providers: [
     {
