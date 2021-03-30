@@ -446,7 +446,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   selectli
 
   fluxselected(){
-    if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn'){
+
+
+    console.log(this.select_flux.value);
+    console.log(this.social_input.value);
+    
+    /*if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn'){
       //this.peddle_stream_list.push({icon : 'fa fa-linkedin-square', title : 'Activities'});
       let companie = this.select_profil.value;
       console.log('##########');
@@ -462,7 +467,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         let resultat = lkdactivities as [any];
         this.lisofactivitieslinkedin = resultat ;
       })
-    }
+    }*/
   }
 
 
