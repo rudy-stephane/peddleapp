@@ -421,6 +421,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.gettinglinkedinliststream(user_email).subscribe(resliststream=>{
         let lkdliststream = resliststream as [any];
         this.socialstreamlist = lkdliststream;
+        console.log(lkdliststream[0].companyurn);
       })
     }else if(this.social_input.value == 'Twitter'){
       /*this.twitterservice.gettingtwitterliststream(user_email).subscribe(resliststream=>{
