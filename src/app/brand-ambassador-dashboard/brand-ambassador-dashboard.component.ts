@@ -29,7 +29,7 @@ import {FacebookService} from '../services/facebook.service';
 // tslint:disable
 export class BrandAmbassadorDashboardComponent implements OnInit {
 
-  peddle_social = [{peddle_social_name:'LinkedIn',peddle_social_stream:['post','scheduled']},{peddle_social_name:'FaceBook',peddle_social_stream:['post','page','mentions','scheduled']},{peddle_social_name:'Twitter',peddle_social_stream:['tweet','page','scheduled']}]
+  //peddle_social = [{peddle_social_name:'LinkedIn',peddle_social_stream:['post','scheduled']},{peddle_social_name:'FaceBook',peddle_social_stream:['post','page','mentions','scheduled']},{peddle_social_name:'Twitter',peddle_social_stream:['tweet','page','scheduled']}]
 
   social_input = new FormControl('LinkedIn');
 
@@ -62,6 +62,10 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   socialstreamlist = [];
 
   dboolchoosedashboard = false ;
+  select_flux = new FormControl('');
+  select_profil = new FormControl('');
+
+  peddle_stream_list = [];
 
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
 
@@ -398,7 +402,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   onHideDialogDashboard(){
     this.dboolchoosedashboard = false;
   }
-  peddle_stream_list = this.peddle_social[0].peddle_social_stream;
+  //this.peddle_social[0].peddle_social_stream;
   socialchange(){
 
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
@@ -435,6 +439,27 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       }
     }
     console.log(this.peddle_stream_list);*/
+  }
+
+  lisofactivitieslinkedin = [];
+  fluxselected(){
+    if(this.select_flux.value == 'Flux' && this.social_input.value == 'Linkedin'){
+      //this.peddle_stream_list.push({icon : 'fa fa-linkedin-square', title : 'Activities'});
+      let companie = this.select_profil.value;
+      console.log('##########');
+      console.log(companie);
+      let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+      let peddle_user_email = peddle_user.peddle_user_email;
+      var user_email = {
+        peddle_user_email:peddle_user_email,
+        companyurn: companie.companyurn,
+      };
+
+      this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
+        let resultat = lkdactivities as [any];
+        this.lisofactivitieslinkedin = resultat ;
+      })
+    }
   }
 
 

@@ -74,6 +74,10 @@ export class LinkedinService {
   }
 
   gettinglinkedinliststream(peddle_user){
-    return this.http.post(this.endpoint+'/gettinglinkedinliststream',peddle_user)
+    return this.http.post(this.endpoint+'/gettinglinkedinliststream',peddle_user);
+  }
+
+  gettinglinkedinactivities(lkdactivities){
+    return this.http.post(this.endpoint+'/linkedinactivities',lkdactivities);
   }
 }

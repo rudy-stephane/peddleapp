@@ -216,17 +216,29 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex">
-              <div class="w-50 ml-5 border-right" *ngFor="let item of peddle_stream_list">
-                <strong class="font-weight-bold">{{item}}</strong>
+              <div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'Linkedin'">
+                <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
+                <!--<strong class="font-weight-bold">{{item}}</strong>-->
                 <hr/>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="">
-                      <img src="/assets/information.png" class="rounded-circle" alt="LinkedIn" width="20" height="20">
-                      <div class="d-inline-block ml-2">
-                        <div class="text-primary"> Stream Name</div>
-                      </div>
+
+                <div class="">
+                  <img src="{{select_profil.value.imageUrl}}" class="rounded-circle" alt="LinkedIn" width="20" height="20">
+                  <div class="d-inline-block ml-2">
+                    <div class="text-primary"> {{select_profil.value.localizedname}}</div>
+                  </div>
+                </div>
+                <div class="overflow-auto ">
+                  <div *ngFor="let elts of lisofactivitieslinkedin">
+
+                    <div class="text-black-50"> {{elts.text.text}}</div>
+
                     </div>
+
+                  </div>
+                </div>
+                <!--<div class="card">
+                  <div class="card-body">
+
                     <div class="">
                       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                       <img src="/assets/aiceperts.jpg" class="w-100" alt="information" >
@@ -241,7 +253,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -433,8 +445,8 @@
           </div>
           <div class="form-group" *ngIf="social_input.value == 'LinkedIn' ">
             <label for="profil" class="text-primary">select profil</label>
-            <select class="form-control" id="profil" >  <!--(change)="socialchange()" [formControl]="social_input"-->
-              <option *ngFor="let item of socialstreamlist">
+            <select class="form-control" id="profil" [formControl] = "select_profil">  <!--(change)="socialchange()" [formControl]="social_input"-->
+              <option *ngFor="let item of socialstreamlist" value="{{item}}">
                   <img src="{{item.imageUrl}}"  alt="image" width="40" height="40" class="rounded">
                   <span class="ml-2">{{item.localizedname}} </span>
               </option>
@@ -469,7 +481,7 @@
           </div>
           <div  *ngIf="social_input.value == 'Instagram'" class="form-group col-6">
             <label for="fluxinstagram">type of flux</label>
-            <select class="form-control" id="fluxinstagram" >  <!--(change)="socialchange()" [formControl]="social_input"-->
+            <select class="form-control" id="fluxinstagram" (change)="fluxselected()" [formControl] = "select_flux">  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let ins of instagramlistsflux">
                 {{ins}}
               </option>
