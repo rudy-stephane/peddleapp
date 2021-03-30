@@ -451,7 +451,7 @@
           <div class="form-group" *ngIf="social_input.value == 'LinkedIn' ">
             <label for="profil" class="text-primary">select profil</label>
             <select class="form-control" id="profil" [formControl] = "select_profil">  &lt;!&ndash;(change)="socialchange()" [formControl]="social_input"&ndash;&gt;
-              <option *ngFor="let item of socialstreamlist" ngValue="{{item}}">
+              <option *ngFor="let item of socialstreamlist" value="{{item.companyurn}}">
                   <img src="{{item.imageUrl}}"  alt="image" width="40" height="40" class="rounded">
                   <span class="ml-2">{{item.localizedname}} </span>
               </option>
