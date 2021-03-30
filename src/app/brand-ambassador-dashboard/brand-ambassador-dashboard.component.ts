@@ -451,29 +451,24 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   fluxselected(){
 
     if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn'){
-      //this.peddle_stream_list.push({icon : 'fa fa-linkedin-square', title : 'Activities'});
-
-      //console.log(this.valeurselectionnee);
+      
       console.log('################# localized');
       console.log(this.select_profil.value);
-      //console.log(this.select_profil.value.imageUrl);
-      //console.log(this.select_profil.value.localizedname);
-      /*console.log(JSON.parse(this.valeurselectionnee.toString()).localizedname);*/
 
-      /*let companie = this.select_profil.value;
+
+      let companie = this.select_profil.value;
       console.log('##########');
       console.log(companie);
       let peddle_user = JSON.parse(sessionStorage.getItem('user'));
       let peddle_user_email = peddle_user.peddle_user_email;
       var user_email = {
         peddle_user_email:peddle_user_email,
-        companyurn: companie.companyurn,
+        companyurn: this.select_profil.value,
       };
-
       this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
         let resultat = lkdactivities as [any];
         this.lisofactivitieslinkedin = resultat ;
-      })*/
+      })
     }
   }
 
