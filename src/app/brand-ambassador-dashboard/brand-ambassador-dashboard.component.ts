@@ -451,11 +451,10 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   fluxselected(){
 
     if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn'){
-      
+
       console.log('################# localized');
       console.log(this.select_profil.value);
-
-
+      
       let companie = this.select_profil.value;
       console.log('##########');
       console.log(companie);
@@ -468,6 +467,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
         let resultat = lkdactivities as [any];
         this.lisofactivitieslinkedin = resultat ;
+        console.log(resultat);
       })
     }
   }
