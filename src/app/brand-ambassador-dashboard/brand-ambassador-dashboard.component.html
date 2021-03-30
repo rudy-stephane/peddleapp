@@ -457,7 +457,7 @@
         <div class="row">
           <div  *ngIf="social_input.value == 'LinkedIn'" class="form-group">
             <label for="fluxlinkedin" class="text-primary">type of flux</label>
-            <select class="form-control" id="fluxlinkedin" >  <!--(change)="socialchange()" [formControl]="social_input"-->
+            <select class="form-control" id="fluxlinkedin" (change)="fluxselected()" [formControl] = "select_flux">  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let lkdin of linkedinlistsflux">
                 {{lkdin}}
               </option>
@@ -481,7 +481,7 @@
           </div>
           <div  *ngIf="social_input.value == 'Instagram'" class="form-group col-6">
             <label for="fluxinstagram">type of flux</label>
-            <select class="form-control" id="fluxinstagram" (change)="fluxselected()" [formControl] = "select_flux">  <!--(change)="socialchange()" [formControl]="social_input"-->
+            <select class="form-control" id="fluxinstagram" >  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let ins of instagramlistsflux">
                 {{ins}}
               </option>
