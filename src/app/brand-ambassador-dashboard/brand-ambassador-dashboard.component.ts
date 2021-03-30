@@ -454,7 +454,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
       console.log('################# localized');
       console.log(this.select_profil.value);
-      
+
       let companie = this.select_profil.value;
       console.log('##########');
       console.log(companie);

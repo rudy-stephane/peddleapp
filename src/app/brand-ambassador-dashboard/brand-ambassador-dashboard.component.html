@@ -221,21 +221,19 @@
                 <!--<strong class="font-weight-bold">{{item}}</strong>-->
                 <hr/>
 
-                <div class="">
+               <!-- <div class="">
                   <img src="{{select_profil.value.imageUrl}}" class="rounded-circle" alt="LinkedIn" width="20" height="20">
                   <div class="d-inline-block ml-2">
                     <div class="text-primary"> {{select_profil.value.localizedname}}</div>
                   </div>
-                </div>
-                <div class="overflow-auto ">
-                  <div *ngFor="let elts of lisofactivitieslinkedin">
-
+                </div>-->
+                <div class="overflow-auto">
+                  <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
                     <div class="text-black-50"> {{elts.text.text}}</div>
-
-                    </div>
-
                   </div>
+
                 </div>
+              </div>
                 <!--<div class="card">
                   <div class="card-body">
 
