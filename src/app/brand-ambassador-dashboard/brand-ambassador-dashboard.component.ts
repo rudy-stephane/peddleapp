@@ -451,6 +451,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       console.log(this.select_flux.value);
       console.log('#################');
       console.log(this.select_profil.value);
+      console.log(this.select_profil.value.imageUrl);
+      console.log(this.select_profil.value.localizedname);
+      console.log(JSON.parse(this.select_profil.value.toString()).localizedname);
 
       /*let companie = this.select_profil.value;
       console.log('##########');
