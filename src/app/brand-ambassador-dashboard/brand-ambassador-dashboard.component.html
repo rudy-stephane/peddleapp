@@ -447,8 +447,8 @@
             <label for="profil" class="text-primary">select profil</label>
             <select class="form-control" id="profil" [formControl] = "select_profil">  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let item of socialstreamlist" value="{{item}}">
-                  <img src="{{item.imageUrl}}"  alt="image" width="10" height="10" class="rounded">
-                  <span class="ml-2" (click)="obtenirleprofilselectionne(item)">{{item.localizedname}} </span>
+                  <img src="{{item.imageUrl}}"  alt="image" width="40" height="40" class="rounded">
+                  <span class="ml-2">{{item.localizedname}} </span>
               </option>
             </select>
           </div>
