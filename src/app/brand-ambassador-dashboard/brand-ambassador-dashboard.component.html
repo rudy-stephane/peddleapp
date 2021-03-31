@@ -212,22 +212,54 @@
         </div>-->
       </div>
 
-      <div class="container-fluid">
+      <div class="d-flex">
+        <div class="card" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
+          <div class="card-header">
+            <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
+              <div class="text-black-50"> {{elts.text.text}}</div>
+              <div class="d-inline my-1">
+                <input type="text" class="form-control" id="comment" placeholder="write a comment" >
+                <button type="button" class="ml-2">
+                  send
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
+          <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
+          <hr/>
+
+          <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
+            <div class="text-black-50"> {{elts.text.text}}</div>
+            <div class="d-inline my-1">
+              <input type="text" class="form-control" id="comment" placeholder="write a comment" >
+              <button type="button" class="ml-2">
+                send
+              </button>
+            </div>
+          </div>
+        </div>-->
+      </div>
+
+      <!--<div class="container-fluid">
         <div class="card">
           <div class="card-body">
             <div class="d-flex">
               <div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
                 <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
-                <!--<strong class="font-weight-bold">{{item}}</strong>-->
+                &lt;!&ndash;<strong class="font-weight-bold">{{item}}</strong>&ndash;&gt;
                 <hr/>
 
-               <!-- <div class="">
+               &lt;!&ndash; <div class="">
                   <img src="{{select_profil.value.imageUrl}}" class="rounded-circle" alt="LinkedIn" width="20" height="20">
                   <div class="d-inline-block ml-2">
                     <div class="text-primary"> {{select_profil.value.localizedname}}</div>
                   </div>
-                </div>-->
-                <div class="overflow-auto">
+                </div>&ndash;&gt;
                   <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
                     <div class="text-black-50"> {{elts.text.text}}</div>
                     <div class="d-inline my-1">
@@ -238,9 +270,8 @@
                     </div>
                   </div>
 
-                </div>
               </div>
-                <!--<div class="card">
+                &lt;!&ndash;<div class="card">
                   <div class="card-body">
 
                     <div class="">
@@ -257,11 +288,11 @@
                     </div>
                   </div>
                 </div>
-              </div>-->
+              </div>&ndash;&gt;
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
