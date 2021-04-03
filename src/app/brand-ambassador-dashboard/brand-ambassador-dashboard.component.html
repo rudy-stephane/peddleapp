@@ -227,13 +227,14 @@
                   <a href="{{elts.content.entityLocation}}" class="card-link">Go to .....</a>
                 </div>
               </div>
-              <!--<div class="card" *ngIf="elts.originalShare !='' ">
-                <img src="{{elts.resolvedUrl}}" *ngIf="elts.resolvedUrl !='' " class="card-img-top" alt="...">
+              <div class="card" *ngIf="elts.originalShare !='' ">
+                <img src="{{elts.originalShare.content.resolvedUrl}}" *ngIf="elts.originalShare.content.resolvedUrl !='' " class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{elts.title}}</h5>
-                  <a href="{{elts.entityLocation}}" class="card-link">Go to .....</a>
+                  <h5 class="card-title">{{elts.originalShare.content.title}}</h5>
+                  <p class="card-text"> {{elts.originalShare.text}}</p>
+                  <a href="{{elts.originalShare.content.entityLocation}}" class="card-link">Go to .....</a>
                 </div>
-              </div>-->
+              </div>
 
               <!--<img  class="i" alt="LinkedIn" width="20" height="20">-->
               <div class="my-1">
