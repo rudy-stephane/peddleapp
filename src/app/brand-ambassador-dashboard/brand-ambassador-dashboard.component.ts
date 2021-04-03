@@ -467,7 +467,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
         let resultat = lkdactivities as [any];
         this.lisofactivitieslinkedin = resultat ;
-        console.log(resultat[0]);
+        console.log(resultat);
       })
     }
   }

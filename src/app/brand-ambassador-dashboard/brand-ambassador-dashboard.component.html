@@ -221,10 +221,10 @@
             <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
               <p class="text-black-50"> {{elts.text}} <br/> {{converttimestamptodate(elts.time_created)}}</p>
               <div class="card" *ngIf="elts.content !='' ">
-                <img [src]="elts.resolvedUrl" class="card-img-top" alt="...">
+                <img src="{{elts.resolvedUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{elts.title}}</h5>
-                  <a [href]="elts.resolvedUrl" class="card-link">Go to .....</a>
+                  <a href="{{elts.resolvedUrl}}" class="card-link">Go to .....</a>
                 </div>
               </div>
 
