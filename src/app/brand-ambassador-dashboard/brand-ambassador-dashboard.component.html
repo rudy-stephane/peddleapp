@@ -219,9 +219,10 @@
           </div>
           <div class="card-body">
             <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
-              <div class="text-black-50"> {{elts.text.text}}</div>
+              <p class="text-black-50"> {{elts.text}} <br/> {{elts.time_created}}</p>
+              <!--<img  class="i" alt="LinkedIn" width="20" height="20">-->
               <div class="my-1">
-                <input type="text" class="form-control" id="comment" placeholder="write a comment" >
+                <input type="text" class="form-control d-inline" id="comment" placeholder="write a comment" >
                 <button type="button" class="d-inline ml-2">
                   send
                 </button>
