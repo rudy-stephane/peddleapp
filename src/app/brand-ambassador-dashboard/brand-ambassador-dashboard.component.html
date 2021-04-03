@@ -219,7 +219,15 @@
           </div>
           <div class="card-body">
             <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
-              <p class="text-black-50"> {{elts.text}} <br/> {{elts.time_created}}</p>
+              <p class="text-black-50"> {{elts.text}} <br/> {{converttimestamptodate(elts.time_created)}}</p>
+              <div class="card" *ngIf="elts.content !='' ">
+                <img [src]="elts.resolvedUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{elts.title}}</h5>
+                  <a [href]="elts.resolvedUrl" class="card-link">Go to .....</a>
+                </div>
+              </div>
+
               <!--<img  class="i" alt="LinkedIn" width="20" height="20">-->
               <div class="my-1">
                 <input type="text" class="form-control d-inline" id="comment" placeholder="write a comment" >

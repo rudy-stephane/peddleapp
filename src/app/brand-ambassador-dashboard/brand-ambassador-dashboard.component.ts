@@ -477,6 +477,10 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     this.router.navigate(['profilesetting']);
   }
 
+  converttimestamptodate(timestamp:number){
+    return new Date(timestamp);
+  }
+
 
   /**
    * Methode pour le modal
