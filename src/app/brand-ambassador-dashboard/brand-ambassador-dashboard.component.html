@@ -558,7 +558,7 @@
           </div>
           <div  *ngIf="social_input.value == 'Twitter'" class="form-group col-6">
             <label for="fluxtwitter">type of flux</label>
-            <select class="form-control" id="fluxtwitter" >  <!--(change)="socialchange()" [formControl]="social_input"-->
+            <select class="form-control" id="fluxtwitter" (change)="fluxtwitterselected()" [formControl]="select_flux">  <!--(change)="socialchange()" [formControl]="social_input"-->
               <option *ngFor="let twter of twitterlistsflux">
                 {{twter}}
               </option>

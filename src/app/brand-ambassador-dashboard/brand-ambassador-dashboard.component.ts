@@ -471,6 +471,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         console.log(resultat);
       })
     }
+  }
+
+  fluxtwitterselected(){
     if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
 
       console.log('Mes Tweets');
@@ -487,7 +490,6 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         this.listofmestweets = mestweets ;
         console.log(mestweets);
       })
-
     }
   }
 
