@@ -218,7 +218,6 @@
             <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
           </div>
           <div class="card-body">
-            <p-scrollTop target="parent">
             <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
               <p class="text-black-50"> {{elts.text}} <br/> {{converttimestamptodate(elts.time_created)}}</p>
               <div class="card" *ngIf="elts.content !='' ">
@@ -245,7 +244,6 @@
                 </button>
               </div>
             </div>
-            </p-scrollTop>
           </div>
         </div>
 

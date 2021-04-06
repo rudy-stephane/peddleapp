@@ -470,7 +470,10 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         this.lisofactivitieslinkedin = resultat ;
         console.log(resultat);
       })
-    }else if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
+    }
+    if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
+
+      console.log('Mes Tweets');
 
       let peddle_user = JSON.parse(sessionStorage.getItem('user'));
       let peddle_user_email = peddle_user.peddle_user_email;
