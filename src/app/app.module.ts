@@ -41,6 +41,7 @@ import { ContactmanagementComponent } from './contactmanagement/contactmanagemen
 import { MessagesComponent } from './messages/messages.component';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {DropdownModule} from 'primeng/dropdown';
+import {ScrollTopModule} from 'primeng/scrolltop';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -112,7 +113,8 @@ export function provideConfig() {
     TableModule,
     ConfirmDialogModule,
     VirtualScrollerModule,
-    DropdownModule
+    DropdownModule,
+    ScrollTopModule
   ],
   providers: [
     {

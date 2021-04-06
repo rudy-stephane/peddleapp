@@ -56,7 +56,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   facebooklistflux = ['Activity','Mentions', 'Posts', 'Messages','scheduled'];
   linkedinlistsflux = ['Flux','posts','scheduled'];
-  twitterlistsflux = ['Acceuil','Mentions', 'Mes Tweets', 'retweets','scheduled'];
+  twitterlistsflux = ['Acceuil','Mentions', 'Mes Tweets', 'Retweets','scheduled'];
   instagramlistsflux = ['Posts', 'scheduled'];
 
   socialstreamlist = [];
@@ -443,6 +443,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
 
   lisofactivitieslinkedin = [];
+  listofmestweets = [];
   // valeurselectionnee:any;
   // obtenirleprofilselectionne(selected){
   //   this.valeurselectionnee = selected
@@ -450,7 +451,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   fluxselected(){
 
-    if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn'){
+    if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn' && this.select_profil.value !=''){
 
       /*console.log('################# localized');
       console.log(this.select_profil.value);*/
@@ -469,6 +470,21 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         this.lisofactivitieslinkedin = resultat ;
         console.log(resultat);
       })
+    }else if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
+
+      let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+      let peddle_user_email = peddle_user.peddle_user_email;
+
+      var user_twitter = {
+        peddle_user_email:peddle_user_email
+      };
+
+      this.twitterservice.gettingmestweets(user_twitter).subscribe(twittertweets=>{
+        let mestweets = twittertweets as [any];
+        this.listofmestweets = mestweets ;
+        console.log(mestweets);
+      })
+
     }
   }
 

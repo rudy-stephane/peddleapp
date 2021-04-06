@@ -26,6 +26,23 @@ export class TwitterService {
     return this.http.post(this.endpoint+'/gettingtwitterliststream',peddle_user)
   }
 
+  /**
+   * Service qui renvoie les tweets d'un utilisateur
+   */
+
+  gettingmestweets(peddle_user){
+    return this.http.post(this.endpoint+'/gettingmestweets', peddle_user);
+  }
+
+  gettingretweet(peddle_user){
+    return this.http.post(this.endpoint+'/gettingretweet', peddle_user);
+  }
+
+  gettingmentions(peddle_user){
+    return this.http.post(this.endpoint+'/gettingmentions', peddle_user);
+  }
+
+
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/
 

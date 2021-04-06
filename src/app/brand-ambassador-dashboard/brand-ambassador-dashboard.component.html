@@ -218,6 +218,7 @@
             <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
           </div>
           <div class="card-body">
+            <p-scrollTop target="parent">
             <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
               <p class="text-black-50"> {{elts.text}} <br/> {{converttimestamptodate(elts.time_created)}}</p>
               <div class="card" *ngIf="elts.content !='' ">
@@ -243,6 +244,35 @@
                   send
                 </button>
               </div>
+            </div>
+            </p-scrollTop>
+          </div>
+        </div>
+
+        <div class="card" *ngIf="select_flux.value == 'Mes Tweets' && social_input.value == 'Twitter'">
+          <div class="card-header">
+            <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let montweet of listofmestweets" class="my-2">
+              <p class="text-black-50"> {{montweet.text}} <br/> {{montweet.created_at}}</p>
+              <!--<div class="card" *ngIf="elts.content !='' ">
+                <img src="{{elts.content.resolvedUrl}}" *ngIf="elts.content.resolvedUrl !='' " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{elts.content.title}}</h5>
+                  <a href="{{elts.content.entityLocation}}" class="card-link">Go to .....</a>
+                </div>
+              </div>-->
+              <!--<div class="card" *ngIf="elts.originalShare !='' ">
+                <img src="{{elts.originalShare.content.resolvedUrl}}" *ngIf="elts.originalShare.content.resolvedUrl !='' " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{elts.originalShare.content.title}}</h5>
+                  <p class="card-text"> {{elts.originalShare.text}}</p>
+                  <a href="{{elts.originalShare.content.entityLocation}}" class="card-link">Go to .....</a>
+                </div>
+              </div>-->
+
+              <!--<img  class="i" alt="LinkedIn" width="20" height="20">-->
             </div>
           </div>
         </div>
