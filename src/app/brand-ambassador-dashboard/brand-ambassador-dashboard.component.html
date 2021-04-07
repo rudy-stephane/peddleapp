@@ -274,6 +274,34 @@
             </div>
           </div>
         </div>
+
+        <div class="card" *ngIf="select_flux.value == 'Retweets' && social_input.value == 'Twitter'">
+          <div class="card-header">
+            <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let retweet of listofretweets" class="my-2">
+              <p class="text-black-50"> {{retweet.text}} <br/> {{retweet.created_at}}</p>
+              <!--<div class="card" *ngIf="elts.content !='' ">
+                <img src="{{elts.content.resolvedUrl}}" *ngIf="elts.content.resolvedUrl !='' " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{elts.content.title}}</h5>
+                  <a href="{{elts.content.entityLocation}}" class="card-link">Go to .....</a>
+                </div>
+              </div>-->
+              <!--<div class="card" *ngIf="elts.originalShare !='' ">
+                <img src="{{elts.originalShare.content.resolvedUrl}}" *ngIf="elts.originalShare.content.resolvedUrl !='' " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{elts.originalShare.content.title}}</h5>
+                  <p class="card-text"> {{elts.originalShare.text}}</p>
+                  <a href="{{elts.originalShare.content.entityLocation}}" class="card-link">Go to .....</a>
+                </div>
+              </div>-->
+
+              <!--<img  class="i" alt="LinkedIn" width="20" height="20">-->
+            </div>
+          </div>
+        </div>
         <!--<div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
           <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
           <hr/>

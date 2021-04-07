@@ -444,6 +444,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   lisofactivitieslinkedin = [];
   listofmestweets = [];
+  listofretweets = [];
   // valeurselectionnee:any;
   // obtenirleprofilselectionne(selected){
   //   this.valeurselectionnee = selected
@@ -490,6 +491,20 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         this.listofmestweets = mestweets ;
         console.log(mestweets);
       })
+    }else if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Retweets'){
+      console.log('ReTweets');
+
+      let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+      let peddle_user_email = peddle_user.peddle_user_email;
+
+      var user_retwits = {
+        peddle_user_email:peddle_user_email
+      };
+      this.twitterservice.gettingretweet(user_retwits).subscribe(twitterretweets=>{
+        let retweets = twitterretweets as [any];
+        this.listofretweets = retweets ;
+        console.log(retweets);
+      });
     }
   }
 
