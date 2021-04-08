@@ -277,11 +277,11 @@
 
         <div class="card" *ngIf="select_flux.value == 'Retweets' && social_input.value == 'Twitter'">
           <div class="card-header">
-            <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
+            <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
           </div>
           <div class="card-body">
             <div *ngFor="let retweet of listofretweets" class="my-2">
-              <p class="text-black-50"> {{retweet.text}} <br/> {{retweet.created_at}}</p>
+              <p class="text-black-50"> {{retweet.veritabletweet.data.text}} <br/> {{retweet.veritabletweet.data.created_at}}</p>
               <!--<div class="card" *ngIf="elts.content !='' ">
                 <img src="{{elts.content.resolvedUrl}}" *ngIf="elts.content.resolvedUrl !='' " class="card-img-top" alt="...">
                 <div class="card-body">
