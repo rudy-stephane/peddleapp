@@ -567,6 +567,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   addstreamtodashboard(){
 
+
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
@@ -576,6 +577,42 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       flux_input : this.select_flux.value,
       profil_input : this.select_profil.value // qui peut etre une page ou le profil personnel de l'utilisateur
     };
+
+    if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn' && this.select_profil.value !=''){
+      this.lisofactivitieslinkedin = [];
+      var user_email = {
+        peddle_user_email:peddle_user_email,
+        companyurn: this.select_profil.value,
+      };
+      this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
+        let resultat = lkdactivities as [any];
+        this.lisofactivitieslinkedin = resultat ;
+        console.log(resultat);
+      })
+    }
+    if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
+      this.listofmestweets = [];
+      var user_twitter = {
+        peddle_user_email:peddle_user_email
+      };
+
+      this.twitterservice.gettingmestweets(user_twitter).subscribe(twittertweets=>{
+        let mestweets = twittertweets as [any];
+        this.listofmestweets = mestweets ;
+        console.log(mestweets);
+      })
+    }
+    if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Retweets'){
+      this.listofretweets = [];
+      var user_retwits = {
+        peddle_user_email:peddle_user_email
+      };
+      this.twitterservice.gettingretweet(user_retwits).subscribe(twitterretweets=>{
+        let retweets = twitterretweets as [any];
+        this.listofretweets = retweets ;
+        console.log(retweets);
+      });
+    }
 
     this.dashboardservice.addstreamtodashboard(streamtoadd).subscribe(dsrest=>{
       this.peddle_dashboard_record.push(streamtoadd);
