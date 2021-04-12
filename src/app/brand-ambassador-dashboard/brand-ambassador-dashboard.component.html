@@ -217,7 +217,7 @@
           {{message_empty_dashboard}}
         </div>
          <div *ngIf="message_empty_dashboard == ''">
-           <div *ngFor="let dash of peddle_dashboard_record" class="d-flex">
+           <div *ngFor="let dash of peddle_dashboard_record" class="d-flex flex-row">
              <div class="card" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 18rem;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
