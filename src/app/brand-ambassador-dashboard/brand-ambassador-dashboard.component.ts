@@ -567,7 +567,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   addstreamtodashboard(){
 
-
+    /*this.lisofactivitieslinkedin = [];
+    this.listofmestweets = [];
+    this.listofretweets = [];*/
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
