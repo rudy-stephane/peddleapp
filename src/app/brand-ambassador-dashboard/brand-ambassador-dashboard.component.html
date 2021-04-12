@@ -216,12 +216,12 @@
         <div class="alert alert-danger mt-3" role="alert" *ngIf="message_empty_dashboard != ''">
           {{message_empty_dashboard}}
         </div>
-         <div *ngIf="message_empty_dashboard == ''" class="mw-100">
-           <div *ngFor="let dash of peddle_dashboard_record" style="display: flex ; flex-wrap: wrap; justify-content: space-between;">
+         <div *ngIf="message_empty_dashboard == ''">
+           <div *ngFor="let dash of peddle_dashboard_record" style="display: flex ; flex-direction: row; justify-content: space-between;">
              <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="flex: 0 1 24%;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
-                 <i class="fa fa-times ml-auto" aria-hidden="true" (click)="deletedashflux(dash)"></i>
+                 <i class="fa fa-times" aria-hidden="true" (click)="deletedashflux(dash)" style="margin-left: 80%"></i>
                </div>
                <div class="card-body">
                  <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
@@ -255,6 +255,7 @@
              <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="flex: 0 1 24%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
+                 <i class="fa fa-times" aria-hidden="true" (click)="deletedashflux(dash)" style="margin-left: 80%"></i>
                </div>
                <div class="card-body">
                  <div *ngFor="let montweet of listofmestweets" class="my-2">
@@ -282,6 +283,7 @@
              <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="flex: 0 1 24%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
+                 <i class="fa fa-times" aria-hidden="true" (click)="deletedashflux(dash)" style="margin-left: 80%"></i>
                </div>
                <div class="card-body">
                  <div *ngFor="let retweet of listofretweets" class="my-2">
