@@ -218,7 +218,7 @@
         </div>
          <div *ngIf="message_empty_dashboard == ''">
            <div *ngFor="let dash of peddle_dashboard_record" class="d-flex flex-row">
-             <div class="card" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 18rem;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
+             <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 18rem;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
                  <i class="fa fa-times ml-auto" aria-hidden="true" (click)="deletedashflux(dash)"></i>
@@ -252,7 +252,7 @@
                  </div>
                </div>
              </div>
-             <div class="card" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
+             <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
                </div>
@@ -279,7 +279,7 @@
                  </div>
                </div>
              </div>
-             <div class="card" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
+             <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
                </div>

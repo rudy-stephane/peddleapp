@@ -620,6 +620,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
+    console.log('before dashitem')
 
     var dashitem = {
       peddle_user_email : peddle_user_email,
@@ -629,9 +630,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
 
     for(let cd = 0; cd<this.peddle_dashboard_record.length; cd++){
+      console.log('enter for loop')
       if(this.peddle_dashboard_record[cd].social_input ==dash.social_input && this.peddle_dashboard_record[cd].flux_input == dash.flux_input && this.peddle_dashboard_record[cd]== dash.profil_input){
+        console.log('enter if statement')
         this.peddle_dashboard_record.splice(cd,1);
         this.dashboardservice.deletedashboarditem(dashitem).subscribe(delres=>{
+          console.log('enter service instruction')
           this.messageService.add({key: 'fluxdeleted', severity:'success', summary: 'Delete', detail: 'Flux deleted'})
         });
         break;
