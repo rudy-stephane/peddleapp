@@ -17,6 +17,7 @@ import {MenuItem, MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FacebookService} from '../services/facebook.service';
+import {DashboardService} from '../services/dashboard.service';
 
 @Component({
   selector: 'app-brand-ambassador-dashboard',
@@ -67,7 +68,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   peddle_stream_list = [];
 
-  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService) { }
+  peddle_dashboard_record = [];
+
+  constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private dashboardservice: DashboardService) { }
 
   ngOnInit(): void {
 
@@ -154,6 +157,17 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         ]
       }
     ];
+
+    // on recupère les préférences de l'utilisateur
+
+   /* this.dashboardservice.gettingdashboard(peddle_user_email).subscribe(ldsres=>{
+      this.peddle_stream_list = ldsres as [any];
+      if (this.peddle_stream_list.length == 0){
+        this.message_empty_dashboard = 'your dashboard is empty, please configure it first';
+      }
+    })*/
+
+   this.gettingDashboardPreferences();
   }
 
   listedescompagnies = [];
@@ -450,16 +464,59 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   //   this.valeurselectionnee = selected
   // }
 
-  fluxselected(){
+  message_empty_dashboard = 'your dashboard is empty, please configure it first' ;
+  gettingDashboardPreferences(){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    var user_email = {
+      peddle_user_email:peddle_user_email
+    };
+
+    this.dashboardservice.gettingdashboard(user_email).subscribe(ldsres=>{
+      this.peddle_dashboard_record = ldsres as [any];
+      if(this.peddle_dashboard_record.length != 0){
+        this.message_empty_dashboard = '';
+        for(let m=0; m<this.peddle_dashboard_record.length; m++){
+          if(this.peddle_dashboard_record[m].social_input == 'LinkedIn' && this.peddle_dashboard_record[m].flux_input == 'Flux'){
+            let usrlkdin = {
+              peddle_user_email:peddle_user_email,
+              companyurn: this.peddle_dashboard_record[m].profil_input
+            };
+            this.linkedinService.gettinglinkedinactivities(usrlkdin).subscribe(lkdactivities=>{
+              let resultat = lkdactivities as [any];
+              this.lisofactivitieslinkedin = resultat ;
+                //console.log(resultat);
+            })
+          }
+          if(this.peddle_dashboard_record[m].social_input == 'Twitter' && this.peddle_dashboard_record[m].flux_input == 'Mes Tweets'){
+            this.twitterservice.gettingmestweets(user_email).subscribe(twittertweets=>{
+              let mestweets = twittertweets as [any];
+              this.listofmestweets = mestweets ;
+              console.log(mestweets);
+            })
+          }
+          if(this.peddle_dashboard_record[m].social_input == 'Twitter' && this.peddle_dashboard_record[m].flux_input == 'Retweets'){
+            this.twitterservice.gettingretweet(user_email).subscribe(twitterretweets=>{
+              let retweets = twitterretweets as [any];
+              this.listofretweets = retweets ;
+              console.log(retweets);
+            });
+          }
+        }
+      }
+    })
+  }
+
+  /*fluxselected(){
 
     if(this.select_flux.value == 'Flux' && this.social_input.value == 'LinkedIn' && this.select_profil.value !=''){
 
-      /*console.log('################# localized');
-      console.log(this.select_profil.value);*/
+      /!*console.log('################# localized');
+      console.log(this.select_profil.value);*!/
 
       let companie = this.select_profil.value;
-      /*console.log('##########');
-      console.log(companie);*/
+      /!*console.log('##########');
+      console.log(companie);*!/
       let peddle_user = JSON.parse(sessionStorage.getItem('user'));
       let peddle_user_email = peddle_user.peddle_user_email;
       var user_email = {
@@ -506,6 +563,24 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         console.log(retweets);
       });
     }
+  }*/
+
+  addstreamtodashboard(){
+
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+
+    var streamtoadd = {
+      peddle_user_email : peddle_user_email,
+      social_input : this.social_input.value,
+      flux_input : this.select_flux.value,
+      profil_input : this.select_profil.value // qui peut etre une page ou le profil personnel de l'utilisateur
+    };
+
+    this.dashboardservice.addstreamtodashboard(streamtoadd).subscribe(dsrest=>{
+      this.peddle_dashboard_record.push(streamtoadd);
+      this.messageService.add({key: 'fluxadded', severity:'success', summary: 'Adding Flux', detail: 'Flux added'})
+    })
   }
 
 
