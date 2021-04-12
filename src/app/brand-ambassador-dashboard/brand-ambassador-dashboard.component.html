@@ -218,7 +218,7 @@
         </div>
          <div *ngIf="message_empty_dashboard == ''">
            <div *ngFor="let dash of peddle_dashboard_record" class="d-flex flex-row">
-             <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 18rem;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
+             <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 25%;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
                  <i class="fa fa-times ml-auto" aria-hidden="true" (click)="deletedashflux(dash)"></i>
@@ -252,7 +252,7 @@
                  </div>
                </div>
              </div>
-             <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
+             <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="width: 25%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
                </div>
@@ -279,7 +279,7 @@
                  </div>
                </div>
              </div>
-             <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="width: 18rem;">
+             <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="width: 25%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
                </div>
@@ -308,97 +308,6 @@
              </div>
            </div>
          </div>
-
-        <!--<div class="card" *ngIf="select_flux.value == 'Retweets' && social_input.value == 'Twitter'">
-          <div class="card-header">
-            <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
-          </div>
-          <div class="card-body">
-            <div *ngFor="let retweet of listofretweets" class="my-2">
-              <p class="text-black-50"> {{retweet.veritabletweet.data.text}} <br/> {{retweet.veritabletweet.data.created_at}}</p>
-              &lt;!&ndash;<div class="card" *ngIf="elts.content !='' ">
-                <img src="{{elts.content.resolvedUrl}}" *ngIf="elts.content.resolvedUrl !='' " class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{elts.content.title}}</h5>
-                  <a href="{{elts.content.entityLocation}}" class="card-link">Go to .....</a>
-                </div>
-              </div>&ndash;&gt;
-              &lt;!&ndash;<div class="card" *ngIf="elts.originalShare !='' ">
-                <img src="{{elts.originalShare.content.resolvedUrl}}" *ngIf="elts.originalShare.content.resolvedUrl !='' " class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{elts.originalShare.content.title}}</h5>
-                  <p class="card-text"> {{elts.originalShare.text}}</p>
-                  <a href="{{elts.originalShare.content.entityLocation}}" class="card-link">Go to .....</a>
-                </div>
-              </div>&ndash;&gt;
-
-              &lt;!&ndash;<img  class="i" alt="LinkedIn" width="20" height="20">&ndash;&gt;
-            </div>
-          </div>
-        </div>-->
-        <!--<div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
-          <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
-          <hr/>
-
-          <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
-            <div class="text-black-50"> {{elts.text.text}}</div>
-            <div class="d-inline my-1">
-              <input type="text" class="form-control" id="comment" placeholder="write a comment" >
-              <button type="button" class="ml-2">
-                send
-              </button>
-            </div>
-          </div>
-        </div>-->
-
-      <!--<div class="container-fluid">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex">
-              <div class="w-50 ml-5 border-right" *ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'">
-                <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
-                &lt;!&ndash;<strong class="font-weight-bold">{{item}}</strong>&ndash;&gt;
-                <hr/>
-
-               &lt;!&ndash; <div class="">
-                  <img src="{{select_profil.value.imageUrl}}" class="rounded-circle" alt="LinkedIn" width="20" height="20">
-                  <div class="d-inline-block ml-2">
-                    <div class="text-primary"> {{select_profil.value.localizedname}}</div>
-                  </div>
-                </div>&ndash;&gt;
-                  <div *ngFor="let elts of lisofactivitieslinkedin" class="my-2">
-                    <div class="text-black-50"> {{elts.text.text}}</div>
-                    <div class="d-inline my-1">
-                      <input type="text" class="form-control" id="comment" placeholder="write a comment" >
-                      <button type="button" class="ml-2">
-                        send
-                      </button>
-                    </div>
-                  </div>
-
-              </div>
-                &lt;!&ndash;<div class="card">
-                  <div class="card-body">
-
-                    <div class="">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                      <img src="/assets/aiceperts.jpg" class="w-100" alt="information" >
-                    </div>
-                    <div class="mt-1">
-                      <i class="fa fa-thumbs-up" style="margin-left: 70%"></i>
-                      <i class="fa fa-comment ml-2" style=""></i>
-                      <i class="fa fa-share ml-3" style=""></i>
-                    </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="comment" placeholder="write a comment" >
-                    </div>
-                  </div>
-                </div>
-              </div>&ndash;&gt;
-            </div>
-          </div>
-        </div>
-      </div>-->
     </div>
   </div>
 </div>
