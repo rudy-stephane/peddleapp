@@ -216,9 +216,9 @@
         <div class="alert alert-danger mt-3" role="alert" *ngIf="message_empty_dashboard != ''">
           {{message_empty_dashboard}}
         </div>
-         <div *ngIf="message_empty_dashboard == ''">
-           <div *ngFor="let dash of peddle_dashboard_record" class="d-flex flex-row">
-             <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="width: 25%;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
+         <div *ngIf="message_empty_dashboard == ''" class="mw-100">
+           <div *ngFor="let dash of peddle_dashboard_record" style="display: flex ; flex-wrap: wrap; justify-content: space-between;">
+             <div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="flex: 0 1 24%;">  <!--*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"-->
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
                  <i class="fa fa-times ml-auto" aria-hidden="true" (click)="deletedashflux(dash)"></i>
@@ -252,7 +252,7 @@
                  </div>
                </div>
              </div>
-             <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="width: 25%;">
+             <div class="card d-inline-flex" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'" style="flex: 0 1 24%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Mes Tweets</strong>
                </div>
@@ -279,7 +279,7 @@
                  </div>
                </div>
              </div>
-             <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="width: 25%;">
+             <div class="card d-inline-flex" *ngIf="select_flux.value == 'Retweets' && dash.social_input == 'Twitter'" style="flex: 0 1 24%;">
                <div class="card-header">
                  <i class="fa fa-twitter-square"></i>  <strong class="font-weight-bold">Retweets</strong>
                </div>
