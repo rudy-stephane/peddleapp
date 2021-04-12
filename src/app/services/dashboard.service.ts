@@ -20,4 +20,8 @@ export class DashboardService {
     return this.http.post(this.endpoint + '/gettingdashboard', peddle_user);
   }
 
+  deletedashboarditem(dashboarditem){
+    return this.http.post(this.endpoint + '/deletedashboarditem',dashboarditem);
+  }
+
 }

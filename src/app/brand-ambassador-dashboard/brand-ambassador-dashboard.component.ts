@@ -160,13 +160,6 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
     // on recupère les préférences de l'utilisateur
 
-   /* this.dashboardservice.gettingdashboard(peddle_user_email).subscribe(ldsres=>{
-      this.peddle_stream_list = ldsres as [any];
-      if (this.peddle_stream_list.length == 0){
-        this.message_empty_dashboard = 'your dashboard is empty, please configure it first';
-      }
-    })*/
-
    this.gettingDashboardPreferences();
   }
 
@@ -620,6 +613,31 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.peddle_dashboard_record.push(streamtoadd);
       this.messageService.add({key: 'fluxadded', severity:'success', summary: 'Adding Flux', detail: 'Flux added'})
     })
+  }
+
+  deletedashflux(dash){
+
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+
+
+    var dashitem = {
+      peddle_user_email : peddle_user_email,
+      social_input : dash.social_input,
+      flux_input : dash.flux_input,
+      profil_input : dash.profil_input
+    };
+
+    for(let cd = 0; cd<this.peddle_dashboard_record.length; cd++){
+      if(this.peddle_dashboard_record[cd].social_input ==dash.social_input && this.peddle_dashboard_record[cd].flux_input == dash.flux_input && this.peddle_dashboard_record[cd]== dash.profil_input){
+        this.peddle_dashboard_record.splice(cd,1);
+        this.dashboardservice.deletedashboarditem(dashitem).subscribe(delres=>{
+          this.messageService.add({key: 'fluxdeleted', severity:'success', summary: 'Delete', detail: 'Flux deleted'})
+        });
+        break;
+      }
+    }
+
   }
 
 
