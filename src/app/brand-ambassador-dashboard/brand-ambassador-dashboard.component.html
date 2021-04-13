@@ -216,8 +216,8 @@
         <div class="alert alert-danger mt-3" role="alert" *ngIf="message_empty_dashboard != ''">
           {{message_empty_dashboard}}
         </div>
-         <div *ngIf="message_empty_dashboard == ''">
-           <div *ngFor="let dash of peddle_dashboard_record" style="display: flex ; flex-direction: row; justify-content: space-between;">
+         <div *ngIf="message_empty_dashboard == ''" class="container">
+           <div *ngFor="let dash of peddle_dashboard_record" class="row"> <!--style="display: flex ; flex-direction: row; justify-content: space-between;"-->
              <!--<div class="card d-inline-flex" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'" style="flex: 0 1 24%;">  &lt;!&ndash;*ngIf="select_flux.value == 'Flux' && social_input.value == 'LinkedIn'"&ndash;&gt;
                <div class="card-header">
                  <i class="fa fa-linkedin-square"></i>  <strong class="font-weight-bold">Flux</strong>
@@ -308,9 +308,9 @@
                  </div>
                </div>
              </div>-->
-             <div class="p-3" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'"> test 11111111111111</div>
-             <div class="p-3" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'"> test 222222222222222222</div>
-             <div class="p-3" *ngIf="dash.flux_input == 'Retweets' && dash.social_input == 'Twitter'"> test 333333333333333333</div>
+             <div class="p-3 col-4" *ngIf="dash.social_input == 'LinkedIn' && dash.flux_input =='Flux'"> test 11111111111111</div>
+             <div class="p-3 col-4" *ngIf="dash.flux_input == 'Mes Tweets' && dash.social_input == 'Twitter'"> test 222222222222222222</div>
+             <div class="p-3 col-4" *ngIf="dash.flux_input == 'Retweets' && dash.social_input == 'Twitter'"> test 333333333333333333</div>
            </div>
          </div>
     </div>
