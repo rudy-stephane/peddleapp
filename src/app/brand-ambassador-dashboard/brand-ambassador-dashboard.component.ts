@@ -420,23 +420,26 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
 
     if(this.social_input.value == 'FaceBook'){
+      this.select_flux = new FormControl('Activity');
       /*this.facebookservice.gettingfacebooklisttream(user_email).subscribe(resliststream=>{
         let fcbkliststream = resliststream as [any];
         this.socialstreamlist = fcbkliststream;
       })*/
     }else if(this.social_input.value == 'LinkedIn'){
+      this.select_flux = new FormControl('Flux');
       this.linkedinService.gettinglinkedinliststream(user_email).subscribe(resliststream=>{
         let lkdliststream = resliststream as [any];
         this.socialstreamlist = lkdliststream;
         //console.log(lkdliststream[0].companyurn);
       })
     }else if(this.social_input.value == 'Twitter'){
+      this.select_flux = new FormControl('Acceuil');
       /*this.twitterservice.gettingtwitterliststream(user_email).subscribe(resliststream=>{
         let twliststream = resliststream as [any];
         this.socialstreamlist = twliststream;
       })*/
     }else if(this.social_input.value == 'Instagram'){
-
+      this.select_flux = new FormControl('Posts');
     }
 
     /*console.log(this.social_input.value);
