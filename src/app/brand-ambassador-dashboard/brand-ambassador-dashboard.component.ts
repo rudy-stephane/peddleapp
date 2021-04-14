@@ -631,7 +631,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
     for(let cd = 0; cd<this.peddle_dashboard_record.length; cd++){
       console.log('enter for loop')
-      if(this.peddle_dashboard_record[cd].social_input ==dash.social_input && this.peddle_dashboard_record[cd].flux_input == dash.flux_input && this.peddle_dashboard_record[cd]== dash.profil_input){
+      if(this.peddle_dashboard_record[cd].social_input ==dash.social_input && this.peddle_dashboard_record[cd].flux_input == dash.flux_input && this.peddle_dashboard_record[cd].profil_input == dash.profil_input){
         console.log('enter if statement')
         this.peddle_dashboard_record.splice(cd,1);
         this.dashboardservice.deletedashboarditem(dashitem).subscribe(delres=>{
