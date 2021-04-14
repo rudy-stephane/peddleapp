@@ -176,9 +176,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     this.linkedinService.searchlinkedincompagnies(user_email).subscribe(compagnies_result=>{
       let resultat = compagnies_result as [any];
       this.listedescompagnies = resultat;
-      console.log('###################');
+      /*console.log('###################');
       console.log(compagnies_result);
-      console.log('###################');
+      console.log('###################');*/
     })
 
   }
@@ -231,7 +231,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
         console.log('############');
 */
         let twitterusr = result as any;
-        console.log('You have been successfully logged in!')
+        //console.log('You have been successfully logged in!')
         //console.log(twitterusr);
         var data = {
           peddle_user_email:peddle_user_email,
@@ -242,9 +242,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
           /*console.log('############');
           console.log(twitterusr);
           console.log('############');*/
-          console.log(twitterusr.additionalUserInfo.profile.id_str);
+          /*console.log(twitterusr.additionalUserInfo.profile.id_str);
           console.log(twitterusr.additionalUserInfo.profile.profile_image_url);
-          console.log(twitterusr.credential.accessToken);
+          console.log(twitterusr.credential.accessToken);*/
           this.messageService.add({key: 'twitteraccount', severity:'success', summary: 'Account', detail: 'your Twitter Account have been added'});
           this.display=false;
         });
@@ -305,12 +305,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   onclicklinkedin(){
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
-    console.log(peddle_user_email);
+    //console.log(peddle_user_email);
     this.linkedinService.linkedinsignin().subscribe(res=>{
       let resultat = res as any;
       let code = resultat.code;
       //let state = resultat.state;
-      console.log('code  :  '+ code);
+      //console.log('code  :  '+ code);
       let peddle_access={
         grant_type : this.grant_type,
         code: code,
@@ -322,11 +322,11 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.getclienttoken(peddle_access).subscribe(result=>{
         let reponse = result as any ;
         let access_token = reponse.access_token;
-        console.log('################################');
+        /*console.log('################################');
         console.log('################################');
         console.log('access_token  :   '+ access_token);
         console.log('################################');
-        console.log('################################');
+        console.log('################################');*/
 
         let user_linkedintoken = {
           peddle_user_email : peddle_user_email,
@@ -341,7 +341,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   }
 
   removecolumn(gtr){
-    console.log(gtr.currentTarget);
+    //console.log(gtr.currentTarget);
   }
 
 
@@ -360,7 +360,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     this.linkedinService.getclienttoken(peddle_access).subscribe(result=>{
       let reponse = result as any ;
       let access_token = reponse.access_token;
-      console.log('access_token  :   '+ access_token);
+      //console.log('access_token  :   '+ access_token);
       /*let user_linkedintoken = {
         peddle_user_email : peddle_user_email,
         access_token:access_token
@@ -488,14 +488,14 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
             this.twitterservice.gettingmestweets(user_email).subscribe(twittertweets=>{
               let mestweets = twittertweets as [any];
               this.listofmestweets = mestweets ;
-              console.log(mestweets);
+              //console.log(mestweets);
             })
           }
           if(this.peddle_dashboard_record[m].social_input == 'Twitter' && this.peddle_dashboard_record[m].flux_input == 'Retweets'){
             this.twitterservice.gettingretweet(user_email).subscribe(twitterretweets=>{
               let retweets = twitterretweets as [any];
               this.listofretweets = retweets ;
-              console.log(retweets);
+              //console.log(retweets);
             });
           }
         }
@@ -585,7 +585,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.linkedinService.gettinglinkedinactivities(user_email).subscribe(lkdactivities=>{
         let resultat = lkdactivities as [any];
         this.lisofactivitieslinkedin = resultat ;
-        console.log(resultat);
+        //console.log(resultat);
       })
     }
     if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Mes Tweets'){
@@ -597,7 +597,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.twitterservice.gettingmestweets(user_twitter).subscribe(twittertweets=>{
         let mestweets = twittertweets as [any];
         this.listofmestweets = mestweets ;
-        console.log(mestweets);
+        //console.log(mestweets);
       })
     }
     if(this.social_input.value == 'Twitter' && this.select_flux.value == 'Retweets'){
@@ -608,7 +608,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       this.twitterservice.gettingretweet(user_retwits).subscribe(twitterretweets=>{
         let retweets = twitterretweets as [any];
         this.listofretweets = retweets ;
-        console.log(retweets);
+        //console.log(retweets);
       });
     }
 
@@ -623,7 +623,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
     let peddle_user_email = peddle_user.peddle_user_email;
 
-    console.log('before dashitem')
+    //console.log('before dashitem')
 
     var dashitem = {
       peddle_user_email : peddle_user_email,
@@ -633,12 +633,12 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
 
     for(let cd = 0; cd<this.peddle_dashboard_record.length; cd++){
-      console.log('enter for loop')
+      //console.log('enter for loop')
       if(this.peddle_dashboard_record[cd].social_input ==dash.social_input && this.peddle_dashboard_record[cd].flux_input == dash.flux_input && this.peddle_dashboard_record[cd].profil_input == dash.profil_input){
-        console.log('enter if statement')
+        //console.log('enter if statement')
         this.peddle_dashboard_record.splice(cd,1);
         this.dashboardservice.deletedashboarditem(dashitem).subscribe(delres=>{
-          console.log('enter service instruction')
+          //console.log('enter service instruction')
           this.messageService.add({key: 'fluxdeleted', severity:'success', summary: 'Delete', detail: 'Flux deleted'})
         });
         break;
