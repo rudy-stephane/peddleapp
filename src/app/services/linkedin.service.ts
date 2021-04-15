@@ -80,4 +80,8 @@ export class LinkedinService {
   gettinglinkedinactivities(lkdactivities){
     return this.http.post(this.endpoint+'/linkedinactivities',lkdactivities);
   }
+
+  postsimpletexttolinkedinonpersonalprofile(linkedinpost){
+    return this.http.post(this.endpoint+'/postsimpletexttolinkedinonpersonalprofile',linkedinpost);
+  }
 }

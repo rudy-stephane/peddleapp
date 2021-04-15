@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChipModule } from 'primeng/chip';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -65,6 +65,10 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
   dboolchoosedashboard = false ;
   select_flux = new FormControl('');
   select_profil = new FormControl('');
+
+  text_to_post = new FormControl('',[Validators.required,Validators.minLength(1)]);
+  post_to = new FormControl('LinkedIn');
+  media_to_post = ''; //fichier à poster
 
   peddle_stream_list = [];
 
@@ -645,6 +649,20 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       }
     }
 
+  }
+
+  posttolinkedinpersonnalaccount(){
+    if(this.text_to_post.valid && this.post_to.value == 'LinkedIn'){
+      let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+      let peddle_user_email = peddle_user.peddle_user_email;
+      var data_to_post = {
+        peddle_user_email : peddle_user_email,
+        text_to_post : this.text_to_post.value
+      };
+      this.linkedinService.postsimpletexttolinkedinonpersonalprofile(data_to_post).subscribe(postrest=>{
+        this.messageService.add({key: 'post', severity:'success', summary: 'LinkedIn', detail: 'Posted'});
+      })
+    }
   }
 
 

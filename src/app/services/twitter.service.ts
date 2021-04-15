@@ -42,6 +42,10 @@ export class TwitterService {
     return this.http.post(this.endpoint+'/gettingmentions', peddle_user);
   }
 
+  posttotwitter(twit){
+    return this.http.post(this.endpoint+'/posttotwitter', twit);
+  }
+
 
  /* provider = new fire.default.auth.GoogleAuthProvider();
   credential = this.afAuth.signInWithPopup(this.provider);*/
