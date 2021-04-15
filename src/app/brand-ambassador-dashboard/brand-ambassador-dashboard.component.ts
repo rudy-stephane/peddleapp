@@ -665,6 +665,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       peddle_user_email : peddle_user_email,
       text_to_post : this.text_to_post.value,
       time_for_schedule : this.time_for_schedule.value,
+      time_zone_offset : (new Date(this.time_for_schedule.value)).getTimezoneOffset(),
       post_to : this.post_to.value
     };
 
