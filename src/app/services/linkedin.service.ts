@@ -84,4 +84,5 @@ export class LinkedinService {
   postsimpletexttolinkedinonpersonalprofile(linkedinpost){
     return this.http.post(this.endpoint+'/postsimpletexttolinkedinonpersonalprofile',linkedinpost);
   }
+
 }

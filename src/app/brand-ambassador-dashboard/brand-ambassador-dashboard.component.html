@@ -410,8 +410,17 @@
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         <div class="invalid-feedback">Example invalid custom file feedback</div>
       </div>
-      <button type="button" class="btn btn-primary mt-1">Schedule For later</button>
+      <button type="button" class="btn btn-primary mt-1" (click)="checkifschedulepost()">Schedule For later</button>
       <button type="button" class="btn btn-secondary ml-2 mt-1" (click)="posttolinkedinpersonnalaccount()">Post Now</button>
+      <div class="row" *ngIf="boolschedule == true">
+        <div class="col-auto">
+          <label for="datetimelocal" >Date Time</label>
+          <input type="datetime-local" class="form-control" id="datetimelocal" placeholder="Date & Time">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3" (click)="schedulepost()">Schedule</button>
+        </div>
+      </div>
     </div>
   </div>
 </p-dialog>

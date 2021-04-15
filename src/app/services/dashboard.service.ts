@@ -24,4 +24,8 @@ export class DashboardService {
     return this.http.post(this.endpoint + '/deletedashboarditem',dashboarditem);
   }
 
+  scheduleforlater(posttolater){
+    return this.http.post(this.endpoint + '/scheduleforlater',posttolater);
+  }
+
 }

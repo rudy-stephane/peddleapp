@@ -651,6 +651,29 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   }
 
+  boolschedule = false;
+  checkifschedulepost(){
+    this.boolschedule = true;
+  }
+
+  time_for_schedule = new FormControl('');
+
+  schedulepost(){
+    let peddle_user = JSON.parse(sessionStorage.getItem('user'));
+    let peddle_user_email = peddle_user.peddle_user_email;
+    var data_to_schedule = {
+      peddle_user_email : peddle_user_email,
+      text_to_post : this.text_to_post.value,
+      time_for_schedule : this.time_for_schedule.value,
+      post_to : this.post_to.value
+    };
+
+    this.dashboardservice.scheduleforlater(data_to_schedule).subscribe(scres=>{
+      this.displaypost = false ;
+      this.messageService.add({key: 'post', severity:'success', summary: 'LinkedIn', detail: 'Scheduled'});
+    })
+  }
+
   posttolinkedinpersonnalaccount(){console.log('before the if statement');
     if(this.text_to_post.valid && this.post_to.value == 'LinkedIn'){
       console.log('after the if statement');
@@ -662,6 +685,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
       };
       this.linkedinService.postsimpletexttolinkedinonpersonalprofile(data_to_post).subscribe(postrest=>{
         this.messageService.add({key: 'post', severity:'success', summary: 'LinkedIn', detail: 'Posted'});
+        this.displaypost = false ;
       })
     }
   }
