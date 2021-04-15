@@ -651,8 +651,9 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
 
   }
 
-  posttolinkedinpersonnalaccount(){
+  posttolinkedinpersonnalaccount(){console.log('before the if statement');
     if(this.text_to_post.valid && this.post_to.value == 'LinkedIn'){
+      console.log('after the if statement');
       let peddle_user = JSON.parse(sessionStorage.getItem('user'));
       let peddle_user_email = peddle_user.peddle_user_email;
       var data_to_post = {
