@@ -1,20 +1,19 @@
 .aside{
-  min-width: 30vh;
-  max-width: 30vh;
+  min-width: 40vh;
+  max-width: 40vh;
   min-height:100vh;
   max-height: 100vh;
   position: fixed;
-  z-index: 33333;
   top: 0;
   left:0;
 }
 .content{
-  margin-left: 30vh;
+  margin-left: 40vh;
   margin-top: 14vh;
 }
 
 .menuhaut{
-  margin-left: 30vh;
+  margin-left: 40vh;
 }
 
 .title{
