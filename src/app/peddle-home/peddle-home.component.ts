@@ -12,7 +12,8 @@ import {DashboardService} from '../services/dashboard.service';
 @Component({
   selector: 'app-peddle-home',
   templateUrl: './peddle-home.component.html',
-  styleUrls: ['./peddle-home.component.css']
+  styleUrls: ['./peddle-home.component.css'],
+  providers: [MessageService]
 })
 
 // tslint:disable
