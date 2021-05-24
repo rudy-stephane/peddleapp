@@ -23,7 +23,7 @@
       </div>
     </a>
 
-    <a  class="text-decoration-none text-white" >
+    <a  class="text-decoration-none text-white" (click)="showdialogaddsocialnetwork()">
       <div class="d-flex flex-row ml-1 mt-2">
         <i class="fa fa-users fa-1x text-white mt-1"></i><!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Add Social Network</span>
@@ -194,6 +194,44 @@
     </div>
   </div>
 </div>
+
+
+<p-dialog header="Add social marketing" [(visible)]="booladdsocialnetwork">
+  <div class="d-inline-flex">
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="assets/facebook_icon_v2.png" alt="Facebook icon">
+        <h5 class="card-title">Facebook</h5>
+        <p class="card-text">Manage your facebook page and group</p>
+        <button type="button" class="btn btn-outline-primary">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="assets/Instagram_v2.jpg" alt="Instagram icom">
+        <h5 class="card-title">Instagram</h5>
+        <p class="card-text">Manage your Instagram stream</p>
+        <button type="button" class="btn btn-outline-primary">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="assets/twitter.png" alt="twitter icon">
+        <h5 class="card-title">Twitter</h5>
+        <p class="card-text">Manage your Twitter accounts and stream</p>
+        <button type="button" class="btn btn-outline-primary">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="Linkedin" alt="Linkedin icon">
+        <h5 class="card-title">LinkedIn</h5>
+        <p class="card-text">Manage LinkedIn profiles and compagnies pages</p>
+        <button type="button" class="btn btn-outline-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
 
 
 <!--<router-outlet name="test"></router-outlet>-->
