@@ -670,6 +670,7 @@ export class BrandAmbassadorDashboardComponent implements OnInit {
     };
 
     this.dashboardservice.scheduleforlater(data_to_schedule).subscribe(scres=>{
+      this.boolschedule = false;
       this.displaypost = false ;
       this.messageService.add({key: 'post', severity:'success', summary: 'LinkedIn', detail: 'Scheduled'});
     })

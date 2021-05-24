@@ -68,7 +68,9 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('user',JSON.stringify(res));// brandambassador
           //l'utilisateur signale qu'il est connecté
           this.msgservice.conectuser(this.email.value);
-          this.router.navigate(['brandambassador']);
+
+          this.router.navigate(['peddle_home']);
+          //this.router.navigate(['brandambassador']);
         }
         //console.log(typeof  res);
        // this.router.navigate(['brandambassador']);

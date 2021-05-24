@@ -42,6 +42,16 @@ import { MessagesComponent } from './messages/messages.component';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {DropdownModule} from 'primeng/dropdown';
 import {ScrollTopModule} from 'primeng/scrolltop';
+import { PeddleHomeComponent } from './peddle-home/peddle-home.component';
+import { PeddleOpportunitiesComponent } from './peddle-opportunities/peddle-opportunities.component';
+import { PeddleMyAgendaComponent } from './peddle-my-agenda/peddle-my-agenda.component';
+import { PeddleTeamMembersComponent } from './peddle-team-members/peddle-team-members.component';
+import { PeddleContactsComponent } from './peddle-contacts/peddle-contacts.component';
+import { PeddleMessagesComponent } from './peddle-messages/peddle-messages.component';
+import { PeddleAnalyticsComponent } from './peddle-analytics/peddle-analytics.component';
+import { PeddlePlanComponent } from './peddle-plan/peddle-plan.component';
+import { PeddleUsersProfileComponent } from './peddle-users-profile/peddle-users-profile.component';
+import { PeddleSettingComponent } from './peddle-setting/peddle-setting.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -58,6 +68,19 @@ const appRoutes: Routes = [
     {path: 'brandambassador', component: BrandAmbassadorDashboardComponent},
     {path: 'contactmanagement', component: ContactmanagementComponent},
     {path: 'message', component: MessagesComponent},
+    {path: 'peddle_home', component: PeddleHomeComponent,
+      children: [
+        {path: 'peddle_analytics', component: PeddleAnalyticsComponent},
+        {path: 'peddle_contacts', component: PeddleContactsComponent},
+        {path: 'peddle_messages', component: PeddleMessagesComponent},
+        {path: 'peddle_my_agenda', component: PeddleMyAgendaComponent},
+        {path: 'peddle_opportunities', component: PeddleOpportunitiesComponent},
+        {path: 'peddle_setting', component: PeddleSettingComponent},
+        {path: 'peddle_team_members', component: PeddleTeamMembersComponent},
+        {path: 'peddle_users_profile', component: PeddleUsersProfileComponent},
+        {path: 'peddle_plan', component: PeddlePlanComponent}
+      ]
+    },
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
   ];
 /*const config = new AuthServiceConfig([
@@ -90,7 +113,17 @@ export function provideConfig() {
     ProfilesettingComponent,
     TeammanagementComponent,
     ContactmanagementComponent,
-    MessagesComponent
+    MessagesComponent,
+    PeddleHomeComponent,
+    PeddleOpportunitiesComponent,
+    PeddleMyAgendaComponent,
+    PeddleTeamMembersComponent,
+    PeddleContactsComponent,
+    PeddleMessagesComponent,
+    PeddleAnalyticsComponent,
+    PeddlePlanComponent,
+    PeddleUsersProfileComponent,
+    PeddleSettingComponent
   ],
   imports: [
     BrowserModule,
