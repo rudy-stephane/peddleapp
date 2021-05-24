@@ -23,6 +23,14 @@
   font-family: "Times New Roman";
   font-weight: bold;
 }
+.socialstyle{
+  display: flex;
+  align-content: space-around;
+  align-items: stretch;
+}
+.socialitem{
+  flex-grow: 1;
+}
 
 .signout{
   margin-top:100%;
