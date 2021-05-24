@@ -5,7 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './peddle-home.component.html',
   styleUrls: ['./peddle-home.component.css']
 })
+
+// tslint:disable
 export class PeddleHomeComponent implements OnInit {
+
+  public socialNetworkCollapsed = false;
 
   constructor() { }
 

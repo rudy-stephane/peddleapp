@@ -16,27 +16,27 @@
 
     <!------------------------------------Social Network Management------------------------------->
 
-    <a class="text-decoration-none text-white" > <!--routerLink="manage-employes"-->
+    <a class="text-decoration-none text-white" (click)="collapse.toggle()" [attr.aria-expanded]="!socialNetworkCollapsed"> <!--routerLink="manage-employes"-->
       <div class="d-flex flex-row ml-1 mt-3">
-        <i class="fa fa-users fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
+        <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Social Network</span>
       </div>
     </a>
 
-    <a class="text-decoration-none text-white" >
+    <a #collapse="ngbCollapse" class="text-decoration-none text-white" >
       <div class="d-flex flex-row ml-1 mt-3">
-        <!--fa-3x permet de donner la taille de l'icone-->
+        <i class="fa fa-users fa-1x text-white mt-1"></i><!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Add Social Network</span>
       </div>
     </a>
-    <a class="text-decoration-none text-white" >
+    <a class="text-decoration-none text-white" #collapse="ngbCollapse" >
       <div class="d-flex flex-row ml-1 mt-3">
         <i class="fa fa-share-alt-square fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Create Post</span>
       </div>
     </a>
 
-    <a class="text-decoration-none text-white" routerLink="peddle_my_agenda">
+    <a class="text-decoration-none text-white" routerLink="peddle_my_agenda" #collapse="ngbCollapse">
       <div class="d-flex flex-row ml-1 mt-3">
         <i class="fa fa-calendar fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">My Agenda</span>
