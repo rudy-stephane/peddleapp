@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
     };
     this.dashboardservice.gettingdashboard(user_dashboard).subscribe(resdash=>{
       this.peddle_dashboard_record = resdash as [any];
+      console.log(this.peddle_dashboard_record);
+      console.log(this.peddle_dashboard_record.length);
     })
   }
 
