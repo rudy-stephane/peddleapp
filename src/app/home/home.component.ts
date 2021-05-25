@@ -10,47 +10,30 @@ import {FacebookService} from '../services/facebook.service';
 import {DashboardService} from '../services/dashboard.service';
 
 @Component({
-  selector: 'app-peddle-home',
-  templateUrl: './peddle-home.component.html',
-  styleUrls: ['./peddle-home.component.css'],
-  providers: [MessageService]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-
 // tslint:disable
-export class PeddleHomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
-  public socialNetworkCollapsed = false;
-
-  user_profile = 'assets/information.png';
   user_name = '';
-  user_plan='';
   user_email = '';
-
   peddle_dashboard_record =[];
 
   constructor(private router: Router,private modalService: NgbModal,private linkedinService:LinkedinService,public afAuth: AngularFireAuth,private activatedRoute: ActivatedRoute,private authService: SocialAuthService,private messageService: MessageService, public twitterservice:TwitterService, private facebookservice: FacebookService, private dashboardservice: DashboardService) { }
 
   ngOnInit(): void {
-
     let peddle_user = JSON.parse(sessionStorage.getItem('user'));
-    let peddle_user_email = peddle_user.peddle_user_email;
-    this.user_profile = peddle_user.peddle_user_profile;
     this.user_name = peddle_user.peddle_user_name;
-    this.user_plan = peddle_user.peddle_user_plan;
+    let peddle_user_email = peddle_user.peddle_user_email;
     this.user_email = peddle_user_email;
     var user_dashboard = {
       peddle_user_email:peddle_user_email
-    }
+    };
     this.dashboardservice.gettingdashboard(user_dashboard).subscribe(resdash=>{
-
+      this.peddle_dashboard_record = resdash as [any];
     })
-
-
-  }
-
-  booladdsocialnetwork = false;
-  showdialogaddsocialnetwork(){
-    this.booladdsocialnetwork = true;
   }
 
 }

@@ -52,6 +52,7 @@ import { PeddleAnalyticsComponent } from './peddle-analytics/peddle-analytics.co
 import { PeddlePlanComponent } from './peddle-plan/peddle-plan.component';
 import { PeddleUsersProfileComponent } from './peddle-users-profile/peddle-users-profile.component';
 import { PeddleSettingComponent } from './peddle-setting/peddle-setting.component';
+import { HomeComponent } from './home/home.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
         {path: 'peddle_team_members', component: PeddleTeamMembersComponent},
         {path: 'peddle_users_profile', component: PeddleUsersProfileComponent},
         {path: 'peddle_plan', component: PeddlePlanComponent},
-        {path: 'peddle_home', redirectTo : 'peddle_analytics'}
+        {path: 'home', component: HomeComponent},
+        {path: 'peddle_home', redirectTo : 'home'}
       ]
     },
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
@@ -124,7 +126,8 @@ export function provideConfig() {
     PeddleAnalyticsComponent,
     PeddlePlanComponent,
     PeddleUsersProfileComponent,
-    PeddleSettingComponent
+    PeddleSettingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
