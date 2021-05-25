@@ -24,20 +24,20 @@
     </a>
 
     <a  class="text-decoration-none text-white" (click)="showdialogaddsocialnetwork()" style="cursor: pointer">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-users fa-1x text-white mt-1"></i><!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Add Social Network</span>
       </div>
     </a>
     <a class="text-decoration-none text-white"  style="cursor: pointer">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-share-alt-square fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Create Post</span>
       </div>
     </a>
 
     <a class="text-decoration-none text-white" routerLink="peddle_my_agenda" >
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-calendar fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">My Agenda</span>
       </div>
@@ -53,7 +53,7 @@
     </a>
 
     <a class="text-decoration-none text-white" routerLink="peddle_opportunities">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-search-plus fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Opportunities</span>
       </div>
@@ -69,13 +69,13 @@
     </a>
 
     <a class="text-decoration-none text-white" routerLink="peddle_team_members">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-users fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Team Members</span>
       </div>
     </a>
     <a class="text-decoration-none text-white" routerLink="peddle_messages">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-comments fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Messages</span>
       </div>
@@ -92,13 +92,13 @@
     </a>
 
     <a class="text-decoration-none text-white" routerLink="peddle_analytics">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-bar-chart fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Analytics</span>
       </div>
     </a>
     <a class="text-decoration-none text-white" routerLink="peddle_plan">
-      <div class="d-flex flex-row ml-4 mt-2">
+      <div class="d-flex flex-row ml-5 mt-1">
         <i class="fa fa-money fa-1x text-white mt-1"></i> <!--fa-3x permet de donner la taille de l'icone-->
         <span class="text-white text-decoration-none text-left ml-1 ">Plan</span>
       </div>
@@ -164,7 +164,7 @@
         <div style="width: 0; border-right: 1px solid #e3e6f0; height: calc(4.375rem - 2rem);margin: auto 1rem; "></div>
         <li ngbDropdown placement="bottom" class="nav-item">
           <a href (click)="false" class="nav-link" ngbDropdownToggle >
-            <i class="fa fa-user-circle-o fa-2x" style="color: #e3e6f0"></i>
+            <img  [src]=  "user_profile" class="rounded rounded-circle" alt="..."  width="20" height="20">
           </a>
           <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
             <a ngbDropdownItem  >

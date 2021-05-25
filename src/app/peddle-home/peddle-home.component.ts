@@ -21,7 +21,7 @@ export class PeddleHomeComponent implements OnInit {
 
   public socialNetworkCollapsed = false;
 
-  user_profile = '';
+  user_profile = 'assets/information.png';
   user_name = '';
   user_plan='';
 
