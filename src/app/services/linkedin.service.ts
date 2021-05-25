@@ -59,9 +59,7 @@ export class LinkedinService {
   existlinkedinaccount(peddle_user){
     return this.http.post(this.endpoint+'/existlinkedinaccount',peddle_user);
   }
-  savefacebookaccount(peddle_facebook_account){
-    return this.http.post(this.endpoint+'/savefacebookaccount',peddle_facebook_account);
-  }
+
   searchlinkedincompagnies(peddle_user){
     return this.http.post(this.endpoint+'/searchlinkedincompagnies',peddle_user);
   }

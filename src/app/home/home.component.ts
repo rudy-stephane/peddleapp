@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {SocialAuthService} from 'angularx-social-login';
+import {FacebookLoginProvider, SocialAuthService} from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
 import {FacebookService} from '../services/facebook.service';
@@ -33,11 +33,13 @@ export class HomeComponent implements OnInit {
     };
     this.dashboardservice.gettingdashboard(user_dashboard).subscribe(resdash=>{
       this.peddle_dashboard_record = resdash as [];
-      console.log(resdash);
-      
+      /*console.log(resdash);
+
       console.log(this.peddle_dashboard_record);
-      console.log(this.peddle_dashboard_record.length);
+      console.log(this.peddle_dashboard_record.length);*/
     })
   }
+
+
 
 }

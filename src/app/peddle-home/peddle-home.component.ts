@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LinkedinService} from '../services/linkedin.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {SocialAuthService} from 'angularx-social-login';
+import {FacebookLoginProvider, SocialAuthService} from 'angularx-social-login';
 import {MessageService} from 'primeng/api';
 import {TwitterService} from '../services/twitter.service';
 import {FacebookService} from '../services/facebook.service';
@@ -45,6 +45,24 @@ export class PeddleHomeComponent implements OnInit {
   booladdsocialnetwork = false;
   showdialogaddsocialnetwork(){
     this.booladdsocialnetwork = true;
+  }
+
+  /**
+   * ajouter son compte facebook à l'application
+   * @constructor
+   */
+
+  SigninwithFacebook(){
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
+      var data = {
+        peddle_user_email:this.user_email,
+        facebook_user_token: x.authToken,
+        facebook_user_id: x.id
+      };
+      this.facebookservice.savefacebookaccount(data).subscribe(res=>{
+        this.messageService.add({key: 'facebooksaved', severity:'success', summary: 'Account', detail: 'Facebook and Instagram account Saved'});
+      });
+    });
   }
 
 }
