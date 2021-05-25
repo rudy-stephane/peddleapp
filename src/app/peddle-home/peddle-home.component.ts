@@ -38,12 +38,6 @@ export class PeddleHomeComponent implements OnInit {
     this.user_name = peddle_user.peddle_user_name;
     this.user_plan = peddle_user.peddle_user_plan;
     this.user_email = peddle_user_email;
-    var user_dashboard = {
-      peddle_user_email:peddle_user_email
-    }
-    this.dashboardservice.gettingdashboard(user_dashboard).subscribe(resdash=>{
-
-    })
 
 
   }
