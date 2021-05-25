@@ -32,7 +32,9 @@ export class HomeComponent implements OnInit {
       peddle_user_email:peddle_user_email
     };
     this.dashboardservice.gettingdashboard(user_dashboard).subscribe(resdash=>{
-      this.peddle_dashboard_record = resdash as [any];
+      this.peddle_dashboard_record = resdash as [];
+      console.log(resdash);
+      
       console.log(this.peddle_dashboard_record);
       console.log(this.peddle_dashboard_record.length);
     })
