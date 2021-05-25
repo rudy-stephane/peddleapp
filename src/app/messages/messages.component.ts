@@ -98,7 +98,7 @@ export class MessagesComponent implements OnInit {
         facebook_user_token: x.authToken,
         facebook_user_id: x.id
       };
-      this.linkedinService.savefacebookaccount(data).subscribe(res=>{
+      this.facebookservice.savefacebookaccount(data).subscribe(res=>{
         this.messageService.add({key: 'facebooksaved', severity:'success', summary: 'Account', detail: 'Facebook and Instagram account Saved'});
       });
 
