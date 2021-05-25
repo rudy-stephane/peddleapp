@@ -81,7 +81,7 @@ const appRoutes: Routes = [
         {path: 'peddle_users_profile', component: PeddleUsersProfileComponent},
         {path: 'peddle_plan', component: PeddlePlanComponent},
         {path: 'home', component: HomeComponent},
-        {path: 'peddle_home', redirectTo : 'home'}
+        {path: 'peddle_home', redirectTo : '/home'}
       ]
     },
     {path: '', redirectTo : '/welcome', pathMatch: 'full'}
