@@ -203,7 +203,8 @@
         <img class="card-img" src="assets/Facebook.png" alt="Facebook icon" width="60" height="60">
         <h5 class="card-title">Facebook</h5>
         <p class="card-text">Manage your facebook page and group</p>
-        <button type="button" class="btn btn-outline-primary" (click)="SigninwithFacebook()">Add</button>
+        <button type="button" class="btn btn-outline-primary" (click)="SigninwithFacebook()" >Add</button>
+        <button type="button" class="btn btn-outline-primary" disabled *ngIf="existfacebookaccount">Add</button>
       </div>
     </div>
     <div class="card socialitem">

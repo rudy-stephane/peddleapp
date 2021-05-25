@@ -65,4 +65,18 @@ export class PeddleHomeComponent implements OnInit {
     });
   }
 
+  boolexistsfacebook = false;
+  existfacebookaccount(){
+
+    let resultat = false;
+
+    var peddle_user = {
+      peddle_user_email:this.user_email,
+    };
+    this.facebookservice.existfacebookaccount(peddle_user).subscribe(resexist=>{
+      resultat = resexist as boolean ;
+    });
+    return resultat
+  }
+
 }
