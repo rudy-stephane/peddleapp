@@ -38,8 +38,6 @@ export class PeddleHomeComponent implements OnInit {
     this.user_name = peddle_user.peddle_user_name;
     this.user_plan = peddle_user.peddle_user_plan;
     this.user_email = peddle_user_email;
-
-
   }
 
   booladdsocialnetwork = false;
@@ -66,7 +64,7 @@ export class PeddleHomeComponent implements OnInit {
   }
 
   boolexistsfacebook = false;
-  existfacebookaccount(){
+  /*existfacebookaccount(){
 
     let resultat = false;
 
@@ -77,6 +75,6 @@ export class PeddleHomeComponent implements OnInit {
       resultat = resexist as boolean ;
     });
     return resultat
-  }
+  }*/
 
 }
