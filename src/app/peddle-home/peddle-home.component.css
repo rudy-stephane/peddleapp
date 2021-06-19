@@ -1,19 +1,19 @@
 .aside{
-  min-width: 14%;
-  max-width: 14%;
-  min-height:100vh;
-  max-height: 100vh;
+  min-width: 20%;
+  max-width: 20%;
+  min-height:100%;
+  max-height: 100%;
   position: fixed;
   top: 0;
   left:0;
 }
 .content{
-  margin-left: 14%;
+  margin-left: 20%;
   margin-top: 14vh;
 }
 
 .menuhaut{
-  margin-left: 14%;
+  margin-left: 20%;
 }
 
 .title{
