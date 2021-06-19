@@ -1,6 +1,6 @@
 .aside{
-  min-width: 40vh;
-  max-width: 40vh;
+  min-width: 14%;
+  max-width: 14%;
   min-height:100vh;
   max-height: 100vh;
   position: fixed;
@@ -8,12 +8,12 @@
   left:0;
 }
 .content{
-  margin-left: 40vh;
+  margin-left: 14%;
   margin-top: 14vh;
 }
 
 .menuhaut{
-  margin-left: 40vh;
+  margin-left: 14%;
 }
 
 .title{
